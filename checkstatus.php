@@ -42,14 +42,48 @@
     </nav>
 
 
+    <div class="container">
+        <br>
+        <h3>สถานะคำขอ</h3><br>
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>วันที่จอง</th>
+                    <th>รถที่ใช้</th>
+                    <th>ทะเบียนรถ</th>
+                    <th>ปลายทาง</th>
+                    <th>สถานะคำขอ</th>
+                </tr>
+            </thead>
 
+            <tbody>
+                <tr>
+                    <td>01-Aug-19</td>
+                    <td>รถตู้</td>
+                    <td>กน1234</td>
+                    <td>มหาวิทยาลัยเอแบค</td>
+                    <td>ไม่อนุมัติ</td>
+                </tr>
+                <tr>
+                    <td>03-Aug-19</td>
+                    <td>รถตู้</td>
+                    <td>มส5678</td>
+                    <td>โรงเรียนวัดคูบัว จังหวัดราชบุรี</td>
+                    <td>อนุมัติ</td>
+                </tr>
+                <tr>
+                    <td>05-Aug-19</td>
+                    <td>รถตู้</td>
+                    <td>ดป6389</td>
+                    <td>หมู่บ้านเด็ก จังหวัดกาญจนบุรี</td>
+                    <td>รอการอนุมัติ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     
-    
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
+
 
 </body>
 

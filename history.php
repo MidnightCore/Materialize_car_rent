@@ -41,15 +41,45 @@
         </div>
     </nav>
 
-    
 
 
+    <div class="container">
+        <br>
+        <h3>ประวัติการเดินทาง</h3><br>
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>วันที่จอง</th>
+                    <th>รถที่ใช้</th>
+                    <th>ทะเบียนรถ</th>
+                    <th>ปลายทาง</th>
+                </tr>
+            </thead>
 
-    
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
+            <tbody>
+                <tr>
+                    <td>01-Aug-19</td>
+                    <td>รถตู้</td>
+                    <td>กน1234</td>
+                    <td>มหาวิทยาลัยเอแบค</td>
+                </tr>
+                <tr>
+                    <td>03-Aug-19</td>
+                    <td>รถตู้</td>
+                    <td>มส5678</td>
+                    <td>โรงเรียนวัดคูบัว จังหวัดราชบุรี</td>
+                </tr>
+                <tr>
+                    <td>05-Aug-19</td>
+                    <td>รถตู้</td>
+                    <td>ดป6389</td>
+                    <td>หมู่บ้านเด็ก จังหวัดกาญจนบุรี</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 
 </body>
 

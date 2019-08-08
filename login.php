@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>แบบฟอร์มจองรถ</title>
+    <title>เข้าสู่ระบบ</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,42 +15,47 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style1.css">
 </head>
 
 <body>
-    <nav class="white" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="index.html" class="brand-logo">Home</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
-                <li><a href="history.php">ประวัติการใช้งาน</a></li>
-                <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <li><a href="login.php">ออกจากระบบ</a></li>
-            </ul>
-
-            <ul id="nav-mobile" class="sidenav">
-                <br><br>
-                <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
-                <li><a href="history.php">ประวัติการใช้งาน</a></li>
-                <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <li><a href="login.php">ออกจากระบบ</a></li>
-            </ul>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <div class="container">
+        <div class="row"><br><br><br>
+            <form>
+                <div class="row">
+                    <div class="col s12 m6 offset-m3">
+                        <div class="card center-align mg">
+                            <div class="card-content"><br>
+                                <span class="card-title">Car Reservation Service</span><br>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">account_circle</i>
+                                                <input type="text" id="username-input" class="validate">
+                                                <label for="username-input">Username</label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">keyboard</i>
+                                                <input type="password" id="password-input" class="validate">
+                                                <label for="password-input">Password</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="index.html" class="btn pulse waves-effect waves-light" name="action">Login
+                                    <i class="material-icons right">done</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-    </nav>
-
-    
-
-
-
-    
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
-
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>

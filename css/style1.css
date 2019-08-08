@@ -1,0 +1,20 @@
+html {
+  font-size: 14px;
+}
+body {
+ 
+  font-family: 'Montserrat';
+  background-color: #86DFD9
+  
+}
+.btn{
+  border-radius: 50px;
+  padding: 0 26px;
+}
+.mg{
+  margin-top: 50px;
+}
+.card-title {
+
+   color: #2c2c2c;
+}
