@@ -18,6 +18,12 @@
 
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="css/style1.css">
+
+    <style>
+        body {
+            background-image: url("img/background1.jpg");
+        }
+    </style>
 </head>
 
 <body>
