@@ -1,3 +1,19 @@
+<?php
+session_start();
+session_destroy();
+$palm = 0;
+if (isset($_GET['alert'])) {
+    $palm = $_GET['alert'];
+}
+if ($palm == 1) {
+    echo "<script>alert('เพิ่มข้อมูลเรียบร้อยแล้วค่ะ');</script>";
+} else if ($palm == 2) {
+    echo "<script>alert('กรุณาสมัครสมาชิกก่อนใช้งานค่ะ');</script>";
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +45,7 @@
 <body>
     <div class="container">
         <div class="row"><br><br><br>
-            <form>
+            <form action="login_form.php">
                 <div class="row">
                     <div class="col s12 m6 offset-m3">
                         <div class="card center-align mg">
@@ -40,20 +56,25 @@
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">account_circle</i>
-                                                <input type="text" id="username-input" class="validate">
+                                                <input type="text" id="username-input" name="user_id" class="validate">
                                                 <label for="username-input">Username</label>
                                             </div>
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">keyboard</i>
-                                                <input type="password" id="password-input" class="validate">
+                                                <input type="password" id="password-input" name="user_password" class="validate">
                                                 <label for="password-input">Password</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="index.html" class="btn pulse waves-effect waves-light" name="action">Login
+                                <!-- <a href="index.html" class="btn pulse waves-effect waves-light" name="action">Login
                                     <i class="material-icons right">done</i>
-                                </a>
+                                </a> -->
+
+                                <button type="submit" class="btn pulse waves-effect waves-light" name="action">Login
+                                    <i class="material-icons right">done</i>
+                                </button>
+
                             </div>
                         </div>
                     </div>
