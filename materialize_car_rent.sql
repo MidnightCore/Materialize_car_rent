@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2019 at 05:33 AM
+-- Generation Time: Aug 09, 2019 at 09:23 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -70,20 +70,29 @@ CREATE TABLE `permit` (
 --
 
 CREATE TABLE `user` (
-  `Name` varchar(100) NOT NULL,
-  `user_id` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `role` varchar(100) NOT NULL,
-  `phone_num` varchar(100) NOT NULL
+  `user_id` varchar(20) NOT NULL,
+  `user_password` text NOT NULL,
+  `Phone_num` text NOT NULL,
+  `Role` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`Name`, `user_id`, `password`, `role`, `phone_num`) VALUES
-('admin', 'admin', 'admin', 'admin', ''),
-('user', '1234', '1234', 'user', '');
+INSERT INTO `user` (`user_id`, `user_password`, `Phone_num`, `Role`) VALUES
+('111', '111', '', 'user'),
+('admin', 'admin', '', 'admin');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -56,12 +56,12 @@ if ($palm == 1) {
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">account_circle</i>
-                                                <input type="text" id="username-input" name="user_id" class="validate">
+                                                <input type="text" id="username-input" name="em_User" class="validate">
                                                 <label for="username-input">Username</label>
                                             </div>
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">keyboard</i>
-                                                <input type="password" id="password-input" name="user_password" class="validate">
+                                                <input type="password" id="password-input" name="em_Password" class="validate">
                                                 <label for="password-input">Password</label>
                                             </div>
                                         </div>

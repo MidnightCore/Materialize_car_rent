@@ -57,7 +57,7 @@
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4"><br>
                     <h4 class="text-center">สำนักวิชาการศึกษาทั่วไปและนวัตกรรมการเรียนรู้อิเล็กทรอนิกส์<br>
-                        <h5 class="text-center">แบบฟอร์มการขออนุญาติใช้ยานพาหนะในเขตกรุงเทพฯและปริมณฑล</h5>
+                        <h5 class="text-center">แบบฟอร์ม : ขออนุญาติใช้ยานพาหนะในเขตกรุงเทพฯและปริมณฑล</h5>
                     </h4>
                 </div>
             </div><br><br><!-- จบหัวกระดาษ -->
