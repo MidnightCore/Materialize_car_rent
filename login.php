@@ -45,7 +45,7 @@ if ($palm == 1) {
 <body>
     <div class="container">
         <div class="row"><br><br><br>
-            <form action="login_form.php">
+            <form action="login_form.php" method="POST">
                 <div class="row">
                     <div class="col s12 m6 offset-m3">
                         <div class="card center-align mg">

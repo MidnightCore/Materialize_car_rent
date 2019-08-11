@@ -15,7 +15,7 @@ session_start();
         $em_User     = $_POST['em_User'];
         $em_Password = $_POST['em_Password'];
 
-        require 'login_form2.php';
+        require 'server.php';
 
         $sql    = "SELECT user.user_id,user.user_password,user.Phone_num,user.Role FROM user WHERE user.user_id ='$em_User' and user.user_password='$em_Password'";
         $result = mysqli_query($connect,$sql);
@@ -28,7 +28,7 @@ session_start();
           $_SESSION['user_password'] = $em_Password;
 
           if($Palm['Role'] == "admin"){
-            header("location:Admin/admin_page.php");
+            header("location:admin/sidebar.php");
           }
           else{
             header("location:index.html");
