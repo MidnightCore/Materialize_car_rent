@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +11,16 @@
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../js/materialize.js"></script>
+    <script src="../js/init.js"></script>
+
     <title>เช็คคำร้องขอ</title>
 </head>
+
 <body>
-<nav class="teal lighten-3" role="navigation">
+    <nav class="teal lighten-3" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Dashboard</a>
             <ul class="right hide-on-med-and-down">
@@ -36,5 +43,52 @@
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
+
+    <div class="container">
+    <br>
+        <h3>สถานะคำขอ</h3>
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>คำขอเลขที่</th>
+                    <th>วันที่เดินทาง</th>
+                    <th>ปลายทาง</th>
+                    <th>วันที่กลับ</th>
+                    <th>จำนวนคน</th>
+                    <th>สถานะ</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>03-Aug-19</td>
+                    <td>มหาวิทยาลับศิลปากร วิทยาเขตหัวหิน</td>
+                    <td>05-Aug-19</td>
+                    <td>2</td>
+                    <td>รอการอนุมัติ</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>07-Aug-19</td>
+                    <td>มหาวิทยาลัยเอแบค</td>
+                    <td>08-Aug-19</td>
+                    <td>5</td>
+                    <td>รอการอนุมัติ</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>09-Aug-19</td>
+                    <td>อิมแพคเมืองทองธานี</td>
+                    <td>11-Aug-19</td>
+                    <td>11</td>
+                    <td>รอการอนุมัติ</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
 </body>
+
 </html>
