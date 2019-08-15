@@ -103,22 +103,6 @@
                                 <button type="button" id="but2" class="btn btn-warning text-dark btn-md">เพิ่ม</button>
                             </div>
                         </form>
-                        <form><br>
-                            <!--อัพโหลดไฟล์-->
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
-                                <label class="custom-file-label" for="customFile">เลือกไฟล์</label>
-                            </div>
-                        </form>
-                        <script>
-                            // Add the following code if you want the name of the file appear on select
-                            $(".custom-file-input").on("change", function() {
-                                var fileName = $(this).val().split("\\").pop();
-                                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-                            });
-                        </script>
-
-                        </form>
 
                     </div>
                 </div>
