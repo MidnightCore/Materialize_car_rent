@@ -2,8 +2,9 @@
 function fetch_data()
 {
     $output = '';
-    $connect = mysqli_connect("localhost", "root", "", "materialize_car_rent") or die ("ไม่สามารถติดต่อฐานข้อมูลได้");
-    $query = "SELECT * FROM user Order by id ASC";
+    require "server.php";
+    // $connect = mysqli_connect("localhost", "root", "", "materialize_car_rent") or die ("ไม่สามารถติดต่อฐานข้อมูลได้");
+    $query = "SELECT * FROM user ORDER BY first_name ASC";
     $result = mysqli_query($connect, $query);
     while ($row = mysqli_fetch_array($result)) 
     {
@@ -26,7 +27,7 @@ if (isset($_POST["create_pdf"])) {
     require_once('tcpdf/tcpdf.php');
     $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
     $obj_pdf->SetCreator(PDF_CREATOR);
-    $obj_pdf->SetTitle("Export HTML Table data to PDF using TCPDF in PHP");
+    $obj_pdf->SetTitle("สรุปรายละเอียดการจองรถ");
     $obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);
     $obj_pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
     $obj_pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -40,15 +41,15 @@ if (isset($_POST["create_pdf"])) {
     $obj_pdf->AddPage();
     $content = '';
     $content .= '  
-    <h3 align="center">Export HTML Table data to PDF using TCPDF in PHP</h3><br /><br />  
+    <h3 align="center">Summary of car booking details</h3><br /><br />  
     <table border="1" cellspacing="0" cellpadding="5">  
          <tr>  
-            <th width="15%">first_name</th>
-            <th width="15%">last_name</th>
-            <th width="15%">user_id</th>
-            <th width="15%">user_password</th>
-           <th width="15%">Phone_num</th>
-            <th width="15%">user_email</th>
+            <th width="15%">First Name</th>
+            <th width="15%">Last Name</th>
+            <th width="15%">ID</th>
+            <th width="15%">Password</th>
+           <th width="15%">Phone Num</th>
+            <th width="15%">Email</th>
             <th width="15%">Role</th>
          </tr>  
     ';
@@ -66,7 +67,6 @@ if (isset($_POST["create_pdf"])) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rent Result</title>
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -84,7 +84,7 @@ if (isset($_POST["create_pdf"])) {
 <body>
     <br><br>
     <div class="container" style="width:700px;">
-        <h3 style="align:center">Export HTML Table data to PDF using TCPDF in PHP</h3>
+        <h3 style="align:center">Export HTML Table data to PDF</h3>
         <br>
         <div class="responsive-table">
             <table class="table-bordered">
