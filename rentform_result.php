@@ -21,6 +21,9 @@
         text-align: center;
         font-size: 18px;
     }
+    #headcen{
+        text-align: center;
+    }
     </style>
 </head>
 
@@ -53,7 +56,7 @@
             <div class="col s12">
                 <div class="card grey lighten-5">
                     <div class="card-content black-text">
-                        <span class="card-title">สรุปรายละเอียดการจองรถ</span>
+                        <span id="headcen"class="card-title">สรุปรายละเอียดการจองรถ</span>
                         <p>I am a very simple card. I am good at containing small bits of information.
                             I am convenient because I require little markup to use effectively.
                             I am a very simple card. I am good at containing small bits of information.
@@ -88,7 +91,7 @@
                     </div>
                     <div id="button" class="card-action">
                         <a href="#">บันทึก</a>
-                        <a href="#">พิมพ์</a>
+                        <!-- <a href="#">พิมพ์</a> -->
                         <a href="index.html">กลับหน้าหลัก</a>
                     </div>
                 </div>
