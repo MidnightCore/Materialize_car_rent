@@ -34,9 +34,10 @@ $sql = "INSERT INTO `rent_form`(`date_write`, `first_name`, `last_name`, `rank`,
 $result = mysqli_query($connect, $sql);
 
 if ($result) {
-    echo "<script>alert('แบบฟอร์มได้รับการบันทึกแล้วค่ะ');</script>";
-    exit();
-    header("location:index.html");    //มันไม่เปลี่ยนหน้า !!!!!!!!   TT^TT
+    // echo "<script>alert('แบบฟอร์มได้รับการบันทึกแล้วค่ะ');</script>";
+    // exit();
+    header("location:rentform_result.php");    
+    //popup เสร็จแล้ว มันไม่ยอมเปลี่ยนหน้า !!!!!!!!   TT^TT
 }
 
  else {
