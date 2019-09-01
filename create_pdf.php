@@ -3,7 +3,6 @@ function fetch_data()
 {
     $output = '';
     require "server.php";
-    // $connect = mysqli_connect("localhost", "root", "", "materialize_car_rent") or die ("ไม่สามารถติดต่อฐานข้อมูลได้");
     $query = "SELECT * FROM user ORDER BY first_name ASC";
     $result = mysqli_query($connect, $query);
     while ($row = mysqli_fetch_array($result)) 
@@ -58,12 +57,10 @@ if (isset($_POST["create_pdf"])) {
     $obj_pdf->writeHTML($content);
     $obj_pdf->Output('sample.pdf', 'I');
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -102,7 +99,8 @@ if (isset($_POST["create_pdf"])) {
                 ?>
             </table>
             <br>
-            <form method="POST" style="text-align:center">
+            <!-- target="_blank" คือทำให้กดแล้วมันเปิดในแท๊บใหม่ ไม่ใช่เปิดทับแท๊บเดิม -->
+            <form method="POST" style="text-align:center" target="_blank">
                 <input type="submit" name="create_pdf" class="waves-effect waves-light btn" value="Create PDF">
             </form>
             <br><br>
