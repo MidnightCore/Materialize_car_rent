@@ -109,11 +109,11 @@
                     <!-- ส่วนของกรอกรายละเอียดชื่อ -->
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate">
+                            <input name="first_name" id="first_name" type="text" class="validate" value="eiei" readonly>
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate">
+                            <input name="last_name" id="last_name" type="text" class="validate" value="eiei" readonly>
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
@@ -205,6 +205,7 @@
 
 
                     <!-- ส่วนของเจ้าหน้าที่ -->
+                    <!--
                     <h6><b>ส่วนนี้</b> เฉพาะเจ้าหน้าที่</h6>
                     <p>
                         <label>
@@ -242,6 +243,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
                     <!-- จบส่วนของเจ้าหน้าที่ -->
                     
                 </div>
