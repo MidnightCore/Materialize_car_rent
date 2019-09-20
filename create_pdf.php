@@ -55,9 +55,10 @@ if (isset($_POST["create_pdf"])) {
     $content .= fetch_data();
     $content .= '</table>';
     $obj_pdf->writeHTML($content);
-    $obj_pdf->Output('sample.pdf', 'I');
+    $obj_pdf->Output('ResultRentCarOrder.pdf', 'I');
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
