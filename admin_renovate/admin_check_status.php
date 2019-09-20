@@ -44,8 +44,9 @@
         </div>
     </nav>
 
+
+
     <div class="container">
-    <br>
         <h3>สถานะคำขอ</h3>
         <table class="responsive-table">
             <thead>
@@ -58,7 +59,6 @@
                     <th>สถานะ</th>
                 </tr>
             </thead>
-
             <tbody>
                 <tr>
                     <td>1</td>
@@ -86,9 +86,55 @@
                 </tr>
             </tbody>
         </table>
+
+
+        <!-- ส่วนของเจ้าหน้าที่ -->
+        <br><br>
+        <h6><b>คำอนุญาติ</b> ให้บริการจองรถตู้</h6>
+        <p>
+            <label>
+                <input name="can_go" type="radio" value="agree" required />
+                <span>สามารถให้บริการรถยนต์ได้</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input name="can_go" type="radio" value="not_agree" required />
+                <span>ไม่สามารถให้บริการรถยนต์ได้</span>
+            </label>
+        </p>
+        <div>
+            <p>เนื่องจาก <input type="text" class="reason"></p>
+            <p>โดยมีพนักงานขับรถยนต์ ชื่อ <input name="driver_name" type="text" class="phone_num"></p>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input name="driver_car" id="cartype" type="text" class="validate">
+                <label for="cartype">ขับรถ (ประเภทรถ)</label>
+            </div>
+            <div class="input-field col s6">
+                <input name="driver_carid" id="carnum" type="text" class="validate">
+                <label for="carnum">หมายเลขทะเบียนรถ</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6 offset-s6">
+                <div class="input-field inline">
+                    <input name="license_agent" id="name_agent" type="text" class="validate">
+                    <label for="name_agent">ลงชื่อ</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">เจ้าหน้าที่ฝ่ายยานพาหนะ</span>
+                </div>
+            </div>
+        </div>
+        <div class="center-align">
+            <button type="submit" form="nukKaew" class="btn pulse waves-effect waves-light">ยืนยัน
+                <i class="material-icons right">done</i>
+            </button>
+            <a href="index.html" id="but3" class="waves-effect waves-light btn">กลับหน้าหลัก</a>
+        </div><br><br>
+        <!-- จบส่วนของเจ้าหน้าที่ -->
+
     </div>
-
-
 </body>
 
 </html>
