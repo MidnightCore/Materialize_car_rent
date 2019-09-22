@@ -1,15 +1,14 @@
-<?php 
+<?php
 session_start();
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $user_id = $_SESSION['id'];
-}else{
+} else {
     header("location:login.php");
-
 }
 require './server.php';
 
 $sql = "SELECT user.fname,user.lname,phone,user.rank,department FROM user WHERE user.id='$user_id'";
-$result = mysqli_query($connect,$sql);
+$result = mysqli_query($connect, $sql);
 $name = mysqli_fetch_array($result);
 // print_r($name);
 date_default_timezone_set("Asia/Bangkok");
@@ -18,7 +17,6 @@ date_default_timezone_set("Asia/Bangkok");
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,7 +43,7 @@ date_default_timezone_set("Asia/Bangkok");
 <body>
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="index.html" class="brand-logo">Home</a>
+            <a id="logo-container" href="index.php" class="brand-logo">Home</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
                 <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
@@ -67,6 +65,7 @@ date_default_timezone_set("Asia/Bangkok");
     </nav>
 
 
+
     <form action="rentform_form.php" id="nukKaew" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
@@ -78,13 +77,14 @@ date_default_timezone_set("Asia/Bangkok");
                         <h5 class="text-center">แบบฟอร์ม : ขออนุญาติใช้ยานพาหนะในเขตกรุงเทพฯและปริมณฑล</h5>
                     </h4>
                 </div>
-            </div><br><br><!-- จบหัวกระดาษ -->
+            </div><br><br>
+            <!-- จบหัวกระดาษ -->
 
 
 
             <div class="row">
+                <!-- ปุ่มกลมๆให้เลือก -->
                 <div class="input-field col s6">
-                    <!-- ปุ่มกลมๆให้เลือก -->
                     <p> <label>
                             <input name="county" type="radio" value="Bangkok" required />
                             <span>กรุงเทพฯและปริมณฑล </span>
@@ -94,12 +94,12 @@ date_default_timezone_set("Asia/Bangkok");
                             <span>ต่างจังหวัด </span>
                         </label>
                     </p>
-                </div><!-- จบปุ่มกลมๆให้เลือก -->
+                </div>
+                <!-- จบปุ่มกลมๆให้เลือก -->
 
+                <!-- เลือกวันที่กรอก -->
                 <div class="input-field col s6">
-                    <!-- เลือกวันที่กรอก -->
-                    <input name="date_write" type="text"
-                        placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)" value="<?php echo date("l j m Y H:i:s") ?>" readonly>
+                    <input name="date_write" type="text" placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)" value="<?php echo date("l j m Y H:i:s") ?>" readonly>
                 </div>
             </div><!-- จบเลือกวันที่กรอก -->
 
@@ -122,26 +122,24 @@ date_default_timezone_set("Asia/Bangkok");
             <div class="row">
                 <div class="col s12">
                     <h6><b>เรียน</b> ผู้อำนวยการสำนักวิชาการศึกษาทั่วไปและนวัตกรรมการเรียนรู้อิเล็กทอรนิกส์</h6>
-
-
                     <!-- ส่วนของกรอกรายละเอียดชื่อ -->
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate" value="<?php echo$name['fname'] ?>" required>
+                            <input name="first_name" id="first_name" type="text" class="validate" value="<?php echo $name['fname'] ?>" required>
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate" value="<?php echo$name['lname'] ?>"required >
+                            <input name="last_name" id="last_name" type="text" class="validate" value="<?php echo $name['lname'] ?>" required>
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate" value="<?php echo$name['rank'] ?>"required>
+                            <input name="rank" id="rank" type="text" class="validate" value="<?php echo $name['rank'] ?>" required>
                             <label for="rank">ตำแหน่ง (ของผู้กรอกแบบฟอร์ม)</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="zone" id="zone" type="text" class="validate"value="<?php echo$name['department']?>"required >
+                            <input name="zone" id="zone" type="text" class="validate" value="<?php echo $name['department'] ?>" required>
                             <label for="zone">สังกัด (ของผู้กรอกแบบฟอร์ม)</label>
                         </div>
                     </div>
@@ -149,17 +147,40 @@ date_default_timezone_set("Asia/Bangkok");
 
 
 
+                    <!-- script dropdown -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var elems = document.querySelectorAll('select');
+                            var instances = M.FormSelect.init(elems, options);
+                        });
+                        // Or with jQuery
+                        $(document).ready(function() {
+                            $('select').formSelect();
+                        });
+                    </script>
+
+
+
                     <!-- ส่วนของสถานที่ -->
                     <p>มีความประสงค์จะขอใช้รถยนต์ของสำนักวิชาการศึกษาทั่วไปฯ เพื่อไปราชการเกี่ยวกับ</p>
-                    <input type="text" name="want" class="want"required>
+                    <input type="text" name="want" class="want" required>
                     <div class="row">
                         <div class="input-field col s6">
                             <p>สถานที่ไป<input type="text" name="place" class="P_80 mt-2" required></p>
                         </div>
-                        <div class="input-field col s6">
-                            <p class="text-right mt-3">จำนวนคนที่ไป<input type="number" name="people"
-                                    class="people_num" required></p>
+                        <div class="input-field col s6"><br><br>
+                            <select type="number" name="people" class="people_num" required>
+                                <option value="" disabled selected>จำนวนคนที่ไป</option>
+                                <option value="1">0-3</option>
+                                <option value="2">4-6</option>
+                                <option value="3">7-9</option>
+                                <option value="3">10-13</option>
+                            </select>
+                            <label>เลือกจำนวน</label>
                         </div>
+                        <!-- <div class="input-field col s6">
+                            <p class="text-right mt-3">จำนวนคนที่ไป<input type="number" name="people" class="people_num" required></p>
+                        </div> -->
                     </div>
                     <!-- จบส่วนของสถานที่ -->
 
@@ -172,36 +193,49 @@ date_default_timezone_set("Asia/Bangkok");
                             <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป" required>
                         </div>
                         <div class="input-field col s6">
-                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา"required>
+                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ"required>
+                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ" required>
                         </div>
                         <div class="input-field col s6">
-                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา"required>
+                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา" required>
                         </div>
                     </div>
+
+
+
+                    <!-- scriptเลือกวันที่ -->
                     <script>
-                        document.addEventListener('DOMContentLoaded', function () {
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var elems = document.querySelectorAll('.datepicker');
+                            var instances = M.Datepicker.init(elems, options);
+                        });
+                        // Or with jQuery
+                        $(document).ready(function() {
+                            $('.datepicker').datepicker();
+                        });
+                    </script>
+                    <!-- scriptเลือกเวลา -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
                             var elems = document.querySelectorAll('.timepicker');
                             var instances = M.Timepicker.init(elems, options);
                         });
                         // Or with jQuery
-                        $(document).ready(function () {
+                        $(document).ready(function() {
                             $('.timepicker').timepicker();
                         });
                     </script>
-                    <!-- จบวันที่ในการเดินทางไปกลับ -->
 
 
 
                     <!-- หมายเหตุ -->
                     <div>
                         <p>หมายเหตุ <input type="text" class="reason" name="note"></p>
-                        <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text"
-                                class="phone_num" value="<?php echo$name['phone'] ?>"required></p>
+                        <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text" class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
                     </div><br>
                     <!-- จบหมายเหตุ -->
 
@@ -212,7 +246,7 @@ date_default_timezone_set("Asia/Bangkok");
                         <div class="col s6 offset-s6">
                             <!-- ลงชื่อ : -->
                             <div class="input-field inline">
-                                <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo$name['fname']." ".$name['lname'] ?>"required>
+                                <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required>
                                 <label for="name_ask">ลงชื่อ</label>
                                 <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
                             </div>
@@ -221,52 +255,8 @@ date_default_timezone_set("Asia/Bangkok");
                     <!-- จบลงชื่อคนขออณุญาติ -->
 
 
-
-                    <!-- ส่วนของเจ้าหน้าที่ -->
-                    <!--
-                    <h6><b>ส่วนนี้</b> เฉพาะเจ้าหน้าที่</h6>
-                    <p>
-                        <label>
-                            <input name="can_go" type="radio" value="agree" required />
-                            <span>สามารถให้บริการรถยนต์ได้</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input name="can_go" type="radio" value="not_agree" required />
-                            <span>ไม่สามารถให้บริการรถยนต์ได้</span>
-                        </label>
-                    </p>
-                    <div>
-                        <p>เนื่องจาก <input type="text" class="reason"></p>
-                        <p>โดยมีพนักงานขับรถยนต์ ชื่อ <input name="driver_name" type="text" class="phone_num"></p>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="driver_car" id="cartype" type="text" class="validate">
-                            <label for="cartype">ขับรถ (ประเภทรถ)</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="driver_carid" id="carnum" type="text" class="validate">
-                            <label for="carnum">หมายเลขทะเบียนรถ</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s6 offset-s6">
-                            <div class="input-field inline">
-                                <input name="license_agent" id="name_agent" type="text" class="validate">
-                                <label for="name_agent">ลงชื่อ</label>
-                                <span class="helper-text" data-error="wrong"
-                                    data-success="right">เจ้าหน้าที่ฝ่ายยานพาหนะ</span>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                    <!-- จบส่วนของเจ้าหน้าที่ -->
-                    
                 </div>
             </div>
-
         </div>
     </form>
 

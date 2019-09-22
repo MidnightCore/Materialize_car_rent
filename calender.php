@@ -66,7 +66,7 @@
 <body>
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="index.html" class="brand-logo">Home</a>
+            <a id="logo-container" href="index.php" class="brand-logo">Home</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
                 <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
