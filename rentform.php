@@ -169,12 +169,12 @@ date_default_timezone_set("Asia/Bangkok");
                             <p>สถานที่ไป<input type="text" name="place" class="P_80 mt-2" required></p>
                         </div>
                         <div class="input-field col s6"><br><br>
-                            <select type="number" name="people" class="people_num" required>
+                            <select type="text" name="people" class="people_num" required>
                                 <option value="" disabled selected>จำนวนคนที่ไป</option>
-                                <option value="1">0-3</option>
-                                <option value="2">4-6</option>
-                                <option value="3">7-9</option>
-                                <option value="3">10-13</option>
+                                <option value="0-3">0-3</option>
+                                <option value="4-6">4-6</option>
+                                <option value="7-9">7-9</option>
+                                <option value="10-13">10-13</option>
                             </select>
                             <label>เลือกจำนวน</label>
                         </div>

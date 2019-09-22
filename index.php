@@ -1,3 +1,17 @@
+<?php  
+    require './server.php';
+    session_start();
+    if(isset($_SESSION['id'])){
+        $user_id = $_SESSION['id'];
+    }else{
+        $user_id = 0;
+    }
+    $sql = "SELECT fname,lname FROM user WHERE user.id=$user_id";
+    $result = mysqli_query($connect,$sql);
+    $name = mysqli_fetch_array($result);
+    // echo$user_id;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +40,18 @@
                 <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <li><a href="login.php">ออกจากระบบ</a></li>
+                <?php if($user_id == 0){?>
+                    <li><a href="login.php">
+                        <?php
+                    echo"เข้าสู่ระบบ";
+                    ?>
+                    </a></li>
+                    <?php }else{ ?>
+                <li><a href="#">
+                    <?php echo$name['fname']." ".$name['lname']; ?>
+                    </a>
+                </li>
+               <?php } ?>
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
