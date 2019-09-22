@@ -107,10 +107,10 @@ date_default_timezone_set("Asia/Bangkok");
 
             <!-- scriptของเลือกวันที่ -->
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    var elems = document.querySelectorAll('.datepicker');
-                    var instances = M.Datepicker.init(elems, options);
-                });
+                // document.addEventListener('DOMContentLoaded', function () {
+                //     var elems = document.querySelectorAll('.datepicker');
+                //     var instances = M.Datepicker.init(elems, options);
+                // });
                 // Or with jQuery
                 $(document).ready(function () {
                     $('.datepicker').datepicker();
