@@ -24,8 +24,10 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Dashboard</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
+            <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
+                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
+                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="http://localhost/phpmyadmin/db_structure.php?server=1&db=materialize_car_rent" target="_blank">phpMyAdmin</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
@@ -33,7 +35,9 @@
             <ul id="nav-mobile" class="sidenav">
                 <br><br>
                 <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
+                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
+                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="http://localhost/phpmyadmin/db_structure.php?server=1&db=materialize_car_rent" target="_blank">phpMyAdmin</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
