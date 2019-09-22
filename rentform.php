@@ -1,6 +1,11 @@
 <?php 
 session_start();
-$user_id = $_SESSION['id'];
+if(isset($_SESSION['id'])){
+    $user_id = $_SESSION['id'];
+}else{
+    header("location:login.php");
+
+}
 require './server.php';
 
 $sql = "SELECT user.fname,user.lname,phone,user.rank,department FROM user WHERE user.id='$user_id'";
