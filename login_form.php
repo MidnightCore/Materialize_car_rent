@@ -8,17 +8,17 @@ session_start();
 
   require 'server.php';
 
-  $sql    = "SELECT user.user_id,user.user_password,user.Phone_num,user.Role FROM user WHERE user.user_id ='$em_User' and user.user_password='$em_Password'";
+  $sql    = "SELECT user.id,user.password,user.role FROM user WHERE user.id ='$em_User' and user.password='$em_Password'";
   $result = mysqli_query($connect,$sql);
 
   $Palm    = mysqli_fetch_array($result);
   $num_row = mysqli_num_rows($result);
 
   if($num_row == 1) {
-    $_SESSION['user_id']       = $em_User;
-    $_SESSION['user_password'] = $em_Password;
+    $_SESSION['id']       = $em_User;
+    $_SESSION['password'] = $em_Password;
 
-    if($Palm['Role'] == "admin") {
+    if($Palm['role'] == "admin") {
       header("location:admin_renovate/admin_page.php");
     }
     else {

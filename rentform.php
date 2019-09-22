@@ -1,3 +1,16 @@
+<?php 
+session_start();
+$user_id = $_SESSION['id'];
+require './server.php';
+
+$sql = "SELECT user.fname,user.lname,phone,user.rank,department FROM user WHERE user.id='$user_id'";
+$result = mysqli_query($connect,$sql);
+$name = mysqli_fetch_array($result);
+// print_r($name);
+date_default_timezone_set("Asia/Bangkok");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,8 +93,8 @@
 
                 <div class="input-field col s6">
                     <!-- เลือกวันที่กรอก -->
-                    <input name="date_write" type="text" class="datepicker"
-                        placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)">
+                    <input name="date_write" type="text"
+                        placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)" value="<?php echo date("l j m Y H:i:s") ?>" readonly>
                 </div>
             </div><!-- จบเลือกวันที่กรอก -->
 
@@ -109,21 +122,21 @@
                     <!-- ส่วนของกรอกรายละเอียดชื่อ -->
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate" value="eiei" readonly>
+                            <input name="first_name" id="first_name" type="text" class="validate" value="<?php echo$name['fname'] ?>" required>
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate" value="eiei" readonly>
+                            <input name="last_name" id="last_name" type="text" class="validate" value="<?php echo$name['lname'] ?>"required >
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate">
+                            <input name="rank" id="rank" type="text" class="validate" value="<?php echo$name['rank'] ?>"required>
                             <label for="rank">ตำแหน่ง (ของผู้กรอกแบบฟอร์ม)</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="zone" id="zone" type="text" class="validate">
+                            <input name="zone" id="zone" type="text" class="validate"value="<?php echo$name['department']?>"required >
                             <label for="zone">สังกัด (ของผู้กรอกแบบฟอร์ม)</label>
                         </div>
                     </div>
@@ -133,14 +146,14 @@
 
                     <!-- ส่วนของสถานที่ -->
                     <p>มีความประสงค์จะขอใช้รถยนต์ของสำนักวิชาการศึกษาทั่วไปฯ เพื่อไปราชการเกี่ยวกับ</p>
-                    <input type="text" name="want" class="want">
+                    <input type="text" name="want" class="want"required>
                     <div class="row">
                         <div class="input-field col s6">
-                            <p>สถานที่ไป<input type="text" name="place" class="P_80 mt-2"></p>
+                            <p>สถานที่ไป<input type="text" name="place" class="P_80 mt-2" required></p>
                         </div>
                         <div class="input-field col s6">
                             <p class="text-right mt-3">จำนวนคนที่ไป<input type="number" name="people"
-                                    class="people_num"></p>
+                                    class="people_num" required></p>
                         </div>
                     </div>
                     <!-- จบส่วนของสถานที่ -->
@@ -151,18 +164,18 @@
                     <p>โดยมีวันเวลาในการเดินทางดังนี้</p>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป">
+                            <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป" required>
                         </div>
                         <div class="input-field col s6">
-                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา">
+                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา"required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ">
+                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ"required>
                         </div>
                         <div class="input-field col s6">
-                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา">
+                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา"required>
                         </div>
                     </div>
                     <script>
@@ -181,9 +194,9 @@
 
                     <!-- หมายเหตุ -->
                     <div>
-                        <p>หมายเหตุ <input type="text" class="reason"></p>
+                        <p>หมายเหตุ <input type="text" class="reason" name="note"></p>
                         <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text"
-                                class="phone_num"></p>
+                                class="phone_num" value="<?php echo$name['phone'] ?>"required></p>
                     </div><br>
                     <!-- จบหมายเหตุ -->
 
@@ -194,7 +207,7 @@
                         <div class="col s6 offset-s6">
                             <!-- ลงชื่อ : -->
                             <div class="input-field inline">
-                                <input name="license_user" id="name_ask" type="text" class="validate">
+                                <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo$name['fname']." ".$name['lname'] ?>"required>
                                 <label for="name_ask">ลงชื่อ</label>
                                 <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
                             </div>
