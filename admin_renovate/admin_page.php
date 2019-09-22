@@ -60,7 +60,6 @@
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
-                <!-- <li><a href="http://localhost/phpmyadmin/db_structure.php?server=1&db=materialize_car_rent" target="_blank">phpMyAdmin</a></li> -->
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav">
@@ -70,7 +69,6 @@
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
-                <!-- <li><a href="http://localhost/phpmyadmin/db_structure.php?server=1&db=materialize_car_rent" target="_blank">phpMyAdmin</a></li> -->
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
