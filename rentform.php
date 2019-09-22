@@ -102,8 +102,21 @@ date_default_timezone_set("Asia/Bangkok");
                 <div class="input-field col s6">
                     <input name="date_write" type="text" placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)" value="<?php echo date("l j m Y H:i:s") ?>" readonly>
                 </div>
-                <!-- จบเลือกวันที่กรอก -->
-            </div>
+            </div><!-- จบเลือกวันที่กรอก -->
+
+
+
+            <!-- scriptของเลือกวันที่ -->
+            <script>
+                // document.addEventListener('DOMContentLoaded', function () {
+                //     var elems = document.querySelectorAll('.datepicker');
+                //     var instances = M.Datepicker.init(elems, options);
+                // });
+                // Or with jQuery
+                $(document).ready(function () {
+                    $('.datepicker').datepicker();
+                });
+            </script><!-- จบscriptของเลือกวันที่ -->
 
 
 
