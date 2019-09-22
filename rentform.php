@@ -201,19 +201,40 @@ $today = date("Y-m-j H:i:s");
                         </div>
                     </div>
 
-                    <button onclick="date()">asd</button>
-                    <a onclick="date()">dsa</a>
-
                     <script>
-                        // $(document).ready(function () {
-                        //     alert("asdas");
-
                         $(document).ready(function () {
                             console.log('i ');
                             $('#dateback').hide();
                             $('#timeback').hide();
                         });
+                        function checktime(){
+                            var datego = $('#date_goo').val();
+                            var timego = $('#time_goo').val();
+                            var dateback = $('#dateback').val();
+                            var timeback = $('#timeback').val();
 
+                            var datetimego = datego + " " + timego+":00";
+                            var datetimeback = dateback + " " + timeback+":00";
+                            var datesum = DateTimeDiff(datetimego,datetimeback);
+                            if(datesum <= 0.0415){
+                                alert("ต้องใช้รถอย่างน้อย 1 ชั่วโมงค่ะ");
+                            }else{
+
+                            }
+                        }
+                        $("#dateback").change(function () {
+                            console.log('i++ :', i++);
+                            if(i == j || i > 1){
+                                checktime();
+                            }                       
+                        });
+                        $("#timeback").change(function () {
+                            console.log('j++ :', j++);
+                            if(i == j || j > 1){
+                                checktime();
+                            }
+                        });  
+                        
                         function DateTimeDiff(strDateTime1, strDateTime2) {
                             return (Date.parse(strDateTime2) - Date.parse(strDateTime1)) / (1000 * 60 * 60 *24); // 1 Hour =  60*60
 
@@ -234,19 +255,13 @@ $today = date("Y-m-j H:i:s");
                             }
                         });  
                         function date() {
-                            // alert("sdflkmsekgmskgm");
                             var date = $('#date_goo').val();
-                            var time = $('#time_goo').val();
-                            
-                            console.log('date :', date);
-                            console.log('time :', time);
-
+                            var time = $('#time_goo').val();  
                             var datetime = date + " " + time + ":00";
                             var today = "<?php echo $today ?>";
                             if (date == "" || time == "") {
                                 alert("ท่านลืมกรอกวันหรือเวลาค่ะ");
                             } else {
-                                
                                 var datesum = DateTimeDiff(today, datetime);
                                 if (datesum < 2) {
                                     alert("กรุณาทำการจองก่อนล่วงหน้า 2 วันค่ะ");   
@@ -258,16 +273,7 @@ $today = date("Y-m-j H:i:s");
                                 }
                             }
                         }
-
-                        // $(document).ready(function () {
-                        //     alert("aaaaaaaaaa");
-                        //     var date = $('#date_goo').text();
-                        //     alert(date);
-                        // });
-                        // });
                     </script>
-
-
                     <!-- scriptเลือกวันที่ -->
                     <script>
                         $(document).ready(function () {
@@ -277,9 +283,6 @@ $today = date("Y-m-j H:i:s");
                             $('.timepicker').timepicker();
                         });
                     </script>
-
-
-
                     <!-- หมายเหตุ -->
                     <div onclick="date()">
                         <p>หมายเหตุ <input type="text" class="reason" name="note"></p>
@@ -287,9 +290,6 @@ $today = date("Y-m-j H:i:s");
                                 class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
                     </div><br>
                     <!-- จบหมายเหตุ -->
-
-
-
                     <!-- ลงชื่อคนขออณุญาติ -->
                     <div class="row">
                         <div class="col s6 offset-s6">
@@ -303,14 +303,10 @@ $today = date("Y-m-j H:i:s");
                         </div>
                     </div><br><br><br>
                     <!-- จบลงชื่อคนขออณุญาติ -->
-
-
                 </div>
             </div>
         </div>
     </form>
-
-
     <div class="center-align">
         <button type="submit" form="nukKaew" class="btn pulse waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
@@ -321,21 +317,3 @@ $today = date("Y-m-j H:i:s");
 </body>
 
 </html>
-
-<script>
-    // function date() {
-    //     alert("sdflkmsekgmskgm");
-    //     var date = $('date_goo').text();
-    //     var time = $('#time_goo').text();
-
-    //     var datetime = date + " " + time + ":00";
-    //     var today = '<?php echo $today ?>';
-    //     if (date == "" && time == "") {
-    //         alert("กรุณากรอกวันเวลาค่ะ");
-    //     } else if (date == "" || time == "") {
-    //         alert("ท่านลืมกรอกวันหรือเวลาค่ะ");
-    //     } else {
-    //         alert("g-hk,kc]h;;;;");
-    //     }
-    // }
-</script>
