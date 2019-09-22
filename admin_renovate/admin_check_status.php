@@ -26,7 +26,6 @@
             <ul class="right hide-on-med-and-down">
                 <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_add_car.php">เพิ่มข้อมูลรถ</a></li>
                 <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="http://localhost/phpmyadmin/db_structure.php?server=1&db=materialize_car_rent" target="_blank">phpMyAdmin</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
@@ -35,7 +34,6 @@
                 <br><br>
                 <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_add_car.php">เพิ่มข้อมูลรถ</a></li>
                 <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="http://localhost/phpmyadmin/db_structure.php?server=1&db=materialize_car_rent" target="_blank">phpMyAdmin</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>

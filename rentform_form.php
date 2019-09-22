@@ -37,7 +37,7 @@ $sql = "INSERT INTO `rent_form`(`user_id`, `request`, `place`, `count`, `people`
 if ($result = mysqli_query($connect,$sql)) {
     // echo "<script>alert('แบบฟอร์มได้รับการบันทึกแล้วค่ะ');</script>";
     // exit();
-    header("location:rentform_result.php");    
+    header("location:create_pdf.php");    
     //popup เสร็จแล้ว มันไม่ยอมเปลี่ยนหน้า !!!!!!!!   TT^TT
 }
 

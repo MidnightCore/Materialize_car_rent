@@ -16,7 +16,7 @@
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
 
-    <title>เพิ่มข้อมูลคนขับรถ</title>
+    <title>แก้ไขข้อมูลคนขับรถ</title>
 </head>
 
 <body>
@@ -53,7 +53,7 @@
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูลคนขับรถ<br></h5>
+                    <h5 class="text-center">แก้ไขข้อมูลคนขับรถ<br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
@@ -95,11 +95,8 @@
         </div>
     </form>
     <div class="center-align">
-        <button type="submit" form="ee" class="btn pulse waves-effect waves-light">ยืนยัน
-            <i class="material-icons right">done</i>
-        </button>
-        <button type="" form="" class="btn pulse red darken-4-effect red darken-4-light">ลบข้อมูล
-            <i class="material-icons right">delete_forever</i>
+        <button type="submit" form="ee" class="btn pulse  amber darken-4-effect  amber darken-4-light">แก้ไข
+            <i class="material-icons right">border_color</i>
         </button>
     </div><br><br>
 
@@ -113,7 +110,7 @@
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูลรถ<br></h5>
+                    <h5 class="text-center">แก้ไขข้อมูลรถ<br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
@@ -155,11 +152,8 @@
         </div>
     </form>
     <div class="center-align">
-        <button type="submit" form="ee" class="btn pulse waves-effect waves-light">ยืนยัน
-            <i class="material-icons right">done</i>
-        </button>
-        <button type="" form="" class="btn pulse red darken-4-effect red darken-4-light">ลบข้อมูล
-            <i class="material-icons right">delete_forever</i>
+        <button type="submit" form="ee" class="btn pulse  amber darken-4-effect  amber darken-4-light">แก้ไข
+            <i class="material-icons right">border_color</i>
         </button>
     </div><br><br><br>
 </body>

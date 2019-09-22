@@ -25,8 +25,9 @@
             <a id="logo-container" href="admin_page.php" class="brand-logo">Dashboard</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
+                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_add_car.php">เพิ่มข้อมูลรถ</a></li>
+                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="http://localhost/phpmyadmin/db_structure.php?server=1&db=materialize_car_rent" target="_blank">phpMyAdmin</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
@@ -34,8 +35,9 @@
             <ul id="nav-mobile" class="sidenav">
                 <br><br>
                 <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
+                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_add_car.php">เพิ่มข้อมูลรถ</a></li>
+                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="http://localhost/phpmyadmin/db_structure.php?server=1&db=materialize_car_rent" target="_blank">phpMyAdmin</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
@@ -113,6 +115,9 @@
     <div class="center-align">
         <button type="submit" form="ee" class="btn pulse waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
+        </button>
+        <button type="" form="" class="btn pulse red darken-4-effect red darken-4-light">ลบข้อมูล
+            <i class="material-icons right">delete_forever</i>
         </button>
     </div>
 

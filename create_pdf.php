@@ -5,8 +5,7 @@ function fetch_data()
     require "server.php";
     $query = "SELECT * FROM user ORDER BY first_name ASC";
     $result = mysqli_query($connect, $query);
-    while ($row = mysqli_fetch_array($result)) 
-    {
+    while ($row = mysqli_fetch_array($result)) {
         $output .= '
             <tr>
             <td>' . $row["first_name"] . '</td>
@@ -62,9 +61,11 @@ if (isset($_POST["create_pdf"])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>สรุปรายละเอียดการจองรถ</title>
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -76,13 +77,37 @@ if (isset($_POST["create_pdf"])) {
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
-    <title>Create_PDF</title>
+
 </head>
 
 <body>
-    <br><br>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="index.php" class="brand-logo">Home</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
+                <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
+                <li><a href="history.php">ประวัติการใช้งาน</a></li>
+                <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
+                <li><a href="login.php">ออกจากระบบ</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <br><br>
+                <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
+                <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
+                <li><a href="history.php">ประวัติการใช้งาน</a></li>
+                <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
+                <li><a href="login.php">ออกจากระบบ</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    
     <div class="container" style="width:700px;">
-        <h3 style="align:center">Export HTML Table data to PDF</h3>
+        <h3 style="align:center">สรุปรายละเอียดการจองรถ</h3>
+        <h6 style="align:center">*โปรดบันทึกไว้เป็นหลักฐาน</h6>
         <br>
         <div class="responsive-table">
             <table class="table-bordered">
@@ -100,6 +125,7 @@ if (isset($_POST["create_pdf"])) {
                 ?>
             </table>
             <br>
+
             <!-- target="_blank" คือทำให้กดแล้วมันเปิดในแท๊บใหม่ ไม่ใช่เปิดทับแท๊บเดิม -->
             <form method="POST" style="text-align:center" target="_blank">
                 <input type="submit" name="create_pdf" class="waves-effect waves-light btn" value="Create PDF">
