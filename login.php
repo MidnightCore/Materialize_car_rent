@@ -6,12 +6,9 @@ if (isset($_GET['alert'])) {
     $palm = $_GET['alert'];
 }
 if ($palm == 1) {
-    echo "<script>alert('เพิ่มข้อมูลเรียบร้อยแล้วค่ะ');</script>";
-} else if ($palm == 2) {
-    echo "<script>alert('กรุณาสมัครสมาชิกก่อนใช้งานค่ะ');</script>";
-}
-
-?>
+    echo "<script>alert('username หรือ password ผิดค่ะกรุณากรอกใหม่');history.back();</script>";
+} 
+ ?>
 
 
 <!DOCTYPE html>
