@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2019 at 02:42 PM
+-- Generation Time: Sep 22, 2019 at 12:02 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -34,6 +34,13 @@ CREATE TABLE `approver` (
   `license` text NOT NULL,
   `rank` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `approver`
+--
+
+INSERT INTO `approver` (`id`, `user_id`, `license`, `rank`) VALUES
+(1, '111', 'image', 1);
 
 -- --------------------------------------------------------
 
@@ -103,14 +110,21 @@ CREATE TABLE `rent_form` (
   `request` text NOT NULL,
   `place` text NOT NULL,
   `count` text NOT NULL,
-  `people` int(11) NOT NULL,
-  `date_go` date NOT NULL,
-  `date_back` date NOT NULL,
+  `people` text NOT NULL,
+  `date_go` datetime NOT NULL,
+  `date_back` datetime NOT NULL,
   `note` text NOT NULL,
   `phone` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `rent_form`
+--
+
+INSERT INTO `rent_form` (`id`, `user_id`, `request`, `place`, `count`, `people`, `date_go`, `date_back`, `note`, `phone`, `created_at`, `updated_at`) VALUES
+(15, '111', 'เที่ยวบ้างไง', 'ไปไหนก็ได้เรื่องของชั้น', 'Other', '4-6', '2019-09-23 18:30:00', '2019-09-25 18:30:00', '-', '957786954', '2019-09-22 09:06:44', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -129,6 +143,14 @@ CREATE TABLE `user` (
   `rank` text NOT NULL,
   `department` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `password`, `fname`, `lname`, `role`, `email`, `phone`, `rank`, `department`) VALUES
+('111', '698d51a19d8a121ce581499d7b701668', 'palm', 'mlap', 'user', '', '957786954', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
+('admin', '21232f297a57a5a743894a0e4a801fc3', '', '', 'admin', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -193,7 +215,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `approver`
 --
 ALTER TABLE `approver`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `approve_form`
@@ -211,7 +233,7 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT for table `driver`
 --
 ALTER TABLE `driver`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `driver_rent`
@@ -223,7 +245,7 @@ ALTER TABLE `driver_rent`
 -- AUTO_INCREMENT for table `rent_form`
 --
 ALTER TABLE `rent_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
