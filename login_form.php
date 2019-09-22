@@ -4,7 +4,7 @@ session_start();
 
 <?php
   $em_User       = $_POST['em_User'];
-  $em_Password   = $_POST['em_Password'];
+  $em_Password   = md5($_POST['em_Password']);
 
   require 'server.php';
 
@@ -22,12 +22,10 @@ session_start();
       header("location:admin_renovate/admin_page.php");
     }
     else {
-      header("location:index.html");
+      header("location:index.php");
     }
   }
   else {
-    echo"คุณใส่ข้อมูลไม่ถูกต้อง"."<br>";
+    header("location:login.php?alert=1");
+    
   }
-
-    echo"<br><br>";
-    echo"<a href='login.php'>กลับหน้าล็อกอิน</a><br>";
