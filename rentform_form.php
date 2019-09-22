@@ -1,7 +1,6 @@
 <?php
 session_start();
 require "server.php";
-date_default_timezone_set("Asia/Bangkok");
 // $today = date("Y-m-j H:i:s");
 // echo$today."<br>";
 $user_id = $_SESSION['id'];

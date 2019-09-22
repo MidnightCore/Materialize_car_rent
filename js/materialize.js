@@ -9768,7 +9768,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleDocumentClickMove",
       value: function _handleDocumentClickMove(e) {
-        e.preventDefault();
+        // e.preventDefault();
         var clickPos = Timepicker._Pos(e);
         var x = clickPos.x - this.x0;
         var y = clickPos.y - this.y0;

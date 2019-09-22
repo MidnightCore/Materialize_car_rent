@@ -12,11 +12,13 @@ $result = mysqli_query($connect, $sql);
 $name = mysqli_fetch_array($result);
 // print_r($name);
 date_default_timezone_set("Asia/Bangkok");
+$today = date("Y-m-j H:i:s");
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,11 +33,14 @@ date_default_timezone_set("Asia/Bangkok");
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
-
     <style>
         #but3 {
             margin-left: 20px;
             margin-right: 20px;
+        }
+
+        .sortable-handler {
+            touch-action: none;
         }
     </style>
 </head>
@@ -99,47 +104,35 @@ date_default_timezone_set("Asia/Bangkok");
 
                 <!-- เลือกวันที่กรอก -->
                 <div class="input-field col s6">
-                    <input name="date_write" type="text" placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)" value="<?php echo date("l j m Y H:i:s") ?>" readonly>
+                    <input name="date_write" type="text" placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)"
+                        value="<?php echo date("l j m Y H:i:s") ?>" readonly>
                 </div>
             </div><!-- จบเลือกวันที่กรอก -->
-
-
-
-            <!-- scriptของเลือกวันที่ -->
-            <script>
-                // document.addEventListener('DOMContentLoaded', function () {
-                //     var elems = document.querySelectorAll('.datepicker');
-                //     var instances = M.Datepicker.init(elems, options);
-                // });
-                // Or with jQuery
-                $(document).ready(function () {
-                    $('.datepicker').datepicker();
-                });
-            </script><!-- จบscriptของเลือกวันที่ -->
-
-
-
             <div class="row">
                 <div class="col s12">
                     <h6><b>เรียน</b> ผู้อำนวยการสำนักวิชาการศึกษาทั่วไปและนวัตกรรมการเรียนรู้อิเล็กทอรนิกส์</h6>
                     <!-- ส่วนของกรอกรายละเอียดชื่อ -->
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate" value="<?php echo $name['fname'] ?>" required>
+                            <input name="first_name" id="first_name" type="text" class="validate"
+                                value="<?php echo $name['fname'] ?>" required>
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate" value="<?php echo $name['lname'] ?>" required>
+                            <input name="last_name" id="last_name" type="text" class="validate"
+                                value="<?php echo $name['lname'] ?>" required>
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate" value="<?php echo $name['rank'] ?>" required>
+                            <input name="rank" id="rank" type="text" class="validate"
+                                value="<?php echo $name['rank'] ?>" required>
                             <label for="rank">ตำแหน่ง (ของผู้กรอกแบบฟอร์ม)</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="zone" id="zone" type="text" class="validate" value="<?php echo $name['department'] ?>" required>
+                            <input name="zone" id="zone" type="text" class="validate"
+                                value="<?php echo $name['department'] ?>" required>
                             <label for="zone">สังกัด (ของผู้กรอกแบบฟอร์ม)</label>
                         </div>
                     </div>
@@ -149,12 +142,13 @@ date_default_timezone_set("Asia/Bangkok");
 
                     <!-- script dropdown -->
                     <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var elems = document.querySelectorAll('select');
-                            var instances = M.FormSelect.init(elems, options);
-                        });
+                        // document.addEventListener('DOMContentLoaded', function () {
+                        //     var elems = document.querySelectorAll('select');
+                        //     var options = document.querySelectorAll('option');
+                        //     var instances = M.FormSelect.init(elems, options);
+                        // });
                         // Or with jQuery
-                        $(document).ready(function() {
+                        $(document).ready(function () {
                             $('select').formSelect();
                         });
                     </script>
@@ -190,42 +184,96 @@ date_default_timezone_set("Asia/Bangkok");
                     <p>โดยมีวันเวลาในการเดินทางดังนี้</p>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป" required>
+                            <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป" id="date_goo"
+                                required>
                         </div>
                         <div class="input-field col s6">
-                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา" required>
+                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา" id="time_goo"
+                                required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ" required>
+                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ" id="dateback" required >
                         </div>
                         <div class="input-field col s6">
-                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา" required>
+                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา" id="timeback" required >
                         </div>
                     </div>
 
+                    <button onclick="date()">asd</button>
+                    <a onclick="date()">dsa</a>
+
+                    <script>
+                        // $(document).ready(function () {
+                        //     alert("asdas");
+
+                        $(document).ready(function () {
+                            console.log('i ');
+                            $('#dateback').hide();
+                            $('#timeback').hide();
+                        });
+
+                        function DateTimeDiff(strDateTime1, strDateTime2) {
+                            return (Date.parse(strDateTime2) - Date.parse(strDateTime1)) / (1000 * 60 * 60 *24); // 1 Hour =  60*60
+
+                        }
+
+                        var i = 0;
+                        var j = 0;
+                        $("#date_goo").change(function () {
+                            console.log('i++ :', i++);
+                            if(i == j || i > 1){
+                                date();
+                            }                       
+                        });
+                        $("#time_goo").change(function () {
+                            console.log('j++ :', j++);
+                            if(i == j || j > 1){
+                                date();
+                            }
+                        });  
+                        function date() {
+                            // alert("sdflkmsekgmskgm");
+                            var date = $('#date_goo').val();
+                            var time = $('#time_goo').val();
+                            
+                            console.log('date :', date);
+                            console.log('time :', time);
+
+                            var datetime = date + " " + time + ":00";
+                            var today = "<?php echo $today ?>";
+                            if (date == "" || time == "") {
+                                alert("ท่านลืมกรอกวันหรือเวลาค่ะ");
+                            } else {
+                                
+                                var datesum = DateTimeDiff(today, datetime);
+                                if (datesum < 2) {
+                                    alert("กรุณาทำการจองก่อนล่วงหน้า 2 วันค่ะ");   
+                                    $('#dateback').hide();
+                                    $('#timeback').hide();
+                                }else{
+                                    $('#dateback').show();
+                                    $('#timeback').show();
+                                }
+                            }
+                        }
+
+                        // $(document).ready(function () {
+                        //     alert("aaaaaaaaaa");
+                        //     var date = $('#date_goo').text();
+                        //     alert(date);
+                        // });
+                        // });
+                    </script>
 
 
                     <!-- scriptเลือกวันที่ -->
                     <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var elems = document.querySelectorAll('.datepicker');
-                            var instances = M.Datepicker.init(elems, options);
-                        });
-                        // Or with jQuery
-                        $(document).ready(function() {
+                        $(document).ready(function () {
                             $('.datepicker').datepicker();
                         });
-                    </script>
-                    <!-- scriptเลือกเวลา -->
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var elems = document.querySelectorAll('.timepicker');
-                            var instances = M.Timepicker.init(elems, options);
-                        });
-                        // Or with jQuery
-                        $(document).ready(function() {
+                        $(document).ready(function () {
                             $('.timepicker').timepicker();
                         });
                     </script>
@@ -233,9 +281,10 @@ date_default_timezone_set("Asia/Bangkok");
 
 
                     <!-- หมายเหตุ -->
-                    <div>
+                    <div onclick="date()">
                         <p>หมายเหตุ <input type="text" class="reason" name="note"></p>
-                        <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text" class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
+                        <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text"
+                                class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
                     </div><br>
                     <!-- จบหมายเหตุ -->
 
@@ -246,7 +295,8 @@ date_default_timezone_set("Asia/Bangkok");
                         <div class="col s6 offset-s6">
                             <!-- ลงชื่อ : -->
                             <div class="input-field inline">
-                                <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required>
+                                <input name="license_user" id="name_ask" type="text" class="validate"
+                                    value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required>
                                 <label for="name_ask">ลงชื่อ</label>
                                 <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
                             </div>
@@ -271,3 +321,21 @@ date_default_timezone_set("Asia/Bangkok");
 </body>
 
 </html>
+
+<script>
+    // function date() {
+    //     alert("sdflkmsekgmskgm");
+    //     var date = $('date_goo').text();
+    //     var time = $('#time_goo').text();
+
+    //     var datetime = date + " " + time + ":00";
+    //     var today = '<?php echo $today ?>';
+    //     if (date == "" && time == "") {
+    //         alert("กรุณากรอกวันเวลาค่ะ");
+    //     } else if (date == "" || time == "") {
+    //         alert("ท่านลืมกรอกวันหรือเวลาค่ะ");
+    //     } else {
+    //         alert("g-hk,kc]h;;;;");
+    //     }
+    // }
+</script>
