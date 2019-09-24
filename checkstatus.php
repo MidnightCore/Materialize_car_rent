@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>แบบฟอร์มจองรถ</title>
+    <title>ตรวจสถานะคำขอ</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -62,27 +62,42 @@
                     <td>รถตู้</td>
                     <td>กน1234</td>
                     <td>มหาวิทยาลัยเอแบค</td>
-                    <td>ไม่อนุมัติ</td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
+                            <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
+                        </form>
+                    </td>
                 </tr>
                 <tr>
                     <td>03-Aug-19</td>
                     <td>รถตู้</td>
                     <td>มส5678</td>
                     <td>โรงเรียนวัดคูบัว จังหวัดราชบุรี</td>
-                    <td>อนุมัติ</td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
+                            <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
+                        </form>
+                    </td>
                 </tr>
                 <tr>
                     <td>05-Aug-19</td>
                     <td>รถตู้</td>
                     <td>ดป6389</td>
                     <td>หมู่บ้านเด็ก จังหวัดกาญจนบุรี</td>
-                    <td>รอการอนุมัติ</td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
+                            <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    
+
 
 
 </body>

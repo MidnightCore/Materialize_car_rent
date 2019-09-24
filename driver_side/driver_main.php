@@ -4,13 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-    <title>Admin Page</title>
+    <title>Driver Page</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
 
     <!-- ส่วนของปฎิทิน -->
     <link href='../fullcalendar/packages/core/main.css' rel='stylesheet' />
@@ -50,25 +49,20 @@
     <!-- จบส่วนของปฎิทิน -->
 </head>
 
+
 <body>
     <nav class="teal lighten-3" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="admin_page.php" class="brand-logo">Admin</a>
+            <a id="logo-container" href="admin_page.php" class="brand-logo">Driver Page</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
+                <li><a href="#">Example1</a></li>
+                <li><a href="#">Example2</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav">
                 <br><br>
-                <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
+                <li><a href="#">Example1</a></li>
+                <li><a href="#">Example2</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -79,31 +73,13 @@
 
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
+            <h3>ตารางงาน</h3>
             <h1 style="text-align: center;"></h1>
             <form class="form" action="">
                 <div id='calendar'></div><br>
             </form>
         </div>
-    </div>
-
-
-
-    <footer class="page-footer teal darken-3">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Our Team Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like
-                        it's our full time job. If you have any suggestions please don't be shy to tell us.</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                Made by <a class="brown-text text-lighten-3" href="#">Hyper Tag</a>
-            </div>
-        </div>
-    </footer>
+    </div><br><br>
 
 
     <!--  Scripts-->
