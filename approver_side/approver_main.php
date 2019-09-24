@@ -24,16 +24,10 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Approver Page</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">เพิ่มข้อมูลผู้ใช้</a></li>
-                <li><a href="#">แก้ไขข้อมูลผู้ใช้</a></li>
-                <li><a href="#">เพิ่มข้อมูลคนขับรถ</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav">
                 <br><br>
-                <li><a href="#">เพิ่มข้อมูลผู้ใช้</a></li>
-                <li><a href="#">แก้ไขข้อมูลผู้ใช้</a></li>
-                <li><a href="#">เพิ่มข้อมูลคนขับรถ</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
