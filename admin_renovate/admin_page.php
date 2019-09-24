@@ -11,49 +11,12 @@
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
-
-    <!-- ส่วนของปฎิทิน -->
-    <link href='../fullcalendar/packages/core/main.css' rel='stylesheet' />
-    <link href='../fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
-    <link href='../fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
-    <script src='../fullcalendar/packages/core/main.js'></script>
-    <script src='../fullcalendar/packages/interaction/main.js'></script>
-    <script src='../fullcalendar/packages/daygrid/main.js'></script>
-    <script src='../fullcalendar/packages/timegrid/main.js'></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var d = new Date();
-            var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
-            var day = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-                },
-                defaultDate: d.getFullYear() + '-' + months[d.getMonth()] + '-' + day[d.getDay()],
-                navLinks: true,
-                businessHours: true,
-                editable: true,
-            });
-            calendar.render();
-        });
-    </script>
-    <style>
-        #calendar {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-    </style>
-    <!-- จบส่วนของปฎิทิน -->
 </head>
 
 <body>
     <nav class="teal lighten-3" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="admin_page.php" class="brand-logo">Admin</a>
+            <a id="logo-container" href="admin_page.php" class="brand-logo">Admin Page</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
@@ -76,40 +39,175 @@
     </nav>
 
 
-
-    <div class="section no-pad-bot" id="index-banner">
-        <div class="container">
-            <h1 style="text-align: center;"></h1>
-            <form class="form" action="">
-                <div id='calendar'></div><br>
-            </form>
-        </div>
-    </div>
-
-
-
-    <footer class="page-footer teal darken-3">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Our Team Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like
-                        it's our full time job. If you have any suggestions please don't be shy to tell us.</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                Made by <a class="brown-text text-lighten-3" href="#">Hyper Tag</a>
-            </div>
-        </div>
-    </footer>
-
-
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
+
+    <div class="container">
+        <br>
+        <h4>รายชื่อ User</h4><br>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>password</th>
+                    <th>fname</th>
+                    <th>lname</th>
+                    <th>role</th>
+                    <th>email</th>
+                    <th>phone</th>
+                    <th>rank</th>
+                    <th>department</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>Jellybean</td>
+                    <td>$3.76</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr><tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+                <tr>
+                    <td>Jonathan</td>
+                    <td>Lollipop</td>
+                    <td>$7.00</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                    <td>Alvin</td>
+                    <td>Eclair</td>
+                    <td>$0.87</td>
+                </tr>
+            </tbody>
+        </table>
+    </div><br><br><br>
 
 </body>
 

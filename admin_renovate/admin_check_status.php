@@ -22,7 +22,7 @@
 <body>
     <nav class="teal lighten-3" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="admin_page.php" class="brand-logo">Dashboard</a>
+            <a id="logo-container" href="admin_page.php" class="brand-logo">Admin Page</a>
             <ul class="right hide-on-med-and-down">
             <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
