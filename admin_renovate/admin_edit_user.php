@@ -111,7 +111,7 @@
         </div>
     </form>
     <div class="center-align">
-        <button type="submit" form="ee" class="btn pulse  amber darken-4-effect  amber darken-4-light">แก้ไข
+        <button type="submit" form="ee" class="btn pulse amber darken-4-effect amber darken-4-light">แก้ไข
             <i class="material-icons right">border_color</i>
         </button>
     </div>
