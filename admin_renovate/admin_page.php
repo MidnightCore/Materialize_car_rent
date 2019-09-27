@@ -1,11 +1,13 @@
 <?php 
-session_start();
+require './../server.php';
+
+session_start(); 
 if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
 }else{
-    header("location:login.php");    
+    header("../location:login.php");  
+    exit();  
 }
-require './../server.php';
 $sql = "SELECT * FROM user WHERE user.role != 'admin'";
 $result = mysqli_query($connect,$sql);
 $alert = 0;
