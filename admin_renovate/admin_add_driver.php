@@ -1,14 +1,14 @@
-<?php  
+<?php
 require './../server.php';
 session_start();
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
-}else{
+} else {
     header("location:login.php");
-    exit();    
+    exit();
 }
-$search ="SELECT fname,lname FROM user WHERE user.role = 'driver'";
-$result = mysqli_query($connect,$search);
+$search = "SELECT fname,lname FROM user WHERE user.role = 'driver'";
+$result = mysqli_query($connect, $search);
 ?>
 
 <!DOCTYPE html>
@@ -66,52 +66,19 @@ $result = mysqli_query($connect,$search);
             </div><!-- จบหัวกระดาษ -->
 
             <div class="row">
-            <div class="input-field col s12">
-                        <select name="driver">
-                            <option disabled selected>เลือกคนขับรถ</option>
-                            <?php while($row = mysqli_fetch_array($result)){
-                                ?>
-                            <option><?php echo$row['fname']." ".$row['lname'] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                <!-- <div class="col s12">
-                    <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate">
-                            <label for="first_name">ชื่อจริง</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate">
-                            <label for="last_name">นามสกุล</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="id_license" id="id_license" type="text" class="validate">
-                            <label for="id_license">เลขบัตรประจำตัวประชาชน</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="driver_license" id="driver_license" type="text" class="validate">
-                            <label for="driver_license">เลขใบอนุญาติขับขี่รถยนต์</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="driver_phone" id="driver_phone" type="text" class="validate">
-                            <label for="driver_phone">เบอร์โทรศัพท์</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="driver_email" id="driver_email" type="text" class="validate">
-                            <label for="driver_email">อีเมลล์</label>
-                        </div>
-                    </div>
-                </div> -->
+                <div class="input-field col s12">
+                    <select name="driver">
+                        <option disabled selected>เลือกคนขับรถ</option>
+                        <?php while ($row = mysqli_fetch_array($result)) {
+                            ?>
+                            <option><?php echo $row['fname'] . " " . $row['lname'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
             </div>
         </div>
     </form>
-    
+
 
 
 
@@ -131,45 +98,40 @@ $result = mysqli_query($connect,$search);
                 <div class="col s12">
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
-                        <!-- <div class="input-field col s6">
-                            <input name="car_name" id="car_name" type="text" class="validate">
-                            <label for="car_name">ชื่อรถ</label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input name="car_brand" id="car_brand" type="text" class="validate">
+                                <label for="car_brand">ยี่ห้อ</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input name="car_version" id="car_version" type="text" class="validate">
+                                <label for="car_version">รุ่น</label>
+                            </div>
                         </div>
-                        <div class="input-field col s6">
-                            <input name="car_id" id="car_id" type="text" class="validate">
-                            <label for="car_id">รหัสรถ</label>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input name="car_color" id="car_color" type="text" class="validate">
+                                <label for="car_color">สีของรถ</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input name="car_number" id="car_number" type="text" class="validate">
+                                <label for="car_number">ทะเบียนรถ</label>
+                            </div>
+                            <form action="#">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>ไฟล์</span>
+                                        <input type="file" multiple>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="อัพโหลดรูปภาพ">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </div> -->
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="car_brand" id="car_brand" type="text" class="validate">
-                            <label for="car_brand">ยี่ห้อ</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="car_version" id="car_version" type="text" class="validate">
-                            <label for="car_version">รุ่น</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="car_color" id="car_color" type="text" class="validate">
-                            <label for="car_color">สีของรถ</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="car_number" id="car_number" type="text" class="validate">
-                            <label for="car_number">ทะเบียนรถ</label>
-                        </div>
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
                     </div>
                 </div>
             </div>
-        </div>
     </form>
     <div class="center-align">
         <button type="submit" form="ee" class="btn waves-effect waves-light">ยืนยัน
@@ -180,15 +142,15 @@ $result = mysqli_query($connect,$search);
         </button>
     </div><br><br><br>
     <script>
-                        // document.addEventListener('DOMContentLoaded', function() {
-                        //     var elems = document.querySelectorAll('select');
-                        //     var instances = M.FormSelect.init(elems, options);
-                        // });
-                        // Or with jQuery
-                        $(document).ready(function() {
-                            $('select').formSelect();
-                        });
-                    </script>
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var elems = document.querySelectorAll('select');
+        //     var instances = M.FormSelect.init(elems, options);
+        // });
+        // Or with jQuery
+        $(document).ready(function() {
+            $('select').formSelect();
+        });
+    </script>
 </body>
 
 </html>
