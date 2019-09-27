@@ -55,14 +55,10 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Driver Page</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Example1</a></li>
-                <li><a href="#">Example2</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav">
                 <br><br>
-                <li><a href="#">Example1</a></li>
-                <li><a href="#">Example2</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -70,16 +66,15 @@
     </nav>
 
 
-
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
-            <h3>ตารางงาน</h3>
+            <h4>ตารางงาน</h4>
             <h1 style="text-align: center;"></h1>
             <form class="form" action="">
-                <div id='calendar'></div><br>
+                <div id='calendar'></div>
             </form>
         </div>
-    </div><br><br>
+    </div><br>
 
 
     <!--  Scripts-->

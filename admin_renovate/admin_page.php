@@ -49,7 +49,7 @@
     <div class="container">
         <br>
         <h4>รายชื่อ User</h4><br>
-        <table class="highlight">
+        <table class="responsive-table">
             <thead>
                 <tr>
                     <th>id</th>
@@ -68,73 +68,129 @@
 
             <tbody>
                 <tr>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
+                    <td>1</td>
+                    <td>60122519000</td>
+                    <td>Miss.Jane</td>
+                    <td>Donovan</td>
+                    <td>Student</td>
+                    <td>s60122519000@ssru.ac.th</td>
+                    <td>089-999-9999</td>
+                    <td>user</td>
+                    <td>Industrial Technology</td>
                     <td>
                         <a>
-                            <button type="submit" form="ee" class="btn pulse amber darken-4-effect amber darken-4-light">แก้ไข
+                            <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                 <i class="material-icons right">border_color</i>
                             </button>
                         </a>
                     </td>
                     <td>
                         <a>
-                            <button id="lob" type="submit" form="ee" class="btn pulse red accent-4-effect red accent-4-light">ลบ
+                            <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
                                 <i class="material-icons right">close</i>
                             </button>
                         </a>
                     </td>
                 </tr>
                 <tr>
-                    <td>Alan</td>
-                    <td>Jellybean</td>
-                    <td>$3.76</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
+                    <td>2</td>
+                    <td>60122519000</td>
+                    <td>Miss.Jane</td>
+                    <td>Donovan</td>
+                    <td>Student</td>
+                    <td>s60122519000@ssru.ac.th</td>
+                    <td>089-999-9999</td>
+                    <td>user</td>
+                    <td>Industrial Technology</td>
+                    <td>
+                        <a>
+                            <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                                <i class="material-icons right">border_color</i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a>
+                            <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
+                                <i class="material-icons right">close</i>
+                            </button>
+                        </a>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
+                    <td>3</td>
+                    <td>60122519000</td>
+                    <td>Miss.Jane</td>
+                    <td>Donovan</td>
+                    <td>Student</td>
+                    <td>s60122519000@ssru.ac.th</td>
+                    <td>089-999-9999</td>
+                    <td>user</td>
+                    <td>Industrial Technology</td>
+                    <td>
+                        <a>
+                            <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                                <i class="material-icons right">border_color</i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a>
+                            <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
+                                <i class="material-icons right">close</i>
+                            </button>
+                        </a>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
+                    <td>4</td>
+                    <td>60122519000</td>
+                    <td>Miss.Jane</td>
+                    <td>Donovan</td>
+                    <td>Student</td>
+                    <td>s60122519000@ssru.ac.th</td>
+                    <td>089-999-9999</td>
+                    <td>user</td>
+                    <td>Industrial Technology</td>
+                    <td>
+                        <a>
+                            <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                                <i class="material-icons right">border_color</i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a>
+                            <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
+                                <i class="material-icons right">close</i>
+                            </button>
+                        </a>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
+                    <td>5</td>
+                    <td>60122519000</td>
+                    <td>Miss.Jane</td>
+                    <td>Donovan</td>
+                    <td>Student</td>
+                    <td>s60122519000@ssru.ac.th</td>
+                    <td>089-999-9999</td>
+                    <td>user</td>
+                    <td>Industrial Technology</td>
+                    <td>
+                        <a>
+                            <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                                <i class="material-icons right">border_color</i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a>
+                            <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
+                                <i class="material-icons right">close</i>
+                            </button>
+                        </a>
+                    </td>
                 </tr>
 
             </tbody>
