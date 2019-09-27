@@ -1,3 +1,23 @@
+<?php 
+session_start();
+if(isset($_SESSION['id'])){
+    $id = $_SESSION['id'];
+}else{
+    header("location:login.php");    
+}
+require './../server.php';
+$sql = "SELECT * FROM user WHERE user.role != 'admin'";
+$result = mysqli_query($connect,$sql);
+$alert = 0;
+ if(isset($_GET['alert'])){
+    $alert = $_GET['alert'];
+ }
+ if($alert == 1 ){
+    echo "<script>alert('เพิ่มข้อมูลเรียนร้อยแล้วค่ะ');</script>";
+
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,10 +42,11 @@
     <nav class="teal lighten-3" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Admin Page</a>
+            <!-- เอาปุ่มเพิ่มไว้มุมบนขวา -->
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">ข้อมูลUser</a></li>
-                <li><a href="#">ข้อมูลApprover</a></li>
-                <li><a href="#">ข้อมูลรถและคนขับรถ</a></li>
+                <li><a href="show_user.php">ข้อมูลUser</a></li>
+                <li><a href="show_approver.php">ข้อมูลApprover</a></li>
+                <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
                 <li><a href="#">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
@@ -49,11 +70,11 @@
     <div class="container">
         <br>
         <h4>รายชื่อ User</h4><br>
+        <a href="admin_add_user.php" Type="button">เพิ่มข้อมูลผู้ใช้</a>
         <table class="highlight">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>password</th>
+                    
                     <th>fname</th>
                     <th>lname</th>
                     <th>role</th>
@@ -67,16 +88,16 @@
             </thead>
 
             <tbody>
+            <?php while($row = mysqli_fetch_array($result)){  ?>
+
                 <tr>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
+                    <td><?php echo$row['fname']?></td>
+                    <td><?php echo$row['lname']?></td>
+                    <td><?php echo$row['role']?></td>
+                    <td><?php echo$row['email']?></td>
+                    <td><?php echo$row['phone']?></td>
+                    <td><?php echo$row['rank']?></td>
+                    <td><?php echo$row['department']?></td>
                     <td>
                         <a>
                             <button type="submit" form="ee" class="btn pulse amber darken-4-effect amber darken-4-light">แก้ไข
@@ -92,50 +113,9 @@
                         </a>
                     </td>
                 </tr>
-                <tr>
-                    <td>Alan</td>
-                    <td>Jellybean</td>
-                    <td>$3.76</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                </tr>
-                <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                </tr>
-                <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                </tr>
-                <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                </tr>
+                <?php } ?>
+
+                
 
             </tbody>
         </table>

@@ -1,3 +1,16 @@
+<?php  
+require './../server.php';
+session_start();
+if(isset($_SESSION['id'])){
+    $id = $_SESSION['id'];
+}else{
+    header("location:login.php");
+    exit();    
+}
+$search ="SELECT fname,lname FROM user WHERE user.role = 'driver'";
+$result = mysqli_query($connect,$search);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,11 +37,12 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Admin Page</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
+                <li><a href="admin_page.php">กลับ</a></li>
+                <!-- <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
                 <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
                 <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
+                <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li> -->
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav">
@@ -56,7 +70,16 @@
             </div><!-- จบหัวกระดาษ -->
 
             <div class="row">
-                <div class="col s12">
+            <div class="input-field col s12">
+                        <select name="driver">
+                            <option disabled selected>เลือกคนขับรถ</option>
+                            <?php while($row = mysqli_fetch_array($result)){
+                                ?>
+                            <option><?php echo$row['fname']." ".$row['lname'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                <!-- <div class="col s12">
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
                         <div class="input-field col s6">
@@ -88,18 +111,11 @@
                             <label for="driver_email">อีเมลล์</label>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </form>
-    <div class="center-align">
-        <button type="submit" form="ee" class="btn pulse waves-effect waves-light">ยืนยัน
-            <i class="material-icons right">done</i>
-        </button>
-        <button type="" form="" class="btn pulse red darken-4-effect red darken-4-light">ลบข้อมูล
-            <i class="material-icons right">delete_forever</i>
-        </button>
-    </div><br><br>
+    
 
 
 
@@ -119,7 +135,7 @@
                 <div class="col s12">
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
-                        <div class="input-field col s6">
+                        <!-- <div class="input-field col s6">
                             <input name="car_name" id="car_name" type="text" class="validate">
                             <label for="car_name">ชื่อรถ</label>
                         </div>
@@ -127,7 +143,7 @@
                             <input name="car_id" id="car_id" type="text" class="validate">
                             <label for="car_id">รหัสรถ</label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="input-field col s6">
                             <input name="car_brand" id="car_brand" type="text" class="validate">
@@ -147,6 +163,13 @@
                             <input name="car_number" id="car_number" type="text" class="validate">
                             <label for="car_number">ทะเบียนรถ</label>
                         </div>
+                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
+                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
+                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
+                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
+                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
+                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
+                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
                     </div>
                 </div>
             </div>
@@ -160,6 +183,16 @@
             <i class="material-icons right">delete_forever</i>
         </button>
     </div><br><br><br>
+    <script>
+                        // document.addEventListener('DOMContentLoaded', function() {
+                        //     var elems = document.querySelectorAll('select');
+                        //     var instances = M.FormSelect.init(elems, options);
+                        // });
+                        // Or with jQuery
+                        $(document).ready(function() {
+                            $('select').formSelect();
+                        });
+                    </script>
 </body>
 
 </html>
