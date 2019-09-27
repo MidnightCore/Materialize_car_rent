@@ -1,14 +1,14 @@
-<?php  
+<?php
 require './../server.php';
 session_start();
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
-}else{
+} else {
     header("location:./../login.php");
-    exit();    
+    exit();
 }
-$search ="SELECT fname,lname FROM user WHERE user.role = 'driver'";
-$result = mysqli_query($connect,$search);
+$search = "SELECT fname,lname FROM user WHERE user.role = 'driver'";
+$result = mysqli_query($connect, $search);
 ?>
 
 <!DOCTYPE html>
@@ -84,13 +84,17 @@ $result = mysqli_query($connect,$search);
                             <input name="car_number" id="car_number" type="text" class="validate">
                             <label for="car_number">ทะเบียนรถ</label>
                         </div>
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
+                        <form action="#">
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>File</span>
+                                    <input type="file" multiple>
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -105,10 +109,10 @@ $result = mysqli_query($connect,$search);
         </button>
     </div><br><br><br>
     <script>
-                        $(document).ready(function() {
-                            $('select').formSelect();
-                        });
-                    </script>
+        $(document).ready(function() {
+            $('select').formSelect();
+        });
+    </script>
 </body>
 
 </html>
