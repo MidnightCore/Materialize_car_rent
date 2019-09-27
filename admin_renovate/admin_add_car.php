@@ -67,21 +67,21 @@ $result = mysqli_query($connect,$search);
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="car_brand" id="car_brand" type="text" class="validate">
+                            <input name="car_brand" id="car_brand" type="text" class="validate" required>
                             <label for="car_brand">ยี่ห้อ</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="car_version" id="car_version" type="text" class="validate">
+                            <input name="car_version" id="car_version" type="text" class="validate" required>
                             <label for="car_version">รุ่น</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="car_color" id="car_color" type="text" class="validate">
+                            <input name="car_color" id="car_color" type="text" class="validate" required>
                             <label for="car_color">สีของรถ</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="car_number" id="car_number" type="text" class="validate">
+                            <input name="car_number" id="car_number" type="text" class="validate" required>
                             <label for="car_number">ทะเบียนรถ</label>
                         </div>
                         <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
