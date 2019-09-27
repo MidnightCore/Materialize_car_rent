@@ -1,23 +1,22 @@
-<?php 
+<?php
 require './../server.php';
 
 session_start();
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
-}else{
-    header("../location:login.php");  
-    exit();  
+} else {
+    header("../location:login.php");
+    exit();
 }
 $sql = "SELECT * FROM user WHERE user.role != 'admin'";
-$result = mysqli_query($connect,$sql);
+$result = mysqli_query($connect, $sql);
 $alert = 0;
- if(isset($_GET['alert'])){
+if (isset($_GET['alert'])) {
     $alert = $_GET['alert'];
- }
- if($alert == 1 ){
+}
+if ($alert == 1) {
     echo "<script>alert('เพิ่มข้อมูลเรียนร้อยแล้วค่ะ');</script>";
-
- }
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +33,9 @@ $alert = 0;
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
     <style>
-    #lob{
-        background color: red ;
-    }
+        #lob {
+            background color: red;
+        }
     </style>
 </head>
 
@@ -71,12 +70,22 @@ $alert = 0;
 
     <div class="container">
         <br>
-        <h4>รายชื่อ User</h4><br>
-        <a href="admin_add_user.php" Type="button">เพิ่มข้อมูลผู้ใช้</a>
-        <table class="highlight">
+        <div class="row">
+            <div class="col 6">
+                <h4>รายชื่อ User</h4>
+            </div>
+            <br>
+            <div class="col 6">
+                <div style="text-align:right">
+                    <a href="admin_add_user.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มข้อมูลผู้ใช้</a>
+                </div>
+            </div>
+        </div>
+
+        <table class="responsive-table">
             <thead>
                 <tr>
-                    
+
                     <th>fname</th>
                     <th>lname</th>
                     <th>role</th>
@@ -90,39 +99,39 @@ $alert = 0;
             </thead>
 
             <tbody>
-            <?php while($row = mysqli_fetch_array($result)){  ?>
+                <?php while ($row = mysqli_fetch_array($result)) {  ?>
 
-                <tr>
-                    <td><?php echo$row['fname']?></td>
-                    <td><?php echo$row['lname']?></td>
-                    <td><?php echo$row['role']?></td>
-                    <td><?php echo$row['email']?></td>
-                    <td><?php echo$row['phone']?></td>
-                    <td><?php echo$row['rank']?></td>
-                    <td><?php echo$row['department']?></td>
-                    <td>
-                        <a>
-                            <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
-                                <i class="material-icons right">border_color</i>
-                            </button>
-                        </a>
-                    </td>
-                    <td>
-                        <a>
-                            <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
-                                <i class="material-icons right">close</i>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?php echo $row['fname'] ?></td>
+                        <td><?php echo $row['lname'] ?></td>
+                        <td><?php echo $row['role'] ?></td>
+                        <td><?php echo $row['email'] ?></td>
+                        <td><?php echo $row['phone'] ?></td>
+                        <td><?php echo $row['rank'] ?></td>
+                        <td><?php echo $row['department'] ?></td>
+                        <td>
+                            <a>
+                                <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                                    <i class="material-icons right">border_color</i>
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a>
+                                <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
+                                    <i class="material-icons right">close</i>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
                 <?php } ?>
 
-                
+
 
             </tbody>
         </table>
-    </div><br><br><br>
-
+        <br><br><br>
+    </div>
 </body>
 
 </html>

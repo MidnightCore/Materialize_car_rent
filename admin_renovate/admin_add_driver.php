@@ -176,10 +176,10 @@ $result = mysqli_query($connect,$search);
         </div>
     </form>
     <div class="center-align">
-        <button type="submit" form="ee" class="btn pulse waves-effect waves-light">ยืนยัน
+        <button type="submit" form="ee" class="btn waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
         </button>
-        <button type="" form="" class="btn pulse red darken-4-effect red darken-4-light">ลบข้อมูล
+        <button type="" form="" class="btn red darken-4-effect red darken-4-light">ลบข้อมูล
             <i class="material-icons right">delete_forever</i>
         </button>
     </div><br><br><br>
