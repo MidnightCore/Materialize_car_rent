@@ -6,9 +6,11 @@ if (isset($_SESSION['id'])) {
     header("location:login.php");
 }
 require './../server.php';
-$sql = "SELECT * FROM user WHERE user.role = 'driver'";
-$car = "SELECT license FROM user,driver,car WHERE user.id=driver.user_id AND driver.id = car.driver_id";
-$lisen = mysqli_query($connect, $lisen);
+$sql = "SELECT license,fname,lname,phone,user.id
+FROM user,driver
+LEFT JOIN car
+ON driver.id = car.driver_id
+WHERE user.id=driver.user_id";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -50,15 +52,12 @@ $result = mysqli_query($connect, $sql);
 
     <div class="container">
         <div class="row">
-            <!-- <div class="col-12">
-                <br><br>
-                <a href="admin_add_driver.php" type="button">เพิ่ม Driver&Car</a>
-                <a href="admin_page.php">กลับ</a>
-            </div> -->
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="admin_add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม Driver&Car</a>
+                    <a href="admin_add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม Driver</a>
+                    <a href="admin_add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม car</a>
+
                 </div>
             </div>
             <div class="col 6">
@@ -74,11 +73,7 @@ $result = mysqli_query($connect, $sql);
 
                         <th>fname</th>
                         <th>lname</th>
-                        <th>role</th>
-                        <th>email</th>
                         <th>phone</th>
-                        <th>rank</th>
-                        <th>department</th>
                         <th>license plate</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -91,12 +86,16 @@ $result = mysqli_query($connect, $sql);
                         <tr>
                             <td><?php echo $row['fname'] ?></td>
                             <td><?php echo $row['lname'] ?></td>
-                            <td><?php echo $row['role'] ?></td>
-                            <td><?php echo $row['email'] ?></td>
                             <td><?php echo $row['phone'] ?></td>
-                            <td><?php echo $row['rank'] ?></td>
-                            <td><?php echo $row['department'] ?></td>
-                            <td><?php echo "de]y'sdf"; ?></td>
+                            <td><?php if($row['license']){
+                                            echo$row['license'];
+                                            
+                                        }else{
+                                            
+                                            $id = base64_encode($row['id'])?>
+                    <a href="admin_form_addcartodriver.php?driver=<?php echo$id ?>" class="btn waves-effect waves-light teal lighten-1 z-depth-4">Add car</a>
+                                            
+                                       <?php } ?></td>
                             <td>
                                 <a>
                                     <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
