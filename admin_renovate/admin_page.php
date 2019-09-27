@@ -1,7 +1,7 @@
 <?php 
 require './../server.php';
 
-session_start(); 
+session_start();
 if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
 }else{
