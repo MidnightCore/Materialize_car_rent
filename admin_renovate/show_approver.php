@@ -36,9 +36,9 @@ $result = mysqli_query($connect, $sql);
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav"><br><br>
-                <li><a href="#">ข้อมูลUser</a></li>
-                <li><a href="#">ข้อมูลApprover</a></li>
-                <li><a href="#">ข้อมูลรถและคนขับรถ</a></li>
+                <li><a href="show_user.php">ข้อมูลUser</a></li>
+                <li><a href="show_approver.php">ข้อมูลApprover</a></li>
+                <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
                 <li><a href="#">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
