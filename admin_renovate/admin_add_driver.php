@@ -120,11 +120,11 @@ $result = mysqli_query($connect, $search);
                             <form action="#">
                                 <div class="file-field input-field">
                                     <div class="btn">
-                                        <span>File</span>
+                                        <span>ไฟล์</span>
                                         <input type="file" multiple>
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        <input class="file-path validate" type="text" placeholder="อัพโหลดรูปภาพ">
                                     </div>
                                 </div>
                             </form>
