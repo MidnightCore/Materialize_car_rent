@@ -24,21 +24,17 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Admin Page</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="admin_page.php">กลับ</a></li>
-                <!-- <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li> -->
+                <li><a href="show_user.php">ข้อมูลUser</a></li>
+                <li><a href="show_approver.php">ข้อมูลApprover</a></li>
+                <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
+                <li><a href="#">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
-            <ul id="nav-mobile" class="sidenav">
-                <br><br>
-                <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li>
+            <ul id="nav-mobile" class="sidenav"><br><br>
+                <li><a href="show_user.php">ข้อมูลUser</a></li>
+                <li><a href="show_approver.php">ข้อมูลApprover</a></li>
+                <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
+                <li><a href="#">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
