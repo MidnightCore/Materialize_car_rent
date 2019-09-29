@@ -75,11 +75,11 @@ if ($alert == 1) {
                 <h4>รายชื่อ User</h4>
             </div>
             <br>
-            <div class="col 6">
+            <!-- <div class="col 6">
                 <div style="text-align:right">
                     <a href="admin_add_user.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มข้อมูลผู้ใช้</a>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <table class="responsive-table">
@@ -89,7 +89,7 @@ if ($alert == 1) {
                     <th>fname</th>
                     <th>lname</th>
                     <th>role</th>
-                    <th>email</th>
+                    <!-- <th>email</th> -->
                     <th>phone</th>
                     <th>rank</th>
                     <th>department</th>
@@ -105,7 +105,7 @@ if ($alert == 1) {
                         <td><?php echo $row['fname'] ?></td>
                         <td><?php echo $row['lname'] ?></td>
                         <td><?php echo $row['role'] ?></td>
-                        <td><?php echo $row['email'] ?></td>
+                        <!-- <td><?php echo $row['email'] ?></td> -->
                         <td><?php echo $row['phone'] ?></td>
                         <td><?php echo $row['rank'] ?></td>
                         <td><?php echo $row['department'] ?></td>

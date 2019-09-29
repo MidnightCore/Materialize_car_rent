@@ -87,7 +87,7 @@ $result = mysqli_query($connect, $search);
                         <form action="#">
                             <div class="file-field input-field">
                                 <div class="btn">
-                                    <span>ไฟล์</span>
+                                    <span>เลือกรูป</span>
                                     <input type="file" multiple>
                                 </div>
                                 <div class="file-path-wrapper">
