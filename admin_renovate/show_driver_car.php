@@ -59,7 +59,7 @@ $result = mysqli_query($connect, $sql);
                 <div style="text-align:left">
                     <a href="admin_add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม Driver</a>
                     <a href="admin_add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม car</a>
-
+                    ปุ่มดูคนขับ  ปุ่มดูรถที่มี
                 </div>
             </div>
             <div class="col 6">
@@ -95,7 +95,7 @@ $result = mysqli_query($connect, $sql);
                                         }else{
                                             
                                             $id = base64_encode($row['id'])?>
-                    <a href="admin_form_addcartodriver.php?driver=<?php echo$id ?>" class="btn waves-effect waves-light teal lighten-1 z-depth-4">Add car</a>
+                    <a href="admin_form_addcartodriver.php?driver=<?php echo$id?>&?#$@$=<?php echo base64_encode("asdasfqwgekwqmbwpebmpohmpoermwgqe") ?>" class="btn waves-effect waves-light teal lighten-1 z-depth-4">Add car</a>
                                             
                                        <?php } ?></td>
                             <td>

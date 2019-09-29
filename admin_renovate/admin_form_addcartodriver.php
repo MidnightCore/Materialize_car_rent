@@ -7,9 +7,13 @@ if(isset($_GET['driver'])){
     header("location:login.php");
     exit();    
 }
-$search ="SELECT fname,lname FROM user WHERE user.role = 'driver'AND user.id = '$id'";
+$search ="SELECT fname,lname,id FROM user WHERE user.role = 'driver'AND user.id = '$id'";
 $result = mysqli_query($connect,$search);
 $row = mysqli_fetch_array($result);
+
+$searchcar = "SELECT license FROM car WHERE driver_id IS NULL";
+$resultcar = mysqli_query($connect, $searchcar);
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +64,7 @@ $row = mysqli_fetch_array($result);
     </nav>
 
 
-    <form action="admin_add_driver2.php" id="ee" method="POST">
+    <!-- <form action="admin_add_driver2.php" id="ee" method="POST"> -->
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
@@ -72,60 +76,32 @@ $row = mysqli_fetch_array($result);
 
             <div class="row">
             <div class="input-field col s12">
-                            <?php echo"ชื่อ ".$row['fname']." ".$row['lname'] ?>
+                            <?php echo"ชื่อ : ".$row['fname']." ".$row['lname'] ?>
                     </div>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
     
 
 
 
 
 
-    <form action="admin_add_car2.php" id="ee" method="POST">
+    <form action="admin_add_cartodriver.php" id="ee" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
             <div class="input-field col s12">
-                        <select name="role">
-                            <option disabled selected>เลือกรถ</option>
-                            <option>user</option>
-                            <option>approver</option>
-                            <option>admin</option>
+                        <select name="cartodriver" required>
+                        <option disabled selected>เลือกรถ</option>
+                            <?php while($rowcar = mysqli_fetch_array($resultcar)) { ?>
+                                <option> <?php echo $rowcar['license'] ?> </option>
+
+                            <?php } ?>
                         </select>
                     </div><!-- จบหัวกระดาษ -->
-            
-            <!-- <div class="row">
-                <div class="col s12">
-                    <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6> -->
-                    <!-- <div class="row">
-                        <div class="input-field col s6">
-                            <input name="car_brand" id="car_brand" type="text" class="validate">
-                            <label for="car_brand">ยี่ห้อ</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="car_version" id="car_version" type="text" class="validate">
-                            <label for="car_version">รุ่น</label>
-                        </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="car_color" id="car_color" type="text" class="validate">
-                            <label for="car_color">สีของรถ</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="car_number" id="car_number" type="text" class="validate">
-                            <label for="car_number">ทะเบียนรถ</label>
-                        </div> -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                        <!-- เพิ่มช่องใส่รูปหน่อยครับ -->
-                    </div>
+                    <input type="hidden" name="id" value="<?php echo base64_encode($id) ?>">
                 </div>
             </div>
         </div>

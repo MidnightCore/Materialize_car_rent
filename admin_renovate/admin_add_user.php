@@ -43,6 +43,7 @@
 
 
     <form action="admin_add_user2.php" id="ee" method="POST">
+        <input type="hidden" name="role" value="user">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
@@ -95,20 +96,7 @@
                             <label for="department">Department</label>
                         </div>
                     </div>
-                    <div class="input-field col s12">
-                        <select name="role">
-                            <option disabled selected>เลือกสถานะผู้ใช้</option>
-                            <option>user</option>
-                            <option>approver</option>
-                            <option>admin</option>
-                        </select>
-                    </div>
                     <script>
-                        // document.addEventListener('DOMContentLoaded', function() {
-                        //     var elems = document.querySelectorAll('select');
-                        //     var instances = M.FormSelect.init(elems, options);
-                        // });
-                        // Or with jQuery
                         $(document).ready(function() {
                             $('select').formSelect();
                         });

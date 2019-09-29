@@ -10,6 +10,7 @@ if (isset($_SESSION['id'])) {
 }
 $sql = "SELECT * FROM user WHERE user.role != 'admin'";
 $result = mysqli_query($connect, $sql);
+
 $alert = 0;
 if (isset($_GET['alert'])) {
     $alert = $_GET['alert'];

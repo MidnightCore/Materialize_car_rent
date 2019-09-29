@@ -84,7 +84,8 @@ $result = mysqli_query($connect, $search);
                             <input name="car_number" id="car_number" type="text" class="validate" required>
                             <label for="car_number">ทะเบียนรถ</label>
                         </div>
-                        <form action="#">
+                    </div>
+                        
                             <div class="file-field input-field">
                                 <div class="btn">
                                     <span>เลือกรูป</span>
@@ -94,8 +95,7 @@ $result = mysqli_query($connect, $search);
                                     <input class="file-path validate" type="text" placeholder="อัพโหลดรูปภาพ">
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        <!-- </form> -->
                 </div>
             </div>
         </div>
