@@ -17,6 +17,8 @@ $result = mysqli_query($connect, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Show User</title>
+
+    <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />

@@ -286,6 +286,7 @@ $today = date("Y-m-j H:i:s");
                     <!-- หมายเหตุ -->
                     <div onclick="date()">
                         <p>หมายเหตุ <input type="text" class="reason" name="note"></p>
+                        <p>อ้างอิง <input type="text" class="" name=""></p>
                         <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text"
                                 class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
                     </div><br>
