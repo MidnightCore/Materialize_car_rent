@@ -8,7 +8,7 @@ if (isset($_SESSION['id'])) {
     header("location:./../login.php");  
     exit();  
 }
-$sql = "SELECT * FROM user WHERE user.role != 'admin'";
+$sql = "SELECT * FROM user WHERE user.role != 'admin' ORDER BY user.role DESC";
 $result = mysqli_query($connect, $sql);
 
 $alert = 0;
