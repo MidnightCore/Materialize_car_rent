@@ -48,7 +48,7 @@
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<br></h5>
+                    <h5 class="text-center">แก้ไขข้อมูลผู้ใช้<br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
@@ -67,16 +67,6 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="user_id" id="user_id" type="text" class="validate">
-                            <label for="rank">ชื่อผู้ใช้</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="user_password" id="user_password" type="text" class="validate">
-                            <label for="zone">รหัสผ่าน</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
                             <input name="Phone_num" id="Phone_num" type="text" class="validate">
                             <label for="Phone_num">เบอร์โทรศัพท์</label>
                         </div>
@@ -85,19 +75,17 @@
                             <label for="user_email">อีเมลล์</label>
                         </div>
                     </div>
-                    <div class="input-field col s12">
-                        <select name="Role">
-                            <option disabled selected>เลือกสถานะผู้ใช้</option>
-                            <option>user</option>
-                            <option>admin</option>
-                        </select>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input name="rank" id="rank" type="text" class="validate">
+                            <label for="rank">Rank</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input name="department" id="department" type="text" class="validate">
+                            <label for="department">Department</label>
+                        </div>
                     </div>
                     <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var elems = document.querySelectorAll('select');
-                            var instances = M.FormSelect.init(elems, options);
-                        });
-                        // Or with jQuery
                         $(document).ready(function() {
                             $('select').formSelect();
                         });
@@ -108,6 +96,7 @@
         </div>
     </form>
     <div class="center-align">
+        
         <button type="submit" form="ee" class="btn pulse amber darken-4-effect amber darken-4-light">แก้ไข
             <i class="material-icons right">border_color</i>
         </button>

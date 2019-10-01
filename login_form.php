@@ -27,5 +27,4 @@ session_start();
   }
   else {
     header("location:login.php?alert=1");
-    
   }

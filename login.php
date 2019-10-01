@@ -8,6 +8,8 @@ if (isset($_GET['alert'])) {
 if ($palm == 1) {
     echo "<script>alert('username หรือ password ผิดค่ะกรุณากรอกใหม่');history.back();</script>";
 } 
+
+
  ?>
 
 
@@ -42,7 +44,7 @@ if ($palm == 1) {
 <body>
     <div class="container">
         <div class="row"><br><br><br>
-            <form action="login_form.php" method="POST">
+            <form action="login_form.php" method="POST" id="palm" name="palm">
                 <div class="row">
                     <div class="col s12 m6 offset-m3">
                         <div class="card center-align mg">
@@ -59,7 +61,7 @@ if ($palm == 1) {
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">keyboard</i>
                                                 <input type="password" id="password-input" name="em_Password" class="validate">
-                                                <label for="password-input">Password</label>
+                                               <label for="password-input">Password</label>
                                             </div>
                                         </div>
                                     </div>

@@ -6,7 +6,7 @@
     }else{
         $user_id = 0;
     }
-    $sql = "SELECT fname,lname FROM user WHERE user.id=$user_id";
+    $sql = "SELECT fname,lname FROM user WHERE user.id='$user_id'";
     $result = mysqli_query($connect,$sql);
     $name = mysqli_fetch_array($result);
     // echo$user_id;
