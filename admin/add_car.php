@@ -52,7 +52,7 @@ $result = mysqli_query($connect, $search);
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-    <form action="admin_add_car2.php" id="ee" method="POST">
+    <form action="add_car2.php" id="ee" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
@@ -86,13 +86,13 @@ $result = mysqli_query($connect, $search);
                         </div>
                     </div>
                         
-                            <div class="file-field input-field">
+                            <div class="file-field input-field" name="carimage">
                                 <div class="btn">
-                                    <span>เลือกรูป</span>
+                                    <span>อัพโหลดรูปภาพ</span>
                                     <input type="file" multiple>
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" placeholder="อัพโหลดรูปภาพ">
+                                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
                                 </div>
                             </div>
                         <!-- </form> -->
@@ -104,9 +104,9 @@ $result = mysqli_query($connect, $search);
         <button type="submit" form="ee" class="btn waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
         </button>
-        <button type="" form="" class="btn red darken-4-effect red darken-4-light">ลบข้อมูล
+        <!-- <button type="" form="" class="btn red darken-4-effect red darken-4-light">ลบข้อมูล
             <i class="material-icons right">delete_forever</i>
-        </button>
+        </button> -->
     </div><br><br><br>
     <script>
         $(document).ready(function() {

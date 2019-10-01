@@ -4,15 +4,21 @@ require "server.php";
 // $today = date("Y-m-j H:i:s");
 // echo$today."<br>";
 $user_id = $_SESSION['id'];
-if(isset($_POST['note'])){
-$note = $_POST['note'];
-}else{
+
+if(isset($_POST['note']))
+{
+    $note = $_POST['note'];
+}
+
+else
+{
     $note = " ";
 }
+
 function DateTimeDiff($strDateTime1,$strDateTime2)
-    {
-               return (strtotime($strDateTime2) - strtotime($strDateTime1))/( 60 * 60 *24); // 1 Hour =  60*60
-    }
+{
+    return (strtotime($strDateTime2) - strtotime($strDateTime1))/( 60 * 60 *24); // 1 Hour =  60*60
+}
 // print_r($_POST);
 // $date_write     = $_POST['date_write'];
 // $first_name     = $_POST['first_name'];
@@ -23,6 +29,7 @@ $request           = $_POST['want'];
 $place          = $_POST['place'];
 $county         = $_POST['county'];
 $people         = $_POST['people'];
+
 //รวมวันเวลาที่ไปและกลับลงช่องเดียว
 // ไป
 $date_go        = $_POST['date_go'];

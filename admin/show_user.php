@@ -6,7 +6,7 @@ if (isset($_SESSION['id'])) {
     header("location:login.php");
 }
 require './../server.php';
-$sql = "SELECT * FROM user WHERE user.role = 'approver'";
+$sql = "SELECT * FROM user WHERE user.role = 'user'";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $result = mysqli_query($connect, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Show Approver</title>
+    <title>Show User</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,6 +26,7 @@ $result = mysqli_query($connect, $sql);
 </head>
 
 <body>
+
     <nav class="teal lighten-3" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Admin Page</a>
@@ -53,7 +54,7 @@ $result = mysqli_query($connect, $sql);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="admin_add_approver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม approver</a>
+                    <a href="add_user.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม user</a>
                 </div>
             </div>
             <div class="col 6">
@@ -66,7 +67,6 @@ $result = mysqli_query($connect, $sql);
             <table class="responsive-table">
                 <thead>
                     <tr>
-
                         <th>fname</th>
                         <th>lname</th>
                         <th>role</th>
@@ -91,15 +91,15 @@ $result = mysqli_query($connect, $sql);
                             <td><?php echo $row['rank'] ?></td>
                             <td><?php echo $row['department'] ?></td>
                             <td>
-                                <a>
-                                    <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                                <a href="admin_edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                                    <button type="submit" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                         <i class="material-icons right">border_color</i>
                                     </button>
                                 </a>
                             </td>
                             <td>
                                 <a>
-                                    <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
+                                    <button id="lob" type="submit" class="btn red accent-4-effect red accent-4-light">ลบ
                                         <i class="material-icons right">close</i>
                                     </button>
                                 </a>

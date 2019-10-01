@@ -16,7 +16,7 @@
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
 
-    <title>เพิ่มข้อมูลผู้ใช้</title>
+    <title>แก้ไขข้อมูลผู้ใช้</title>
 </head>
 
 <body>
@@ -42,14 +42,13 @@
     </nav>
 
 
-    <form action="admin_add_user2.php" id="ee" method="POST">
-        <input type="hidden" name="role" value="user">
+    <form action="add_user2.php" id="ee" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<br></h5>
+                    <h5 class="text-center">แก้ไขข้อมูลผู้ใช้<br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
@@ -64,16 +63,6 @@
                         <div class="input-field col s6">
                             <input name="last_name" id="last_name" type="text" class="validate">
                             <label for="last_name">นามสกุล</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="user_id" id="user_id" type="text" class="validate">
-                            <label for="user_id">ชื่อผู้ใช้</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="user_password" id="user_password" type="text" class="validate">
-                            <label for="user_password">รหัสผ่าน</label>
                         </div>
                     </div>
                     <div class="row">
@@ -107,14 +96,12 @@
         </div>
     </form>
     <div class="center-align">
-        <button type="submit" form="ee" class="btn waves-effect waves-light">ยืนยัน
-            <i class="material-icons right">done</i>
-        </button>
-        <button type="" form="" class="btn red darken-4-effect red darken-4-light">ลบข้อมูล
-            <i class="material-icons right">delete_forever</i>
+        
+        <button type="submit" form="ee" class="btn pulse amber darken-4-effect amber darken-4-light">แก้ไข
+            <i class="material-icons right">border_color</i>
         </button>
     </div>
-<br><br>
+
 </body>
 
 </html>

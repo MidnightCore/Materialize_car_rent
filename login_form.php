@@ -19,7 +19,7 @@ session_start();
     $_SESSION['password'] = $em_Password;
 
     if($Palm['role'] == "admin") {
-      header("location:admin_renovate/admin_page.php");
+      header("location:admin/admin_page.php");
     }
     else {
       header("location:index.php");

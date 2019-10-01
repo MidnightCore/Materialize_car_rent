@@ -64,7 +64,7 @@ $resultcar = mysqli_query($connect, $searchcar);
     </nav>
 
 
-    <!-- <form action="admin_add_driver2.php" id="ee" method="POST"> -->
+    <!-- <form action="add_driver2.php" id="ee" method="POST"> -->
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
@@ -87,7 +87,7 @@ $resultcar = mysqli_query($connect, $searchcar);
 
 
 
-    <form action="admin_add_cartodriver.php" id="ee" method="POST">
+    <form action="add_cartodriver.php" id="ee" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->

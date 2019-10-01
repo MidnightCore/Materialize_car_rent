@@ -42,19 +42,17 @@
     </nav>
 
 
-    <form action="admin_add_user2.php" id="ee" method="POST">
-    <input type="hidden" name="role" value="approver">
+    <form action="add_user2.php" id="ee" method="POST">
+        <input type="hidden" name="role" value="driver">
 
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h2>ใส่ช่อง ลายเซ็น(เก็บเป็นรูป)<br>
-                   กับช่องยศของ appprover คนนั้นว่าอยู่ยศไหน<br>
-                เพื่อจะเอาไปเก็บในเบสว่าเค้าอยู่ยศไหน</h2>
+                    <!-- <h2>เพิ่มใส่รูปช่องคนขับรถงับ<br>เก็บเป็นไฟล์ -->
+                    </h2>
                     <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<br></h5>
-                    
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
@@ -63,46 +61,66 @@
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate" required>
+                            <input name="first_name" id="first_name" type="text" class="validate">
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate" required>
+                            <input name="last_name" id="last_name" type="text" class="validate">
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="user_id" id="user_id" type="text" class="validate" required>
+                            <input name="user_id" id="user_id" type="text" class="validate">
                             <label for="user_id">ชื่อผู้ใช้</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_password" id="user_password" type="text" class="validate" required>
+                            <input name="user_password" id="user_password" type="text" class="validate">
                             <label for="user_password">รหัสผ่าน</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="Phone_num" id="Phone_num" type="text" class="validate" required>
+                            <input name="Phone_num" id="Phone_num" type="text" class="validate">
                             <label for="Phone_num">เบอร์โทรศัพท์</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_email" id="user_email" type="text" class="validate" required>
+                            <input name="user_email" id="user_email" type="text" class="validate">
                             <label for="user_email">อีเมลล์</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate" required>
+                            <input name="rank" id="rank" type="text" class="validate">
                             <label for="rank">Rank</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="department" id="department" type="text" class="validate" required>
+                            <input name="department" id="department" type="text" class="validate">
                             <label for="department">Department</label>
                         </div>
                     </div>
+
+                    <!-- <input type="text" name="image" id=""> -->
+
+                    <form action="#">
+                        <div class="file-field input-field" name="image">
+                            <div class="btn">
+                                <span>อัพโหลดรูปภาพ</span>
+                                <input type="file" multiple>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+
+
+
                     <script>
-                        
                         $(document).ready(function() {
                             $('select').formSelect();
                         });
@@ -111,18 +129,16 @@
                 </div>
             </div>
         </div>
-        <input type="text" name="rank_approver" value="rank_approver">
-                    <input type="text" name="license" value="license">
     </form>
     <div class="center-align">
         <button type="submit" form="ee" class="btn waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
         </button>
-        <button type="" form="" class="btn red darken-4-effect red darken-4-light">ลบข้อมูล
+        <!-- <button type="" form="" class="btn red darken-4-effect red darken-4-light">ลบข้อมูล
             <i class="material-icons right">delete_forever</i>
-        </button>
+        </button> -->
     </div>
-<br><br>
+    <br><br>
 </body>
 
 </html>
