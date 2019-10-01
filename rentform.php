@@ -33,12 +33,12 @@ $today = date("Y-m-j H:i:s");
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
+    
     <style>
         #but3 {
             margin-left: 20px;
             margin-right: 20px;
         }
-
         .sortable-handler {
             touch-action: none;
         }
@@ -104,35 +104,33 @@ $today = date("Y-m-j H:i:s");
 
                 <!-- เลือกวันที่กรอก -->
                 <div class="input-field col s6">
-                    <input name="date_write" type="text" placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)"
-                        value="<?php echo date("l j m Y H:i:s") ?>" readonly>
+                    <input name="date_write" type="text" placeholder="วัน/เดือน/ปี (ที่กรอกแบบฟอร์ม)" value="<?php echo date("l j m Y H:i:s") ?>" readonly>
                 </div>
             </div><!-- จบเลือกวันที่กรอก -->
+
+            
+
             <div class="row">
                 <div class="col s12">
                     <h6><b>เรียน</b> ผู้อำนวยการสำนักวิชาการศึกษาทั่วไปและนวัตกรรมการเรียนรู้อิเล็กทอรนิกส์</h6>
                     <!-- ส่วนของกรอกรายละเอียดชื่อ -->
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate"
-                                value="<?php echo $name['fname'] ?>" required>
+                            <input name="first_name" id="first_name" type="text" class="validate" value="<?php echo $name['fname'] ?>" required>
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate"
-                                value="<?php echo $name['lname'] ?>" required>
+                            <input name="last_name" id="last_name" type="text" class="validate" value="<?php echo $name['lname'] ?>" required>
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate"
-                                value="<?php echo $name['rank'] ?>" required>
+                            <input name="rank" id="rank" type="text" class="validate" value="<?php echo $name['rank'] ?>" required>
                             <label for="rank">ตำแหน่ง (ของผู้กรอกแบบฟอร์ม)</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="zone" id="zone" type="text" class="validate"
-                                value="<?php echo $name['department'] ?>" required>
+                            <input name="zone" id="zone" type="text" class="validate" value="<?php echo $name['department'] ?>" required>
                             <label for="zone">สังกัด (ของผู้กรอกแบบฟอร์ม)</label>
                         </div>
                     </div>
@@ -148,7 +146,7 @@ $today = date("Y-m-j H:i:s");
                         //     var instances = M.FormSelect.init(elems, options);
                         // });
                         // Or with jQuery
-                        $(document).ready(function () {
+                        $(document).ready(function() {
                             $('select').formSelect();
                         });
                     </script>
@@ -184,79 +182,81 @@ $today = date("Y-m-j H:i:s");
                     <p>โดยมีวันเวลาในการเดินทางดังนี้</p>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป" id="date_goo"
-                                required>
+                            <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป" id="date_goo" required>
                         </div>
                         <div class="input-field col s6">
-                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา" id="time_goo"
-                                required>
+                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา" id="time_goo" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ" id="dateback" required >
+                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ" id="dateback" required>
                         </div>
                         <div class="input-field col s6">
-                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา" id="timeback" required >
+                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา" id="timeback" required>
                         </div>
                     </div>
 
+
+
                     <script>
-                        $(document).ready(function () {
+                        $(document).ready(function() {
                             console.log('i ');
                             $('#dateback').hide();
                             $('#timeback').hide();
                         });
-                        function checktime(){
+
+                        function checktime() {
                             var datego = $('#date_goo').val();
                             var timego = $('#time_goo').val();
                             var dateback = $('#dateback').val();
                             var timeback = $('#timeback').val();
 
-                            var datetimego = datego + " " + timego+":00";
-                            var datetimeback = dateback + " " + timeback+":00";
-                            var datesum = DateTimeDiff(datetimego,datetimeback);
-                            if(datesum <= 0.0415){
+                            var datetimego = datego + " " + timego + ":00";
+                            var datetimeback = dateback + " " + timeback + ":00";
+                            var datesum = DateTimeDiff(datetimego, datetimeback);
+                            if (datesum <= 0.0415) {
                                 alert("ต้องใช้รถอย่างน้อย 1 ชั่วโมงค่ะ");
-                            }else{
+                            } else {
 
                             }
                         }
-                        $("#dateback").change(function () {
+                        $("#dateback").change(function() {
                             console.log('i++ :', i++);
-                            if(i == j || i > 1){
-                                checktime();
-                            }                       
-                        });
-                        $("#timeback").change(function () {
-                            console.log('j++ :', j++);
-                            if(i == j || j > 1){
+                            if (i == j || i > 1) {
                                 checktime();
                             }
-                        });  
-                        
+                        });
+                        $("#timeback").change(function() {
+                            console.log('j++ :', j++);
+                            if (i == j || j > 1) {
+                                checktime();
+                            }
+                        });
+
                         function DateTimeDiff(strDateTime1, strDateTime2) {
-                            return (Date.parse(strDateTime2) - Date.parse(strDateTime1)) / (1000 * 60 * 60 *24); // 1 Hour =  60*60
+                            return (Date.parse(strDateTime2) - Date.parse(strDateTime1)) / (1000 * 60 * 60 * 24); // 1 Hour =  60*60
 
                         }
 
                         var i = 0;
                         var j = 0;
-                        $("#date_goo").change(function () {
+                        $("#date_goo").change(function() {
                             console.log('i++ :', i++);
-                            if(i == j || i > 1){
-                                date();
-                            }                       
-                        });
-                        $("#time_goo").change(function () {
-                            console.log('j++ :', j++);
-                            if(i == j || j > 1){
+                            if (i == j || i > 1) {
                                 date();
                             }
-                        });  
+                        });
+                        $("#time_goo").change(function() {
+                            console.log('j++ :', j++);
+                            if (i == j || j > 1) {
+                                date();
+                            }
+                        });
+
                         function date() {
                             var date = $('#date_goo').val();
-                            var time = $('#time_goo').val();  
+                            var time = $('#time_goo').val();
                             var datetime = date + " " + time + ":00";
                             var today = "<?php echo $today ?>";
                             if (date == "" || time == "") {
@@ -264,40 +264,47 @@ $today = date("Y-m-j H:i:s");
                             } else {
                                 var datesum = DateTimeDiff(today, datetime);
                                 if (datesum < 2) {
-                                    alert("กรุณาทำการจองก่อนล่วงหน้า 2 วันค่ะ");   
+                                    alert("กรุณาทำการจองก่อนล่วงหน้า 2 วันค่ะ");
                                     $('#dateback').hide();
                                     $('#timeback').hide();
-                                }else{
+                                } else {
                                     $('#dateback').show();
                                     $('#timeback').show();
                                 }
                             }
                         }
                     </script>
+
+
+
                     <!-- scriptเลือกวันที่ -->
                     <script>
-                        $(document).ready(function () {
+                        $(document).ready(function() {
                             $('.datepicker').datepicker();
                         });
-                        $(document).ready(function () {
+                        $(document).ready(function() {
                             $('.timepicker').timepicker();
                         });
                     </script>
+
+
+
                     <!-- หมายเหตุ -->
                     <div onclick="date()">
                         <p>หมายเหตุ <input type="text" class="reason" name="note"></p>
                         <p>อ้างอิง <input type="text" class="" name=""></p>
-                        <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text"
-                                class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
+                        <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text" class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
                     </div><br>
                     <!-- จบหมายเหตุ -->
+
+
+
                     <!-- ลงชื่อคนขออณุญาติ -->
                     <div class="row">
                         <div class="col s6 offset-s6">
                             <!-- ลงชื่อ : -->
                             <div class="input-field inline">
-                                <input name="license_user" id="name_ask" type="text" class="validate"
-                                    value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required>
+                                <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required>
                                 <label for="name_ask">ลงชื่อ</label>
                                 <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
                             </div>
@@ -308,6 +315,8 @@ $today = date("Y-m-j H:i:s");
             </div>
         </div>
     </form>
+
+
     <div class="center-align">
         <button type="submit" form="nukKaew" class="btn pulse waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
