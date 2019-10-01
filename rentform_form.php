@@ -11,7 +11,7 @@ $note = $_POST['note'];
 }
 function DateTimeDiff($strDateTime1,$strDateTime2)
     {
-               return (strtotime($strDateTime2) - strtotime($strDateTime1))/( 60 * 60 *24); // 1 Hour =  60*60
+        return (strtotime($strDateTime2) - strtotime($strDateTime1))/( 60 * 60 *24); // 1 Hour =  60*60
     }
 // print_r($_POST);
 // $date_write     = $_POST['date_write'];

@@ -86,13 +86,13 @@ $result = mysqli_query($connect, $search);
                         </div>
                     </div>
                         
-                            <div class="file-field input-field">
+                            <div class="file-field input-field" name="carimage">
                                 <div class="btn">
-                                    <span>เลือกรูป</span>
+                                    <span>อัพโหลดรูปภาพ</span>
                                     <input type="file" multiple>
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" placeholder="อัพโหลดรูปภาพ">
+                                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
                                 </div>
                             </div>
                         <!-- </form> -->

@@ -44,12 +44,13 @@
 
     <form action="admin_add_user2.php" id="ee" method="POST">
         <input type="hidden" name="role" value="driver">
+
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h2>เพิ่มใส่รูปช่องคนขับรถงับ<br>เก็บเป็นไฟล์
+                    <!-- <h2>เพิ่มใส่รูปช่องคนขับรถงับ<br>เก็บเป็นไฟล์ -->
                     </h2>
                     <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<br></h5>
                 </div>
@@ -98,7 +99,27 @@
                             <label for="department">Department</label>
                         </div>
                     </div>
-                    <input type="text" name="image" id="">
+
+                    <!-- <input type="text" name="image" id=""> -->
+
+                    <form action="#">
+                        <div class="file-field input-field" name="image">
+                            <div class="btn">
+                                <span>อัพโหลดรูปภาพ</span>
+                                <input type="file" multiple>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+
+
+
                     <script>
                         $(document).ready(function() {
                             $('select').formSelect();
@@ -117,7 +138,7 @@
             <i class="material-icons right">delete_forever</i>
         </button>
     </div>
-<br><br>
+    <br><br>
 </body>
 
 </html>

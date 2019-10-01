@@ -43,18 +43,18 @@
 
 
     <form action="admin_add_user2.php" id="ee" method="POST">
-    <input type="hidden" name="role" value="approver">
+        <input type="hidden" name="role" value="approver">
 
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h2>ใส่ช่อง ลายเซ็น(เก็บเป็นรูป)<br>
-                   กับช่องยศของ appprover คนนั้นว่าอยู่ยศไหน<br>
-                เพื่อจะเอาไปเก็บในเบสว่าเค้าอยู่ยศไหน</h2>
+                    <!-- <h2>ใส่ช่อง ลายเซ็น(เก็บเป็นรูป)<br>
+                        กับช่องยศของ appprover คนนั้นว่าอยู่ยศไหน<br>
+                        เพื่อจะเอาไปเก็บในเบสว่าเค้าอยู่ยศไหน</h2> -->
                     <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<br></h5>
-                    
+
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
@@ -102,17 +102,39 @@
                         </div>
                     </div>
                     <script>
-                        
                         $(document).ready(function() {
                             $('select').formSelect();
                         });
                     </script>
 
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="rank_approver" id="rank_approver" type="text" class="validate" required>
+                            <label for="rank">Rank Approver</label>
+                        </div>
+                        <!-- <div class="input-field col s6">
+                            <input name="license" id="license" type="text" class="validate" required>
+                            <label for="department">License</label>
+                        </div> -->
+                        <div class="input-field col s12">
+                            <form action="#">
+                                <div class="file-field input-field" name="license" id="license">
+                                    <div class="btn">
+                                        <span>อัพโหลดรูปลายเซ็นต์</span>
+                                        <input type="file" multiple class="validate">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Upload License">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <input type="text" name="rank_approver" value="rank_approver">
-                    <input type="text" name="license" value="license">
+        <!-- <input type="text" name="rank_approver" value="rank_approver">
+                        <input type="text" name="license" value="license"> -->
     </form>
     <div class="center-align">
         <button type="submit" form="ee" class="btn waves-effect waves-light">ยืนยัน
@@ -122,7 +144,7 @@
             <i class="material-icons right">delete_forever</i>
         </button>
     </div>
-<br><br>
+    <br><br>
 </body>
 
 </html>

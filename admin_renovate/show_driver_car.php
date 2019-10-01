@@ -59,7 +59,9 @@ $result = mysqli_query($connect, $sql);
                 <div style="text-align:left">
                     <a href="admin_add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม Driver</a>
                     <a href="admin_add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม car</a>
-                    ปุ่มดูคนขับ  ปุ่มดูรถที่มี
+                    <a href="#" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็คคนขับ</a>
+                    <a href="#" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็ครถยนต์</a>
+                    <!-- ปุ่มดูคนขับ  ปุ่มดูรถที่มี -->
                 </div>
             </div>
             <div class="col 6">

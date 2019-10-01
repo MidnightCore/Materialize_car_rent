@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2019 at 05:59 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Oct 01, 2019 at 03:26 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,7 +47,7 @@ CREATE TABLE `approve_form` (
   `approver_id` int(11) NOT NULL,
   `status` text NOT NULL,
   `note` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -67,13 +67,6 @@ CREATE TABLE `car` (
   `license` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `car`
---
-
-INSERT INTO `car` (`id`, `driver_id`, `color`, `brand`, `image`, `vertion`, `license`) VALUES
-(1, 1, 'red', 'edd', '', '500-95', 'df-8989');
-
 -- --------------------------------------------------------
 
 --
@@ -85,15 +78,6 @@ CREATE TABLE `driver` (
   `user_id` varchar(255) NOT NULL,
   `image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `driver`
---
-
-INSERT INTO `driver` (`id`, `user_id`, `image`) VALUES
-(1, 'singq', ''),
-(2, 'qqqfff', ''),
-(3, 'qwe', '');
 
 -- --------------------------------------------------------
 
@@ -125,16 +109,9 @@ CREATE TABLE `rent_form` (
   `date_back` datetime NOT NULL,
   `note` text NOT NULL,
   `phone` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `rent_form`
---
-
-INSERT INTO `rent_form` (`id`, `user_id`, `request`, `place`, `count`, `people`, `date_go`, `date_back`, `note`, `phone`, `created_at`, `updated_at`) VALUES
-(15, '111', 'asfasfasfafwqwfwsfdasasdfasfasfasf', 'ไปไหนก็ได้เรื่องของชั้น', 'Other', '4-6', '2019-09-23 18:30:00', '2019-09-25 18:30:00', '-', '957786954', '2019-09-22 15:54:05', '2019-09-22 15:56:53');
 
 -- --------------------------------------------------------
 
@@ -159,17 +136,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `password`, `fname`, `lname`, `role`, `email`, `phone`, `rank`, `department`) VALUES
-('111', '698d51a19d8a121ce581499d7b701668', 'palm', 'mlap', 'user', '', '957786954', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
-('123', 'e10adc3949ba59abbe56e057f20f883e', 'sing44', 'ha', 'approver', 'sing@gmail.com', '0859575958', '8ogdH[-pt', '8od;kf[hko'),
-('12355', '7694f4a66316e53c8cdd9d9954bd611d', 'qq', 'qq', 'admin', 'q', 'q', 'q', 'q'),
+('111', '698d51a19d8a121ce581499d7b701668', 'Wisarut', 'Witthaya', 'user', 'palmnaja@outlook.com', '092-672-4895', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
 ('admin', '21232f297a57a5a743894a0e4a801fc3', '', '', 'admin', '', '', '', ''),
-('qqq', 'a38933e6379e64d2fdbad595cec0b8c9', 'qqqqw', 'qwqw', 'approver', 'qweqwe', 'qweqwe', 'qweqtqwf', 'qwfqwdf'),
-('qqqfff', '343d9040a671c45832ee5381860e2996', 'fff', 'ff', 'driver', 'fff', 'fff', 'fff', 'fff'),
-('qqqwe', '006d2143154327a64d86a264aea225f3', 'qqq', 'qqq', 'approver', 'qweq', 'e', 'qweqwe', 'qweqwqwr'),
-('qqqwe4535', '006d2143154327a64d86a264aea225f3', 'qqq534', 'qqq', 'approver', 'qweq', 'e', 'qweqwe', 'qweqwqwr'),
-('qwd', '7694f4a66316e53c8cdd9d9954bd611d', 'qwd', 'qqwd', 'approver', 'q', 'd', 'd', 'qw'),
-('qwe', 'qqwe', 'qwe', 'qwewqwww', 'driver', 'aaa', 'asdssdasdassa', 'asfasf', 'asfs'),
-('singq', 'e10adc3949ba59abbe56e057f20f883e', 'sing', 'ha', 'driver', 'sing@gmail.com', '0859575958', '8ogdH[-pt', '8od;kf[hko');
+('Aura', '6ed3cf13906dc93a2f205a19e122c640', 'Apimuk', 'Phetphan', 'user', 'aurakung@yahoo.com', '089-129-4765', 'เจ้าหน้าที่ฝึกงาน', 'วิศวะคอม'),
+('Bandage', '7d7d76683dde27f86d063a199550c75d', 'Kamin', 'Sangsri', 'user', 'kaminkung@gmail.com', '084-234-1793', 'เจ้าหน้าที่ฝึกงาน', 'วิศวะคอม'),
+('Danie', '87dba14db158754d4d4eb89bdf6c54f4', 'Preeyada', 'Buarsuntorn', 'user', 'daniejang@ssru.ac.th', '080-021-4423', 'เด็กเสิร์ฟ', 'วิศวะคอม'),
+('jomjam', 'b9d0c3c8f43751d8e1d5369ebc8b975e', 'Phatcharaporn', 'Thampanyo', 'user', 'jamjom@ssru.ac.th', '088-482-7767', 'เด็กเสิร์ฟ', 'วิศวะคอม'),
+('Puean', '5f6c7cda6e0204cddbd4ebab341677d6', 'Kiattisak', 'Prummoai', 'user', 'puean@ssru.ac.th', '090-001-6783', 'คนเฝ้าประตู', 'วิศวะคอม'),
+('Punch', '140685b8f5c6b18ddb68c087c31ea975', 'Janthakarn', 'Suksai', 'user', 'punch@ssru.ac.th', '081-991-1911', 'เด็กเสิร์ฟ', 'วิศวะคอม');
 
 --
 -- Indexes for dumped tables
