@@ -6,11 +6,7 @@ if (isset($_SESSION['id'])) {
     header("location:login.php");
 }
 require './../server.php';
-$sql = "SELECT license,fname,lname,phone,user.id
-FROM user,driver
-LEFT JOIN car
-ON driver.id = car.driver_id
-WHERE user.id=driver.user_id";
+$sql = "SELECT * FROM user WHERE user.role = 'approver'";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -20,7 +16,7 @@ $result = mysqli_query($connect, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Show Driver</title>
+    <title>Show Approver</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -57,11 +53,7 @@ $result = mysqli_query($connect, $sql);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="admin_add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม Driver</a>
-                    <a href="admin_add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม car</a>
-                    <a href="#" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็คคนขับ</a>
-                    <a href="#" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็ครถยนต์</a>
-                    <!-- ปุ่มดูคนขับ  ปุ่มดูรถที่มี -->
+                    <a href="add_approver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม approver</a>
                 </div>
             </div>
             <div class="col 6">
@@ -77,8 +69,11 @@ $result = mysqli_query($connect, $sql);
 
                         <th>fname</th>
                         <th>lname</th>
+                        <th>role</th>
+                        <th>email</th>
                         <th>phone</th>
-                        <th>license plate</th>
+                        <th>rank</th>
+                        <th>department</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -90,16 +85,11 @@ $result = mysqli_query($connect, $sql);
                         <tr>
                             <td><?php echo $row['fname'] ?></td>
                             <td><?php echo $row['lname'] ?></td>
+                            <td><?php echo $row['role'] ?></td>
+                            <td><?php echo $row['email'] ?></td>
                             <td><?php echo $row['phone'] ?></td>
-                            <td><?php if($row['license']){
-                                            echo$row['license'];
-                                            
-                                        }else{
-                                            
-                                            $id = base64_encode($row['id'])?>
-                    <a href="admin_form_addcartodriver.php?driver=<?php echo$id?>&?#$@$=<?php echo base64_encode("asdasfqwgekwqmbwpebmpohmpoermwgqe") ?>" class="btn waves-effect waves-light teal lighten-1 z-depth-4">Add car</a>
-                                            
-                                       <?php } ?></td>
+                            <td><?php echo $row['rank'] ?></td>
+                            <td><?php echo $row['department'] ?></td>
                             <td>
                                 <a>
                                     <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข

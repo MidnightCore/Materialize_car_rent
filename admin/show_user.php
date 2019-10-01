@@ -54,7 +54,7 @@ $result = mysqli_query($connect, $sql);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="admin_add_user.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม user</a>
+                    <a href="add_user.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม user</a>
                 </div>
             </div>
             <div class="col 6">
