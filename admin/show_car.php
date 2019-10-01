@@ -3,11 +3,12 @@ session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 } else {
-    header("location:login.php");
+    header("location:./../login.php");
 }
 require './../server.php';
-$sql = "SELECT * FROM user WHERE user.role = 'approver'";
+$sql = "SELECT color,brand,image,version,license FROM car";
 $result = mysqli_query($connect, $sql);
+$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@ $result = mysqli_query($connect, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Show Approver</title>
+    <title>Show Driver</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -53,7 +54,8 @@ $result = mysqli_query($connect, $sql);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="add_approver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม approver</a>
+                <a href="add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มรถ</a>
+                    <!-- ปุ่มดูคนขับ  ปุ่มดูรถที่มี -->
                 </div>
             </div>
             <div class="col 6">
@@ -67,13 +69,11 @@ $result = mysqli_query($connect, $sql);
                 <thead>
                     <tr>
 
-                        <th>fname</th>
-                        <th>lname</th>
-                        <th>role</th>
-                        <th>email</th>
-                        <th>phone</th>
-                        <th>rank</th>
-                        <th>department</th>
+                        <th>Color</th>
+                        <th>Brand</th>
+                        <th>Image</th>
+                        <th>Version</th>
+                        <th>license</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -83,16 +83,14 @@ $result = mysqli_query($connect, $sql);
                     <?php while ($row = mysqli_fetch_array($result)) {  ?>
 
                         <tr>
-                            <td><?php echo $row['fname'] ?></td>
-                            <td><?php echo $row['lname'] ?></td>
-                            <td><?php echo $row['role'] ?></td>
-                            <td><?php echo $row['email'] ?></td>
-                            <td><?php echo $row['phone'] ?></td>
-                            <td><?php echo $row['rank'] ?></td>
-                            <td><?php echo $row['department'] ?></td>
+                            <td><?php echo $row['color'] ?></td>
+                            <td><?php echo $row['brand'] ?></td>
+                            <td><?php echo $row['image'] ?></td>
+                            <td><?php echo $row['version'] ?></td>
+                            <td><?php echo $row['license'] ?></td>
                             <td>
-                                <a href="edit_approver.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
-                                    <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                            <a href="edit_car.php?user=<?php echo base64_encode($row['license']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                                    <button type="submit" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                         <i class="material-icons right">border_color</i>
                                     </button>
                                 </a>

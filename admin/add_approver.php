@@ -118,13 +118,13 @@
                         </div> -->
                         <div class="input-field col s12">
                             <form action="#">
-                                <div class="file-field input-field" name="license" id="license">
+                                <div class="file-field input-field" id="license">
                                     <div class="btn">
                                         <span>อัพโหลดรูปลายเซ็นต์</span>
-                                        <input type="file" multiple class="validate">
+                                        <input type="file" multiple class="validate" required>
                                     </div>
                                     <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Upload License">
+                                        <input class="file-path validate" type="text" placeholder="Upload License" name="license" required>
                                     </div>
                                 </div>
                             </form>

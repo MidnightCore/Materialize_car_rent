@@ -91,7 +91,7 @@ $result = mysqli_query($connect, $sql);
                             <td><?php echo $row['rank'] ?></td>
                             <td><?php echo $row['department'] ?></td>
                             <td>
-                                <a href="admin_edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                                <a href="edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
                                     <button type="submit" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                         <i class="material-icons right">border_color</i>
                                     </button>

@@ -11,8 +11,9 @@ $color = $_POST['car_color'];
 $brand = $_POST['car_brand'];
 $version = $_POST['car_version'];
 $num = $_POST['car_number'];
-$sql = "INSERT INTO `car`(`color`, `brand`, `version`, `license`) 
-        VALUES ('$color','$brand','$version','$num')";
+$image = $_POST['carimage'];
+$sql = "INSERT INTO `car`(`color`, `brand`, `version`, `license`,`image`) 
+        VALUES ('$color', '$brand', '$version', '$num', '$image')";
 $search = "SELECT license FROM car WHERE car.license = '$num'";
 $result = mysqli_query($connect,$search);
 $row = mysqli_fetch_array($result);

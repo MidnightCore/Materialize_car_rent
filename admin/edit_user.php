@@ -1,3 +1,16 @@
+<?php  
+require './../server.php';
+session_start();
+if($_SESSION['id']){
+$user_id = base64_decode($_GET['user']);
+}else{
+    header("location:./../login.php");
+    exit();
+}
+$sql = "SELECT fname,lname,phone,rank,department,email FROM user WHERE user.role = 'user' AND user.id = '$user_id'";
+$result = mysqli_query($connect, $sql);
+$row = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +61,7 @@
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">แก้ไขข้อมูลผู้ใช้<br></h5>
+                    <h5 class="text-center">แก้ไขข้อมูลผู้ใช้ <input type="hidden" name="role" value="user"><br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
@@ -57,31 +70,31 @@
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate">
+                            <input name="first_name" id="first_name" type="text" class="validate" value="<?php echo$row['fname'] ?>">
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate">
+                            <input name="last_name" id="last_name" type="text" class="validate"value="<?php echo$row['lname'] ?>">
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="Phone_num" id="Phone_num" type="text" class="validate">
+                            <input name="Phone_num" id="Phone_num" type="text" class="validate"value="<?php echo$row['phone'] ?>">
                             <label for="Phone_num">เบอร์โทรศัพท์</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_email" id="user_email" type="text" class="validate">
+                            <input name="user_email" id="user_email" type="text" class="validate"value="<?php echo$row['email'] ?>">
                             <label for="user_email">อีเมลล์</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate">
+                            <input name="rank" id="rank" type="text" class="validate"value="<?php echo$row['rank'] ?>">
                             <label for="rank">Rank</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="department" id="department" type="text" class="validate">
+                            <input name="department" id="department" type="text" class="validate"value="<?php echo$row['department'] ?>">
                             <label for="department">Department</label>
                         </div>
                     </div>
