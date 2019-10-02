@@ -4,7 +4,8 @@ require "./../server.php";
 if(isset($_SESSION['id'])){
     $user_id = $_POST['user_id'];
     // echo$user_id;
-    if(isset($_POST['license']) && isset($_POST['rank_approver'])){
+    if(isset($_POST['license']) || isset($_POST['rank_approver'])){
+        
         $license = $_POST['license'];
         $rank_approver = $_POST['rank_approver'];
     }else if(isset($_POST['image'])){
@@ -37,14 +38,15 @@ $department = $_POST['department'];
         }
         
     }else if($rowrole['role'] == 'approver'){
-        $insert_approver ="INSERT INTO `approver`(`user_id`, `license`,  `rank`) VALUES ('$user_id', '$license', '$rank_approver')";
-        if(mysqli_query($connect, $insert_approver)){
+        $update_approver = "UPDATE user SET `fname` = '$first_name', `lname` = '$last_name', `phone` = '$Phone_num', `email` = '$user_email', `rank` = '$rank', `department` = '$department' WHERE user.id = '$user_id'";
+        if(mysqli_query($connect, $update_approver)){
+            $update_tb_ap = "UPDATE approver SET ``";
             header("location:admin_page.php?alert=1");    
             exit();
         }  
     }else if($rowrole['role'] == 'driver'){
-        $insert_driver = "INSERT INTO `driver`(`id`, `user_id`, `image`) VALUES(NULL, '$user_id', '$image')";
-        if(mysqli_query($connect, $insert_driver)){
+        $update_driver = "UPDATE user SET `fname` = '$first_name', `lname` = '$last_name', `phone` = '$Phone_num', `email` = '$user_email', `rank` = '$rank', `department` = '$department' WHERE user.id = '$user_id'";
+        if(mysqli_query($connect, $update_driver)){
             header("location:admin_page.php?alert=1");    
             exit();
         }
