@@ -30,7 +30,7 @@ $row = mysqli_fetch_array($result);
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
 
-    <title>เพิ่มข้อมูลผู้ใช้</title>
+    <title>แก้ไขข้อมูล Approver</title>
 </head>
 
 <body>
@@ -63,7 +63,7 @@ $row = mysqli_fetch_array($result);
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูลผู้ใช้ <input type="hidden" name="role" value="approver"><br></h5>
+                    <h5 class="text-center">แก้ไขข้อมูลApprover <input type="hidden" name="role" value="approver"><br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
             <div class="row">

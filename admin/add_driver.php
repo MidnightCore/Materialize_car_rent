@@ -62,7 +62,7 @@ if (isset($_SESSION['id'])) {
                     <!-- <h2>เพิ่มใส่รูปช่องคนขับรถงับ<br>เก็บเป็นไฟล์ -->
                     </h2>
         
-                    <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<input type="hidden" name="role" value="driver"><br></h5>
+                    <h5 class="text-center">เพิ่มข้อมูลคนขับรถ<input type="hidden" name="role" value="driver"><br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
