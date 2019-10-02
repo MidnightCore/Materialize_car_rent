@@ -6,7 +6,7 @@ if (isset($_SESSION['id'])) {
     header("location:./../login.php");
 }
 require './../server.php';
-$sql = "SELECT * FROM user WHERE user.role = 'approver'";
+$sql = "SELECT fname,lname,phone,user.id,image FROM user,driver WHERE user.role = 'driver' AND user.id = driver.user_id";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $result = mysqli_query($connect, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Show Approver</title>
+    <title>Show Driver</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -53,7 +53,8 @@ $result = mysqli_query($connect, $sql);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="add_approver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม approver</a>
+                    <a href="add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มคนขับรถ</a>
+                    <!-- ปุ่มดูคนขับ  ปุ่มดูรถที่มี -->
                 </div>
             </div>
             <div class="col 6">
@@ -69,11 +70,8 @@ $result = mysqli_query($connect, $sql);
 
                         <th>fname</th>
                         <th>lname</th>
-                        <th>role</th>
-                        <th>email</th>
                         <th>phone</th>
-                        <th>rank</th>
-                        <th>department</th>
+                        <th>Image</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -85,13 +83,11 @@ $result = mysqli_query($connect, $sql);
                         <tr>
                             <td><?php echo $row['fname'] ?></td>
                             <td><?php echo $row['lname'] ?></td>
-                            <td><?php echo $row['role'] ?></td>
-                            <td><?php echo $row['email'] ?></td>
                             <td><?php echo $row['phone'] ?></td>
-                            <td><?php echo $row['rank'] ?></td>
-                            <td><?php echo $row['department'] ?></td>
+                            <td><?php echo $row['image'] ?></td>
                             <td>
-                                <a href="edit_approver.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                            <a href="edit_driver.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                            
                                     <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                         <i class="material-icons right">border_color</i>
                                     </button>

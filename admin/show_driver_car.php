@@ -3,14 +3,15 @@ session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 } else {
-    header("location:login.php");
+    header("location:./../login.php");
 }
 require './../server.php';
 $sql = "SELECT license,fname,lname,phone,user.id
 FROM user,driver
 LEFT JOIN car
 ON driver.id = car.driver_id
-WHERE user.id=driver.user_id";
+WHERE user.id=driver.user_id
+ORDER BY license DESC";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -57,10 +58,10 @@ $result = mysqli_query($connect, $sql);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม Driver</a>
-                    <a href="add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม car</a>
-                    <a href="#" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็คคนขับ</a>
-                    <a href="#" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็ครถยนต์</a>
+                    <!-- <a href="add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม Driver</a>
+                    <a href="add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม car</a> -->
+                    <a href="show_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็คคนขับ</a>
+                    <a href="show_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็ครถยนต์</a>
                     <!-- ปุ่มดูคนขับ  ปุ่มดูรถที่มี -->
                 </div>
             </div>
@@ -79,7 +80,7 @@ $result = mysqli_query($connect, $sql);
                         <th>lname</th>
                         <th>phone</th>
                         <th>license plate</th>
-                        <th>Edit</th>
+                        <!-- <th>Edit</th> -->
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -100,13 +101,7 @@ $result = mysqli_query($connect, $sql);
                     <a href="form_add_cartodriver.php?driver=<?php echo$id?>&?#$@$=<?php echo base64_encode("asdasfqwgekwqmbwpebmpohmpoermwgqe") ?>" class="btn waves-effect waves-light teal lighten-1 z-depth-4">Add car</a>
                                             
                                        <?php } ?></td>
-                            <td>
-                                <a>
-                                    <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
-                                        <i class="material-icons right">border_color</i>
-                                    </button>
-                                </a>
-                            </td>
+                           
                             <td>
                                 <a>
                                     <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ

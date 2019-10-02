@@ -1,8 +1,6 @@
 <?php 
 session_start();
-?>
 
-<?php
   $em_User       = $_POST['em_User'];
   $em_Password   = md5($_POST['em_Password']);
 
@@ -27,5 +25,5 @@ session_start();
   }
   else {
     header("location:login.php?alert=1");
-    
   }
+  ?>

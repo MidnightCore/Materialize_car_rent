@@ -1,3 +1,17 @@
+<?php  
+require './../server.php';
+session_start();
+if($_SESSION['id']){
+$user_id = base64_decode($_GET['user']);
+// echo$user_id;
+}else{
+    header("location:./../login.php");
+    exit();
+}
+$sql = "SELECT fname,lname,phone,rank,department,email FROM user WHERE user.role = 'user' AND user.id = '$user_id'";
+$result = mysqli_query($connect, $sql);
+$row = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,62 +56,50 @@
     </nav>
 
 
-    <form action="add_user2.php" id="ee" method="POST">
+    <form action="edit_user_form.php" id="ee" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<br></h5>
+                    <h5 class="text-center">แก้ไขข้อมูลผู้ใช้ <input type="hidden" name="role" value="user"><br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
             <div class="row">
                 <div class="col s12">
-                    <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
+                    <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง <input type="hidden" name="user_id" value="<?php echo$user_id ?>"></h6>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate">
+                            <input name="first_name" id="first_name" type="text" class="validate" value="<?php echo$row['fname'] ?>">
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate">
+                            <input name="last_name" id="last_name" type="text" class="validate"value="<?php echo$row['lname'] ?>">
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="user_id" id="user_id" type="text" class="validate">
-                            <label for="rank">ชื่อผู้ใช้</label>
+                            <input name="Phone_num" id="Phone_num" type="text" class="validate"value="<?php echo$row['phone'] ?>">
+                            <label for="Phone_num">เบอร์โทรศัพท์</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_password" id="user_password" type="text" class="validate">
-                            <label for="zone">รหัสผ่าน</label>
+                            <input name="user_email" id="user_email" type="text" class="validate"value="<?php echo$row['email'] ?>">
+                            <label for="user_email">อีเมลล์</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="Phone_num" id="Phone_num" type="text" class="validate">
-                            <label for="Phone_num">เบอร์โทรศัพท์</label>
+                            <input name="rank" id="rank" type="text" class="validate"value="<?php echo$row['rank'] ?>">
+                            <label for="rank">Rank</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_email" id="user_email" type="text" class="validate">
-                            <label for="user_email">อีเมลล์</label>
+                            <input name="department" id="department" type="text" class="validate"value="<?php echo$row['department'] ?>">
+                            <label for="department">Department</label>
                         </div>
                     </div>
-                    <div class="input-field col s12">
-                        <select name="Role">
-                            <option disabled selected>เลือกสถานะผู้ใช้</option>
-                            <option>user</option>
-                            <option>admin</option>
-                        </select>
-                    </div>
                     <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var elems = document.querySelectorAll('select');
-                            var instances = M.FormSelect.init(elems, options);
-                        });
-                        // Or with jQuery
                         $(document).ready(function() {
                             $('select').formSelect();
                         });
@@ -108,6 +110,7 @@
         </div>
     </form>
     <div class="center-align">
+        
         <button type="submit" form="ee" class="btn pulse amber darken-4-effect amber darken-4-light">แก้ไข
             <i class="material-icons right">border_color</i>
         </button>

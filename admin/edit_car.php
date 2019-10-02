@@ -7,8 +7,9 @@ if (isset($_SESSION['id'])) {
     header("location:./../login.php");
     exit();
 }
-$search = "SELECT fname,lname FROM user WHERE user.role = 'driver'";
-$result = mysqli_query($connect, $search);
+$sql = "SELECT color,brand,image,version,license FROM car";
+$result = mysqli_query($connect, $sql);
+$row = mysqli_fetch_array($result);
 ?>
 
 <!DOCTYPE html>
@@ -67,32 +68,32 @@ $result = mysqli_query($connect, $search);
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="car_brand" id="car_brand" type="text" class="validate" required>
+                            <input name="car_brand" id="car_brand" type="text" class="validate" value="<?php echo$row['brand'] ?>" required>
                             <label for="car_brand">ยี่ห้อ</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="car_version" id="car_version" type="text" class="validate" required>
+                            <input name="car_version" id="car_version" type="text" class="validate" value="<?php echo$row['version'] ?>" required>
                             <label for="car_version">รุ่น</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="car_color" id="car_color" type="text" class="validate" required>
+                            <input name="car_color" id="car_color" type="text" class="validate" value="<?php echo$row['color'] ?>" required>
                             <label for="car_color">สีของรถ</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="car_number" id="car_number" type="text" class="validate" required>
+                            <input name="car_number" id="car_number" type="text" class="validate" value="<?php echo$row['license'] ?>" required>
                             <label for="car_number">ทะเบียนรถ</label>
                         </div>
                     </div>
                         
-                            <div class="file-field input-field" >
+                            <div class="file-field input-field" name="carimage">
                                 <div class="btn">
                                     <span>อัพโหลดรูปภาพ</span>
-                                    <input type="file" multiple required>
+                                    <input type="file" multiple>
                                 </div>
                                 <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" name="carimage" required placeholder="Upload one or more files">
+                                    <input class="file-path validate" type="text" placeholder="Upload one or more files" required>
                                 </div>
                             </div>
                         <!-- </form> -->

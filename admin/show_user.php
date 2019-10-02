@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 } else {
-    header("location:login.php");
+    header("location:./../login.php");
 }
 require './../server.php';
 $sql = "SELECT * FROM user WHERE user.role = 'user'";
@@ -91,15 +91,15 @@ $result = mysqli_query($connect, $sql);
                             <td><?php echo $row['rank'] ?></td>
                             <td><?php echo $row['department'] ?></td>
                             <td>
-                                <a>
-                                    <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                                <a href="edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                                    <button type="submit" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                         <i class="material-icons right">border_color</i>
                                     </button>
                                 </a>
                             </td>
                             <td>
                                 <a>
-                                    <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
+                                    <button id="lob" type="submit" class="btn red accent-4-effect red accent-4-light">ลบ
                                         <i class="material-icons right">close</i>
                                     </button>
                                 </a>
