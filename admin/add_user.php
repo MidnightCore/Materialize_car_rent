@@ -26,7 +26,7 @@ if (isset($_SESSION['id'])) {
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
 
-    <title>เพิ่มข้อมูลผู้ใช้</title>
+    <title>Add User</title>
 </head>
 
 <body>
@@ -59,7 +59,7 @@ if (isset($_SESSION['id'])) {
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<br></h5>
+                    <h5 class="text-center">เพิ่มข้อมูล User<br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 

@@ -26,7 +26,7 @@ if (isset($_SESSION['id'])) {
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
 
-    <title>เพิ่มข้อมูล Approver</title>
+    <title>Add Approver</title>
 </head>
 
 <body>

@@ -29,7 +29,7 @@ $result = mysqli_query($connect, $search);
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
 
-    <title>เพิ่มข้อมูลคนขับรถ</title>
+    <title>Add Car</title>
 </head>
 
 <body>
