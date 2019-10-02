@@ -76,7 +76,7 @@ if ($alert == 1) {
         <br>
         <div class="row">
             <div class="col 6">
-                <h4>รายชื่อ User</h4>
+                <h4>รายชื่อบัญชีผู้ใช้ทั้งหมด</h4>
             </div>
             <br>
             <!-- <div class="col 6">
