@@ -53,7 +53,7 @@
                     <!-- <h2>ใส่ช่อง ลายเซ็น(เก็บเป็นรูป)<br>
                         กับช่องยศของ appprover คนนั้นว่าอยู่ยศไหน<br>
                         เพื่อจะเอาไปเก็บในเบสว่าเค้าอยู่ยศไหน</h2> -->
-                    <h5 class="text-center">เพิ่มข้อมูลผู้ใช้<br></h5>
+                    <h5 class="text-center">เพิ่มข้อมูล Approver<br></h5>
 
                 </div>
             </div><!-- จบหัวกระดาษ -->
@@ -110,7 +110,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input name="rank_approver" id="rank_approver" type="text" class="validate" required>
-                            <label for="rank">Rank Approver</label>
+                            <label for="rank_approver">Rank Approver</label>
                         </div>
                         <!-- <div class="input-field col s6">
                             <input name="license" id="license" type="text" class="validate" required>
