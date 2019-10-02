@@ -4,17 +4,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ประวัติการใช้งาน</title>
-
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <title>สถานะปัจจุบัน</title>
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
 <body>
@@ -40,46 +40,6 @@
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-
-
-
-    <div class="container">
-        <br>
-        <h4>ประวัติการเดินทางของฉัน</h4><br>
-        <table class="responsive-table">
-            <thead>
-                <tr>
-                    <th>วันที่จอง</th>
-                    <th>รถที่ใช้</th>
-                    <th>ทะเบียนรถ</th>
-                    <th>ปลายทาง</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>01-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>กน1234</td>
-                    <td>มหาวิทยาลัยเอแบค</td>
-                </tr>
-                <tr>
-                    <td>03-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>มส5678</td>
-                    <td>โรงเรียนวัดคูบัว จังหวัดราชบุรี</td>
-                </tr>
-                <tr>
-                    <td>05-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>ดป6389</td>
-                    <td>หมู่บ้านเด็ก จังหวัดกาญจนบุรี</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
 
 </body>
 

@@ -44,7 +44,7 @@
 
     <div class="container">
         <br>
-        <h3>สถานะคำขอ</h3><br>
+        <h4>สถานะคำขอ</h4><br>
         <table class="responsive-table">
             <thead>
                 <tr>
@@ -63,7 +63,7 @@
                     <td>กน1234</td>
                     <td>มหาวิทยาลัยเอแบค</td>
                     <td>
-                        <form action="" method="post">
+                        <form action="checkstatus_now.php" method="post">
                             <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
                             <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
                         </form>
@@ -75,7 +75,7 @@
                     <td>มส5678</td>
                     <td>โรงเรียนวัดคูบัว จังหวัดราชบุรี</td>
                     <td>
-                        <form action="" method="post">
+                        <form action="checkstatus_now.php" method="post">
                             <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
                             <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
                         </form>
@@ -87,7 +87,7 @@
                     <td>ดป6389</td>
                     <td>หมู่บ้านเด็ก จังหวัดกาญจนบุรี</td>
                     <td>
-                        <form action="" method="post">
+                        <form action="checkstatus_now.php" method="post">
                             <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
                             <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
                         </form>
