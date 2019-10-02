@@ -3,17 +3,15 @@ session_start();
 require "server.php";
 // $today = date("Y-m-j H:i:s");
 // echo$today."<br>";
-$user_id = $_SESSION['id'];
-
-if(isset($_POST['note']))
-{
+if(isset($_SESSION['id'])){
+    $user_id = $_SESSION['id'];
+   if(isset($_POST['note'])){
     $note = $_POST['note'];
+    }else{
+    $note = " ";
+    } 
 }
 
-else
-{
-    $note = " ";
-}
 
 function DateTimeDiff($strDateTime1,$strDateTime2)
 {

@@ -3,6 +3,7 @@ require './../server.php';
 session_start();
 if($_SESSION['id']){
 $user_id = base64_decode($_GET['user']);
+// echo$user_id;
 }else{
     header("location:./../login.php");
     exit();
@@ -55,7 +56,7 @@ $row = mysqli_fetch_array($result);
     </nav>
 
 
-    <form action="add_user2.php" id="ee" method="POST">
+    <form action="edit_user_form.php" id="ee" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
@@ -67,7 +68,7 @@ $row = mysqli_fetch_array($result);
 
             <div class="row">
                 <div class="col s12">
-                    <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
+                    <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง <input type="hidden" name="user_id" value="<?php echo$user_id ?>"></h6>
                     <div class="row">
                         <div class="input-field col s6">
                             <input name="first_name" id="first_name" type="text" class="validate" value="<?php echo$row['fname'] ?>">

@@ -56,7 +56,7 @@ $row = mysqli_fetch_array($result);
     </nav>
 
 
-    <form action="add_user2.php" id="ee" method="POST">
+    <form action="edit_user_form.php" id="ee" method="POST">
 
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">

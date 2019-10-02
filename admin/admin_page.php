@@ -16,7 +16,10 @@ if (isset($_GET['alert'])) {
     $alert = $_GET['alert'];
 }
 if ($alert == 1) {
-    echo "<script>alert('เพิ่มข้อมูลเรียนร้อยแล้วค่ะ');</script>";
+    echo "<script>alert('เพิ่มข้อมูลเรียบร้อยแล้วค่ะ');</script>";
+}else if($alert == 2){
+    echo "<script>alert('แก้ไขข้อมูลเรียบร้อยแล้วค่ะ');</script>";
+
 }
 ?>
 

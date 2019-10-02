@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 } else {
-    header("location:login.php");
+    header("location:./../login.php");
 }
 require './../server.php';
 $sql = "SELECT license,fname,lname,phone,user.id
