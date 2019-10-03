@@ -21,6 +21,7 @@ if ($alert == 1) {
     echo "<script>alert('แก้ไขข้อมูลเรียบร้อยแล้วค่ะ');</script>";
 
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -114,11 +115,11 @@ if ($alert == 1) {
                         <td><?php echo $row['rank'] ?></td>
                         <td><?php echo $row['department'] ?></td>
                         <td>
-                            <a>
-                                <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
-                                    <i class="material-icons right">border_color</i>
-                                </button>
-                            </a>
+                        <a href="form_edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                                    <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                                        <i class="material-icons right">border_color</i>
+                                    </button>
+                                </a>
                         </td>
                         <td>
                             <a>

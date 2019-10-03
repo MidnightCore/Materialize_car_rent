@@ -2,8 +2,8 @@
 session_start();
 
   $em_User       = $_POST['em_User'];
-  // $em_Password   = md5($_POST['em_Password']);
-  $em_Password   = $_POST['em_Password'];
+  $em_Password   = md5($_POST['em_Password']);
+  // $em_Password   = $_POST['em_Password'];
 
   require 'server.php';
 
