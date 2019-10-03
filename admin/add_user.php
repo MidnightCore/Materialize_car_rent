@@ -1,127 +1,61 @@
 <?php
-require './../server.php';
 session_start();
-if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-} else {
+require "./../server.php";
+if(isset($_SESSION['id'])){
+    if(isset($_POST['license']) && isset($_POST['rank_approver'])){
+        $license = $_POST['license'];
+        $rank_approver = $_POST['rank_approver'];
+        
+    }else if(isset($_POST['image'])){
+        $image = $_POST['image'];
+    }
+}else{
     header("location:./../login.php");
     exit();
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
+$first_name     = $_POST['first_name'];
+$last_name      = $_POST['last_name'];
+$user_id        = $_POST['user_id'];
+$user_password  = md5($_POST['user_password']);
+$Phone_num      = $_POST['Phone_num'];
+$user_email     = $_POST['user_email'];
+$Role           = $_POST['role'];
+$rank = $_POST['rank'];
+$department = $_POST['department'];
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+$search = "SELECT id FROM user WHERE user.id='$user_id'";
+$sql = "INSERT INTO `user`(`fname`, `lname`, `id`, `password`, 
+        `Phone`, `email` , `role`,`rank`,`department`) 
+        VALUES ('$first_name','$last_name','$user_id','$user_password','$Phone_num',
+        '$user_email','$Role','$rank','$department')";
 
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="../js/materialize.js"></script>
-    <script src="../js/init.js"></script>
-
-    <title>Add User</title>
-</head>
-
-<body>
-    <nav class="teal lighten-3" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="admin_page.php" class="brand-logo">Admin Page</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="show_user.php">ข้อมูลUser</a></li>
-                <li><a href="show_approver.php">ข้อมูลApprover</a></li>
-                <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
-                <li><a href="#">ตรวจสถานะคำร้อง</a></li>
-                <li><a href="../login.php">ออกจากระบบ</a></li>
-            </ul>
-            <ul id="nav-mobile" class="sidenav"><br><br>
-                <li><a href="show_user.php">ข้อมูลUser</a></li>
-                <li><a href="show_approver.php">ข้อมูลApprover</a></li>
-                <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
-                <li><a href="#">ตรวจสถานะคำร้อง</a></li>
-                <li><a href="../login.php">ออกจากระบบ</a></li>
-            </ul>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-
-
-    <form action="add_user2.php" id="ee" method="POST">
-        <input type="hidden" name="role" value="user">
-        <!-- เริ่มต้นแบบฟอร์ม -->
-        <div class="container">
-            <!-- หัวกระดาษ -->
-            <div class="content border border-secondary mt-3 pb-1 pt-1">
-                <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูล User<br></h5>
-                </div>
-            </div><!-- จบหัวกระดาษ -->
-
-            <div class="row">
-                <div class="col s12">
-                    <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate">
-                            <label for="first_name">ชื่อจริง</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate">
-                            <label for="last_name">นามสกุล</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="user_id" id="user_id" type="text" class="validate">
-                            <label for="user_id">ชื่อผู้ใช้</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="user_password" id="user_password" type="text" class="validate">
-                            <label for="user_password">รหัสผ่าน</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="Phone_num" id="Phone_num" type="text" class="validate">
-                            <label for="Phone_num">เบอร์โทรศัพท์</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="user_email" id="user_email" type="text" class="validate">
-                            <label for="user_email">อีเมลล์</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate">
-                            <label for="rank">Rank</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="department" id="department" type="text" class="validate">
-                            <label for="department">Department</label>
-                        </div>
-                    </div>
-                    <script>
-                        $(document).ready(function() {
-                            $('select').formSelect();
-                        });
-                    </script>
-
-                </div>
-            </div>
-        </div>
-    </form>
-    <div class="center-align">
-        <button type="submit" form="ee" class="btn waves-effect waves-light">ยืนยัน
-            <i class="material-icons right">done</i>
-        </button>
-    </div>
-<br><br>
-</body>
-
-</html>
+if (mysqli_query($connect,$sql)){
+    $searchrole = "SELECT user.role FROM user WHERE user.id = '$user_id'";
+    $resultrole = mysqli_query($connect, $searchrole);
+    $rowrole = mysqli_fetch_array($resultrole);
+    if($rowrole['role'] == 'user'){
+        header("location:admin_page.php?alert=1");    
+        exit();
+    }else if($rowrole['role'] == 'approver'){
+        $insert_approver ="INSERT INTO `approver`(`user_id`, `license`,  `rank`) VALUES ('$user_id', '$license', '$rank_approver')";
+        if(mysqli_query($connect, $insert_approver)){
+            header("location:admin_page.php?alert=1");    
+            exit();
+        }  
+    }else if($rowrole['role'] == 'driver'){
+        $insert_driver = "INSERT INTO `driver`(`id`, `user_id`, `image`) VALUES(NULL, '$user_id', '$image')";
+        if(mysqli_query($connect, $insert_driver)){
+            header("location:admin_page.php?alert=1");    
+            exit();
+        }
+    }else{
+    echo "<script>alert('คุณคือ admin');history.back();</script>";
+    }
+} 
+else {
+    if(mysqli_query($connect,$search)){
+    echo "<script>alert('ชื่อผู้ใช้นี้มีคนใช้แล้วค่ะ');history.back();</script>";
+    }else{
+    echo "<script>alert('กรอกข้อมูลไม่ถูกต้องกรุณากรอกใหม่ค่ะ');history.back();</script>";
+    }
+}

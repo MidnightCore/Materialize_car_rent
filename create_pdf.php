@@ -86,7 +86,7 @@ if (isset($_POST["create_pdf"])) {
             <a id="logo-container" href="index.php" class="brand-logo">Home</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
+                <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
                 <li><a href="login.php">ออกจากระบบ</a></li>
@@ -95,7 +95,7 @@ if (isset($_POST["create_pdf"])) {
             <ul id="nav-mobile" class="sidenav">
                 <br><br>
                 <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
+                <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
                 <li><a href="login.php">ออกจากระบบ</a></li>

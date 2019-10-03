@@ -2,7 +2,7 @@
 require './../server.php';
 session_start();
 if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
+    $role = base64_decode($_GET['cmVzdV9yb2xl']);
 } else {
     header("location:./../login.php");
     exit();
@@ -26,7 +26,7 @@ if (isset($_SESSION['id'])) {
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
 
-    <title>Add Driver</title>
+    <title>Add User</title>
 </head>
 
 <body>
@@ -52,17 +52,14 @@ if (isset($_SESSION['id'])) {
     </nav>
 
 
-    <form action="add_user2.php" id="ee" method="POST">
-
+    <form action="add_user.php" id="ee" method="POST">
+        <input type="hidden" name="role" value="user">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <!-- <h2>เพิ่มใส่รูปช่องคนขับรถงับ<br>เก็บเป็นไฟล์ -->
-                    </h2>
-        
-                    <h5 class="text-center">เพิ่มข้อมูลคนขับรถ<input type="hidden" name="role" value="driver"><br></h5>
+                    <h5 class="text-center">เพิ่มข้อมูล User<br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
@@ -71,48 +68,45 @@ if (isset($_SESSION['id'])) {
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate" required>
+                            <input name="first_name" id="first_name" type="text" class="validate">
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate"required>
+                            <input name="last_name" id="last_name" type="text" class="validate">
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="user_id" id="user_id" type="text" class="validate"required>
+                            <input name="user_id" id="user_id" type="text" class="validate">
                             <label for="user_id">ชื่อผู้ใช้</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_password" id="user_password" type="text" class="validate"required>
+                            <input name="user_password" id="user_password" type="text" class="validate">
                             <label for="user_password">รหัสผ่าน</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="Phone_num" id="Phone_num" type="text" class="validate"required>
+                            <input name="Phone_num" id="Phone_num" type="text" class="validate">
                             <label for="Phone_num">เบอร์โทรศัพท์</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_email" id="user_email" type="text" class="validate"required>
+                            <input name="user_email" id="user_email" type="text" class="validate">
                             <label for="user_email">อีเมลล์</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate"required>
+                            <input name="rank" id="rank" type="text" class="validate">
                             <label for="rank">Rank</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="department" id="department" type="text" class="validate"required>
+                            <input name="department" id="department" type="text" class="validate">
                             <label for="department">Department</label>
                         </div>
                     </div>
-
-                    <!-- <input type="text" name="image" id=""> -->
-
-                    <form action="#">
+                    <?php if($role == 'driver'){?>
                         <div class="file-field input-field" >
                             <div class="btn">
                                 <span>อัพโหลดรูปภาพ</span>
@@ -122,14 +116,25 @@ if (isset($_SESSION['id'])) {
                                 <input class="file-path validate" name="image" type="text" placeholder="Upload one or more files"required>
                             </div>
                         </div>
-                    </form>
-
-
-
-
-
-
-
+                   <?php }else if($role == 'approver'){?>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="rank_approver" id="rank_approver" type="text" class="validate" required>
+                            <label for="rank_approver">Rank Approver</label>
+                        </div>
+                        <div class="input-field col s12">
+                                <div class="file-field input-field" id="license">
+                                    <div class="btn">
+                                        <span>อัพโหลดรูปลายเซ็นต์</span>
+                                        <input type="file" multiple class="validate" required>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Upload License" name="license" required>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                  <?php } ?>
                     <script>
                         $(document).ready(function() {
                             $('select').formSelect();
@@ -144,11 +149,8 @@ if (isset($_SESSION['id'])) {
         <button type="submit" form="ee" class="btn waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
         </button>
-        <!-- <button type="" form="" class="btn red darken-4-effect red darken-4-light">ลบข้อมูล
-            <i class="material-icons right">delete_forever</i>
-        </button> -->
     </div>
-    <br><br>
+<br><br>
 </body>
 
 </html>

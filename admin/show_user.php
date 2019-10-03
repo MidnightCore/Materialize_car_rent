@@ -6,7 +6,7 @@ if (isset($_SESSION['id'])) {
     header("location:./../login.php");
 }
 require './../server.php';
-$sql = "SELECT * FROM user WHERE user.role = 'user'";
+$sql = "SELECT * FROM user WHERE user.role = 'user' ORDER BY user.fname ASC";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ $result = mysqli_query($connect, $sql);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="add_user.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม user</a>
+                    <a href="form_add_user.php?<?php echo base64_encode("resu_role") ?>=<?php echo base64_encode("user") ?>&?!@$!@$asfqegg12#$&$^2=<?php echo base64_decode("sadgqeghyef") ?>" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม user</a>
                 </div>
             </div>
             <div class="col 6">
@@ -91,7 +91,7 @@ $result = mysqli_query($connect, $sql);
                             <td><?php echo $row['rank'] ?></td>
                             <td><?php echo $row['department'] ?></td>
                             <td>
-                                <a href="edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                                <a href="form_edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
                                     <button type="submit" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                         <i class="material-icons right">border_color</i>
                                     </button>

@@ -6,7 +6,7 @@ if (isset($_SESSION['id'])) {
     header("location:./../login.php");
 }
 require './../server.php';
-$sql = "SELECT fname,lname,phone,user.id,image FROM user,driver WHERE user.role = 'driver' AND user.id = driver.user_id";
+$sql = "SELECT fname,lname,phone,user.id,image FROM user,driver WHERE user.role = 'driver' AND user.id = driver.user_id ORDER BY user.fname ASC";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -53,7 +53,9 @@ $result = mysqli_query($connect, $sql);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                    <a href="add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มคนขับรถ</a>
+                <a href="form_add_user.php?<?php echo base64_encode("resu_role") ?>=<?php echo base64_encode("driver") ?>&?!@$!@$asfqegg12#$&$^2=<?php echo base64_decode("sadgqeghyef") ?>" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่ม driver</a>
+
+                    <!-- <a href="add_driver.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มคนขับรถ</a> -->
                     <!-- ปุ่มดูคนขับ  ปุ่มดูรถที่มี -->
                 </div>
             </div>
@@ -86,7 +88,7 @@ $result = mysqli_query($connect, $sql);
                             <td><?php echo $row['phone'] ?></td>
                             <td><?php echo $row['image'] ?></td>
                             <td>
-                            <a href="edit_driver.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                            <a href="form_edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
                             
                                     <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                         <i class="material-icons right">border_color</i>

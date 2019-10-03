@@ -54,7 +54,7 @@ $row = mysqli_fetch_array($result);
             <div class="col 6">
                 <br><br>
                 <div style="text-align:left">
-                <a href="add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มรถ</a>
+                <a href="form_add_car.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มรถ</a>
                     <!-- ปุ่มดูคนขับ  ปุ่มดูรถที่มี -->
                 </div>
             </div>
@@ -89,7 +89,7 @@ $row = mysqli_fetch_array($result);
                             <td><?php echo $row['version'] ?></td>
                             <td><?php echo $row['license'] ?></td>
                             <td>
-                            <a href="edit_car.php?user=<?php echo base64_encode($row['license']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
+                            <a href="form_edit_car.php?user=<?php echo base64_encode($row['license']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
                                     <button type="submit" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
                                         <i class="material-icons right">border_color</i>
                                     </button>

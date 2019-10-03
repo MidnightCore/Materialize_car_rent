@@ -3,6 +3,12 @@
     session_start();
     if(isset($_SESSION['id'])){
         $user_id = $_SESSION['id'];
+        if(isset($_GET['alert'])){
+            $alert = $_GET['alert'];
+            if($alert == 1){
+                echo "<script>alert('เพิ่มข้อมูลเรียบร้อยแล้วค่ะ');</script>";
+            }
+        }
     }else{
         $user_id = 0;
     }
@@ -37,7 +43,7 @@
             <a id="logo-container" href="index.php" class="brand-logo">Home</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
+                <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
                 <?php if($user_id == 0){?>
@@ -57,7 +63,7 @@
             <ul id="nav-mobile" class="sidenav">
                 <br><br>
                 <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="rentform.php">แบบฟอร์มจองรถ</a></li>
+                <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
                 <li><a href="login.php">ออกจากระบบ</a></li>
@@ -77,7 +83,7 @@
                     </h6>
                 </div>
                 <div class="row center">
-                    <a href="rentform.php" id="download-button"
+                    <a href="form_rentform.php" id="download-button"
                         class="btn-large waves-effect waves-light teal lighten-1 z-depth-4">Get
                         Started</a>
                 </div>

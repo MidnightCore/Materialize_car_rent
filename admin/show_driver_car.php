@@ -11,7 +11,7 @@ FROM user,driver
 LEFT JOIN car
 ON driver.id = car.driver_id
 WHERE user.id=driver.user_id
-ORDER BY license DESC";
+ORDER BY license DESC,user.fname ASC";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>

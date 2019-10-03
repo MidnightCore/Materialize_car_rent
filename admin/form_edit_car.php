@@ -1,19 +1,15 @@
-<?php  
+<?php
 require './../server.php';
 session_start();
-if(isset($_GET['driver'])){
-    $id = base64_decode($_GET['driver']);
-}else{
-    header("location:login.php");
-    exit();    
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+} else {
+    header("location:./../login.php");
+    exit();
 }
-$search ="SELECT fname,lname,id FROM user WHERE user.role = 'driver'AND user.id = '$id'";
-$result = mysqli_query($connect,$search);
+$sql = "SELECT color,brand,image,version,license,id FROM car";
+$result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_array($result);
-
-$searchcar = "SELECT license FROM car WHERE driver_id IS NULL";
-$resultcar = mysqli_query($connect, $searchcar);
-
 ?>
 
 <!DOCTYPE html>
@@ -43,11 +39,6 @@ $resultcar = mysqli_query($connect, $searchcar);
             <a id="logo-container" href="admin_page.php" class="brand-logo">Admin Page</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="admin_page.php">กลับ</a></li>
-                <!-- <li><a href="admin_add_user.php">เพิ่มข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_edit_user.php">แก้ไขข้อมูลผู้ใช้</a></li>
-                <li><a href="admin_add_driver.php">เพิ่มข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_edit_driver.php">แก้ไขข้อมูลคนขับรถ</a></li>
-                <li><a href="admin_check_status.php">ตรวจสถานะคำร้อง</a></li> -->
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav">
@@ -62,46 +53,50 @@ $resultcar = mysqli_query($connect, $searchcar);
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-
-
-    <!-- <form action="add_driver2.php" id="ee" method="POST"> -->
+    <form action="edit_car.php" id="ee" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4">
-                    <h5 class="text-center">เพิ่มข้อมูลคนขับรถ<br></h5>
+                    <h5 class="text-center">แก้ไขข้อมูลรถ<input type="hidden" name="id" value="<?php echo$row['id'] ?>"><br></h5>
                 </div>
             </div><!-- จบหัวกระดาษ -->
 
             <div class="row">
-            <div class="input-field col s12">
-                            <?php echo"ชื่อ : ".$row['fname']." ".$row['lname'] ?>
+                <div class="col s12">
+                    <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input name="car_brand" id="car_brand" type="text" class="validate" value="<?php echo$row['brand'] ?>" required>
+                            <label for="car_brand">ยี่ห้อ</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input name="car_version" id="car_version" type="text" class="validate" value="<?php echo$row['version'] ?>" required>
+                            <label for="car_version">รุ่น</label>
+                        </div>
                     </div>
-            </div>
-        </div>
-    <!-- </form> -->
-    
-
-
-
-
-
-    <form action="add_cartodriver.php" id="ee" method="POST">
-        <!-- เริ่มต้นแบบฟอร์ม -->
-        <div class="container">
-            <!-- หัวกระดาษ -->
-            <div class="input-field col s12">
-                        <select name="cartodriver" required>
-                        <option disabled selected>เลือกรถ</option>
-                            <?php while($rowcar = mysqli_fetch_array($resultcar)) { ?>
-                                <option> <?php echo $rowcar['license'] ?> </option>
-
-                            <?php } ?>
-                        </select>
-                    </div><!-- จบหัวกระดาษ -->
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input name="car_color" id="car_color" type="text" class="validate" value="<?php echo$row['color'] ?>" required>
+                            <label for="car_color">สีของรถ</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input name="car_number" id="car_number" type="text" class="validate" value="<?php echo$row['license'] ?>" required>
+                            <label for="car_number">ทะเบียนรถ</label>
+                        </div>
                     </div>
-                    <input type="hidden" name="id" value="<?php echo base64_encode($id) ?>">
+                        
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>อัพโหลดรูปภาพ</span>
+                                    <input type="file" multiple>
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" name="carimage" placeholder="Upload one or more files" required>
+                                </div>
+                            </div>
+                        <!-- </form> -->
                 </div>
             </div>
         </div>
@@ -113,11 +108,10 @@ $resultcar = mysqli_query($connect, $searchcar);
        
     </div><br><br><br>
     <script>
-                        
-                        $(document).ready(function() {
-                            $('select').formSelect();
-                        });
-                    </script>
+        $(document).ready(function() {
+            $('select').formSelect();
+        });
+    </script>
 </body>
 
 </html>
