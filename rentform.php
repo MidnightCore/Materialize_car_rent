@@ -40,6 +40,7 @@ $references_id = $_POST['references_id'];
 $sql = "INSERT INTO `rent_form`(`user_id`, `request`, `place`, `count`, `people`, `date_go`, `date_back`, `phone`,`note`,`references_id`) VALUES ('$user_id', '$request', '$place', '$county', '$people', '$date_time_go', '$date_time_back', '$phone', '$note', '$references_id')";
 
 if ($result = mysqli_query($connect,$sql)) {
+    
     header("location:index.php?alert=1"); 
     exit();   
 }
