@@ -53,7 +53,7 @@ if (isset($_SESSION['id'])) {
 
 
     <form action="add_user.php" id="ee" method="POST">
-        <input type="hidden" name="role" value="user">
+        <input type="hidden" name="role" value="<?PHP echo$role ?>">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             <!-- หัวกระดาษ -->
@@ -68,41 +68,41 @@ if (isset($_SESSION['id'])) {
                     <h6><b>กรุณา</b> กรอกข้อมูลทั้งหมดตามความเป็นจริง</h6>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="validate">
+                            <input name="first_name" id="first_name" type="text" class="validate" required>
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="validate">
+                            <input name="last_name" id="last_name" type="text" class="validate" required>
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="user_id" id="user_id" type="text" class="validate">
+                            <input name="user_id" id="user_id" type="text" class="validate" required>
                             <label for="user_id">ชื่อผู้ใช้</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_password" id="user_password" type="text" class="validate">
+                            <input name="user_password" id="user_password" type="text" class="validate" required>
                             <label for="user_password">รหัสผ่าน</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="Phone_num" id="Phone_num" type="text" class="validate">
+                            <input name="Phone_num" id="Phone_num" type="text" class="validate" required>
                             <label for="Phone_num">เบอร์โทรศัพท์</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="user_email" id="user_email" type="text" class="validate">
+                            <input name="user_email" id="user_email" type="text" class="validate" required>
                             <label for="user_email">อีเมลล์</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="rank" id="rank" type="text" class="validate">
+                            <input name="rank" id="rank" type="text" class="validate" required>
                             <label for="rank">Rank</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="department" id="department" type="text" class="validate">
+                            <input name="department" id="department" type="text" class="validate" required>
                             <label for="department">Department</label>
                         </div>
                     </div>

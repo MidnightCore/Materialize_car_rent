@@ -4,15 +4,18 @@ if (isset($_SESSION['id'])) {
     $user_id = $_SESSION['id'];
 } else {
     header("location:login.php");
+    exit();
 }
 require './server.php';
 
 $sql = "SELECT user.fname,user.lname,phone,user.rank,department FROM user WHERE user.id='$user_id'";
 $result = mysqli_query($connect, $sql);
 $name = mysqli_fetch_array($result);
-// print_r($name);
 date_default_timezone_set("Asia/Bangkok");
 $today = date("Y-m-j H:i:s");
+
+$references_id = "SELECT fname,lname,id FROM user WHERE role = 'user' ORDER BY fname ASC";
+$result_references = mysqli_query($connect, $references_id);
 ?>
 
 
@@ -124,8 +127,17 @@ $today = date("Y-m-j H:i:s");
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
-                    <p>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)<input type="text" class="" name="references_id" required></p>
+                    <!-- <p>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)<input type="text" class="" name="references_id" required></p> -->
+                    <div class="input-field"><br><br>
+                            <select type="text" name="references_id" class="people_num" required>
+                                <option value="" disabled selected>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)</option>
 
+                                    <?php while($row_rfr = mysqli_fetch_array($result_references)){?>
+                                <option value="<?php echo$row_rfr['fname']." ".$row_rfr['lname'] ?>"><?php echo$row_rfr['fname']." ".$row_rfr['lname'] ?></option>
+                                    <?php } ?>
+                            </select>
+                            <label>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)</label>
+                        </div>
                     <div class="row">
                         <div class="input-field col s6">
                             <input name="rank" id="rank" type="text" class="validate" value="<?php echo $name['rank'] ?>" required readonly>

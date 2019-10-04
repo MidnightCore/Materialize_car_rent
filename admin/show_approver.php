@@ -6,7 +6,9 @@ if (isset($_SESSION['id'])) {
     header("location:./../login.php");
 }
 require './../server.php';
-$sql = "SELECT * FROM user WHERE user.role = 'approver' ORDER BY user.fname ASC";
+$sql = "SELECT fname, lname, role, approver.rank AS ap_rank, email, phone, department, user.id 
+FROM user,approver
+WHERE user.id = approver.user_id AND user.role = 'approver'";
 $result = mysqli_query($connect, $sql);
 ?>
 <!DOCTYPE html>
@@ -74,7 +76,7 @@ $result = mysqli_query($connect, $sql);
                         <th>role</th>
                         <th>email</th>
                         <th>phone</th>
-                        <th>rank</th>
+                        <th>rank approver</th>
                         <th>department</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -90,7 +92,7 @@ $result = mysqli_query($connect, $sql);
                             <td><?php echo $row['role'] ?></td>
                             <td><?php echo $row['email'] ?></td>
                             <td><?php echo $row['phone'] ?></td>
-                            <td><?php echo $row['rank'] ?></td>
+                            <td><?php echo $row['ap_rank'] ?></td>
                             <td><?php echo $row['department'] ?></td>
                             <td>
                                 <a href="form_edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">

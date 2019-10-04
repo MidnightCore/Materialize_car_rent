@@ -38,16 +38,22 @@ $department = $_POST['department'];
     }else if($rowrole['role'] == 'approver'){
         $update_approver = "UPDATE user SET `fname` = '$first_name', `lname` = '$last_name', `phone` = '$Phone_num', `email` = '$user_email', `rank` = '$rank', `department` = '$department' WHERE user.id = '$user_id'";
         if(mysqli_query($connect, $update_approver)){
-            $update_tb_ap = "UPDATE approver SET `license` = '$license', `rank` = '$rank_approver'";
-            header("location:admin_page.php?alert=2");    
-            exit();
+            $update_tb_ap = "UPDATE approver SET `license` = '$license', `rank` = '$rank_approver' WHERE approver.user_id = '$user_id'";
+            if(mysqli_query($connect, $update_tb_ap)){
+                header("location:admin_page.php?alert=2");    
+                exit();
+            }
+            
         }  
     }else if($rowrole['role'] == 'driver'){
         $update_driver = "UPDATE user SET `fname` = '$first_name', `lname` = '$last_name', `phone` = '$Phone_num', `email` = '$user_email', `rank` = '$rank', `department` = '$department' WHERE user.id = '$user_id'";
         if(mysqli_query($connect, $update_driver)){
-            $update_driver = "UPDATE driver SET `image` = '$image'";
-            header("location:admin_page.php?alert=2");    
-            exit();
+            $update_driver = "UPDATE driver SET `image` = '$image' WHERE driver.user_id = '$user_id'";
+            if(mysqli_query($connect, $update_driver)){
+                header("location:admin_page.php?alert=2");    
+                exit();
         }
+            }
+            
     }
 ?> 
