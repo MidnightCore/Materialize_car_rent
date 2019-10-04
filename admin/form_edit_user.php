@@ -58,14 +58,14 @@ if($rowr['role'] == 'user'){
                 <li><a href="show_user.php">ข้อมูลUser</a></li>
                 <li><a href="show_approver.php">ข้อมูลApprover</a></li>
                 <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
-                <li><a href="#">ตรวจสถานะคำร้อง</a></li>
+                <li><a href="request_form.php">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav"><br><br>
                 <li><a href="show_user.php">ข้อมูลUser</a></li>
                 <li><a href="show_approver.php">ข้อมูลApprover</a></li>
                 <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
-                <li><a href="#">ตรวจสถานะคำร้อง</a></li>
+                <li><a href="request_form.php">ตรวจสถานะคำร้อง</a></li>
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
