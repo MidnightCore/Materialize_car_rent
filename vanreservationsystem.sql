@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2019 at 08:23 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Oct 04, 2019 at 10:41 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -57,7 +57,7 @@ CREATE TABLE `approve_form` (
   `approver_id` int(11) NOT NULL,
   `status` text NOT NULL,
   `note` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -82,15 +82,14 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`id`, `driver_id`, `color`, `brand`, `image`, `version`, `license`) VALUES
-(16, 1, 'sdfsdf', '111111111111111', '10.png', 'sdfsdf', 'sdfsdf'),
-(17, NULL, 'sdfsdf', 'sdfsdf', '', 'sdfsdf', 'sdfsdfaaa'),
-(18, 2, 'ฟหก', 'ฟหก', '', 'ฟหก', '500'),
-(19, 3, 'ฟหกฟหด', 'ไไไๆฟหก', '', 'ฟหดฟหด545', '588'),
-(20, NULL, 'back', 'asf', 'palm.txt', '8788', 'asf-45'),
-(21, NULL, 'qwf', 'qqq', '', 'awf', 'qefqw-9897'),
-(22, NULL, 'asvsdb', 'qqwf', 'palm.txt', 'asfgfnf', 'sfdbad'),
-(23, NULL, 'asfas', 'asd', '161EE78B-EB55-4D74-B103-60B912663249.mov', 'asfga', 'ghg2154'),
-(24, NULL, 'rrr', 'rrf', '2.png', 'rrr', 'rrr');
+(16, 1, 'Black', 'Toyata', '10.png', 'RTX-1060', 'No.1235-711-744-9980-1'),
+(17, NULL, 'Dark Red', 'Nissan', '', 'GTX-1660 Ti', 'No.1235-711-744-9980-2'),
+(18, 2, 'Deep Blue', 'Honda', '', 'GTX-1050', 'No.1235-711-744-9980-3'),
+(20, NULL, 'Black', 'Honda', 'palm.txt', 'GTX-1050 Ti', 'No.1235-711-744-9980-4'),
+(21, NULL, 'White', 'Honda', '', 'Sky Active 2018', 'No.1235-711-744-9980-5'),
+(22, NULL, 'Red', 'Mazda', 'palm.txt', 'Unite 3 2019', 'No.1235-711-744-9980-6'),
+(23, NULL, 'Black', 'Susuki', '161EE78B-EB55-4D74-B103-60B912663249.mov', 'GTX-1650', 'No.1235-711-744-9980-7'),
+(24, NULL, 'Dark Gray', 'BMW', '2.png', 'intel onboard', 'No.1235-711-744-9980-8');
 
 -- --------------------------------------------------------
 
@@ -111,7 +110,6 @@ CREATE TABLE `driver` (
 INSERT INTO `driver` (`id`, `user_id`, `image`) VALUES
 (1, 'singq', ''),
 (2, 'qqqfff', ''),
-(3, 'qwe', ''),
 (4, 'ฟฟฟฟ', 'หฟแดฟห'),
 (5, 'ฟฟฟฟ555', 'ฟหดฟห'),
 (6, 'aaaoopp', 'palm.txt');
@@ -146,8 +144,8 @@ CREATE TABLE `rent_form` (
   `date_back` datetime NOT NULL,
   `note` text NOT NULL,
   `phone` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `references_id` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -174,22 +172,21 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `password`, `fname`, `lname`, `role`, `email`, `phone`, `rank`, `department`) VALUES
-('111', '698d51a19d8a121ce581499d7b701668', 'asd', 'fbgd', 'approver', 'asfaf', 'asdasd', '1', '1'),
-('123', '202cb962ac59075b964b07152d234b70', 'asd', 'asdasd', 'user', 'ASD', 'ASD', '1', 'ASD'),
-('12355', '7694f4a66316e53c8cdd9d9954bd611d', 'qq', 'qq', 'admin', 'q', 'q', 'q', 'q'),
-('222', 'bcbe3365e6ac95ea2c0343a2395834dd', 'palm', 'palm', 'approver', 'palmllmap', '0895688955', 'asfasf', 'asdas'),
-('333', '310dcbbf4cce62f762a2aaa148d556bd', 'plmap', 'palm', 'approver', 'palmooeq', '8454154', '3', 'palmladmf'),
-('444', '550a141f12de6341fba65b0ad0433500', 'aaab', 'aaslmv', 'approver', 'ladmvlkm', 'palmlaslm', '4', 'l,dmv;l'),
-('aaaoopp', '47bce5c74f589f4867dbd57e9ca9f808', 'qwe', 'qwr', 'driver', 'qwr', 'qwr', 'qwr', 'qwr'),
-('admin', '21232f297a57a5a743894a0e4a801fc3', '', '', 'admin', '', '', '', ''),
-('palm', '82051c7417e1a7921e72d101a64f96bf', 'awsdsaf', 'asdasd', 'user', 'asd', 'asc', 'asfasf', 'asfasf'),
-('qqqfff', '343d9040a671c45832ee5381860e2996', 'fff', 'ff', 'driver', 'fff', 'fffaojnfvajdvn', 'fff', 'fff'),
-('qwe', 'qqwe', 'qwe', 'qwewqwww', 'driver', 'aaa', 'asdssdasdassa', 'asfasf', 'asfs'),
-('sa', '47bce5c74f589f4867dbd57e9ca9f808', 'asf', 'asdas', 'user', 'sss', 'asdas', 'asdas', 'asdasd'),
-('saasad', '47bce5c74f589f4867dbd57e9ca9f808', 'asf', 'asdas', 'user', 'sss', 'asdas', 'asdas', 'asdasd'),
-('singq', 'e10adc3949ba59abbe56e057f20f883e', 'sing', 'ha', 'driver', 'sing@gmail.com', '0859575958', '8ogdH[-pt', '8od;kf[hko'),
-('ฟฟฟฟ', 'cf10fefbd923acd5ad133458fe4c169d', 'ฟหดฟหด', 'ฟหดฟหดฟหด', 'driver', 'ฟฟฟฟ', 'ฟฟฟ', 'ฟฟฟฟ', 'ฟฟฟฟ'),
-('ฟฟฟฟ555', 'cf10fefbd923acd5ad133458fe4c169d', 'ฟหดฟหด', 'ฟหดฟหดฟหด', 'driver', 'ฟฟฟฟ', 'ฟฟฟ', 'ฟฟฟฟ', 'ฟฟฟฟ');
+('111', '698d51a19d8a121ce581499d7b701668', 'Mary', 'Jane', 'approver', 'maryjane@ssru.ac.th', '065-567-1524', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('123', '202cb962ac59075b964b07152d234b70', 'Vichai', 'Srijintawiriya', 'user', 'srijintawiriya@ssru.ac.th', '093-732-8847', 'เจ้าหน้าที่ฝึกหัด', 'สำนักงานจีอี'),
+('12355', '7694f4a66316e53c8cdd9d9954bd611d', 'Noel', 'Escanorr', 'admin', 'escanorr@yahoo.com', '099-135-2424', 'เจ้าหน้าที่ชั่วคราว', 'สำนักงานจีอี'),
+('222', 'bcbe3365e6ac95ea2c0343a2395834dd', 'Kara', 'Denvers', 'approver', 'karadenvers@ssru.ac.th', '089-568-8955', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('333', '310dcbbf4cce62f762a2aaa148d556bd', 'Alex', 'Denvers', 'approver', 'alexdenvers@gmail.com', '084-541-5422', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('444', '550a141f12de6341fba65b0ad0433500', 'Maggie', 'Souyers', 'approver', 'maggie@ssru.ac.th', '061-232-6638', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('aaaoopp', '47bce5c74f589f4867dbd57e9ca9f808', 'Yanakorn', 'Limtongkun', 'driver', 'limtongkun@hotmail.com', '062-663-7684', 'คนขับประจำ', 'สำนักงานจีอี'),
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'Adminkung', 'Cessruzaa', 'admin', 'admin@ssru.ac.th', '099-555-9595', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
+('palm', '82051c7417e1a7921e72d101a64f96bf', 'Wisarut', 'Witthaya', 'user', 's60122519000@ssru.ac.th', '066-268-2882', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
+('qqqfff', '343d9040a671c45832ee5381860e2996', 'Titikorn', 'Jarounpoozhorb', 'driver', 'jarounpoozhorb@yahoo.com', '099-142-7689', 'คนขับชั่วคราว', 'สำนักงานจีอี'),
+('sa', '47bce5c74f589f4867dbd57e9ca9f808', 'Sunisara', 'Jamkrajang', 'user', 'sunisarajam@ssru.ac.th', '096-124-7489', 'เจ้าหน้าที่ฝึกหัด', 'สำนักงานจีอี'),
+('saasad', '47bce5c74f589f4867dbd57e9ca9f808', 'Anagepan', 'Sombookit', 'user', 'sombookit@ssru.ac.th', '060-174-9986', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
+('singq', 'e10adc3949ba59abbe56e057f20f883e', 'Singhakom', 'Meenayon', 'driver', 'sing@gmail.com', '085-957-5958', 'คนขับประจำ', 'สำนักงานจีอี'),
+('ฟฟฟฟ', 'cf10fefbd923acd5ad133458fe4c169d', 'Sonic', 'Rider', 'driver', 'sonypicture@gmail.com', '099-155-9595', 'คนขับชั่วคราว', 'สำนักงานจีอี'),
+('ฟฟฟฟ555', 'cf10fefbd923acd5ad133458fe4c169d', 'Peter', 'Parker', 'driver', 'spiderman@outlook.com', '096-892-6642', 'คนขับชั่วคราว', 'สำนักงานจีอี');
 
 --
 -- Indexes for dumped tables
