@@ -1,3 +1,15 @@
+<?php 
+session_start();
+require './../server.php';
+if(isset($_SESSION['id'])){
+    $id = $_SESSION['id'];
+}else{
+    header("location:./../login.php");
+    exit();
+}
+$sql = "SELECT SELECT user_id,request,place,count,people,date_go,date_back,note,phone,references_id,id FROM `rent_form`";
+$result = mysqli_query($connect, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,13 +31,6 @@
     <script src="../js/init.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems, options);
-        });
-
-        // Or with jQuery
-
         $(document).ready(function() {
             $('select').formSelect();
         });
@@ -57,7 +62,7 @@
 
     <div class="container">
         <h4>หน้าอนุมัติแบบฟอร์มคำร้อง</h4><br>
-        <div class="row">
+        <!-- <div class="row">
             <div class="input-field col s6">
                 <select>
                     <option value="" disabled selected>เลือก</option>
@@ -85,7 +90,7 @@
                 </select>
                 <label>เลือกรถ</label>
             </div>
-        </div>
+        </div> -->
 
         <div class="center-align">
         <button type="submit" form="" class="btn waves-effect waves-light">ยืนยัน

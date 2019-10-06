@@ -3,6 +3,7 @@
     session_start();
     if(isset($_SESSION['id'])){
         $user_id = $_SESSION['id'];
+       
         if(isset($_GET['alert'])){
             $alert = $_GET['alert'];
             if($alert == 1){
@@ -10,12 +11,10 @@
             }
         }
     }else{
-        $user_id = 0;
+        $user_id = "";
     }
-    $sql = "SELECT fname,lname FROM user WHERE user.id='$user_id'";
+     $sql = "SELECT fname,lname,id FROM user WHERE user.id='$user_id'";
     $result = mysqli_query($connect,$sql);
-    $name = mysqli_fetch_array($result);
-    // echo$user_id;
 ?>
 
 <!DOCTYPE html>
@@ -46,18 +45,11 @@
                 <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <?php if($user_id == 0){?>
-                    <li><a href="login.php">
-                        <?php
-                    echo"เข้าสู่ระบบ";
-                    ?>
-                    </a></li>
-                    <?php }else{ ?>
-                <li><a href="#">
-                    <?php echo$name['fname']." ".$name['lname']; ?>
-                    </a>
-                </li>
-               <?php } ?>
+                <?php if($name = mysqli_fetch_array($result)){
+                   echo"<li><a href=#>".$name['fname']." ".$name['lname']."</a></li>";
+                }else{ 
+                echo"<li><a href=login.php>เข้าสู่ระบบ</a></li>";
+                } ?>
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
