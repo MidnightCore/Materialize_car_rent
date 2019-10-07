@@ -314,7 +314,7 @@ $result_references = mysqli_query($connect, $references_id);
                         <div class="col s6 offset-s6">
                             <!-- ลงชื่อ : -->
                             <div class="input-field inline">
-                                <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required>
+                                <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required readonly>
                                 <label for="name_ask">ลงชื่อ</label>
                                 <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
                             </div>

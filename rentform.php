@@ -40,9 +40,22 @@ $references_id = $_POST['references_id'];
 $sql = "INSERT INTO `rent_form`(`user_id`, `request`, `place`, `count`, `people`, `date_go`, `date_back`, `phone`,`note`,`references_id`) VALUES ('$user_id', '$request', '$place', '$county', '$people', '$date_time_go', '$date_time_back', '$phone', '$note', '$references_id')";
 
 if ($result = mysqli_query($connect,$sql)) {
-    
-    header("location:index.php?alert=1"); 
-    exit();   
+    // หาไอดีล่าสุดที่เพิ่งเพิ่มเข้าไป
+    $sql = "SELECT id FROM rent_form ORDER BY created_at DESC LIMIT 1";
+    $result = mysqli_query($connect, $sql);
+    $row = mysqli_fetch_array($result);
+    $id_rentform = $row['id'];
+    // หา approver_id จาก rank 
+    $search_ap_id = "SELECT id FROM approver WHERE rank = '1'";
+    $result_ap_id = mysqli_query($connect, $search_ap_id);
+    $row_ap_id = mysqli_fetch_array($result_ap_id);
+    $id_approver = $row_ap_id['id'];
+
+    $insert_driver_rent = "INSERT INTO `driver_rent`(`rent_form_id`, `approver_id`) VALUES('$id_rentform', '$id_approver')";
+    if(mysqli_query($connect, $insert_driver_rent)){
+        header("location:index.php?alert=1"); 
+        exit(); 
+    } 
 }
 
  else {

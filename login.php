@@ -7,7 +7,9 @@ if (isset($_GET['alert'])) {
 }
 if ($palm == 1) {
     echo "<script>alert('username หรือ password ผิดค่ะกรุณากรอกใหม่');history.back();</script>";
-} 
+}else if($palm == '2'){
+    echo "<script>alert('คุณไม่มีสิทธิ์เข้าถึงคะ');history.back();</script>";
+}
 
 
  ?>
