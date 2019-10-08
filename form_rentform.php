@@ -16,6 +16,7 @@ $today = date("Y-m-j H:i:s");
 
 $references_id = "SELECT fname,lname,id FROM user WHERE role = 'user' ORDER BY fname ASC";
 $result_references = mysqli_query($connect, $references_id);
+
 ?>
 
 
@@ -36,12 +37,13 @@ $result_references = mysqli_query($connect, $references_id);
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
-    
+
     <style>
         #but3 {
             margin-left: 20px;
             margin-right: 20px;
         }
+
         .sortable-handler {
             touch-action: none;
         }
@@ -111,7 +113,7 @@ $result_references = mysqli_query($connect, $references_id);
                 </div>
             </div><!-- จบเลือกวันที่กรอก -->
 
-            
+
 
             <div class="row">
                 <div class="col s12">
@@ -129,15 +131,14 @@ $result_references = mysqli_query($connect, $references_id);
                     </div>
                     <!-- <p>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)<input type="text" class="" name="references_id" required></p> -->
                     <div class="input-field"><br><br>
-                            <select type="text" name="references_id" class="people_num" required>
-                                <option value="" disabled selected>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)</option>
-
-                                    <?php while($row_rfr = mysqli_fetch_array($result_references)){?>
-                                <option value="<?php echo$row_rfr['fname']." ".$row_rfr['lname'] ?>"><?php echo$row_rfr['fname']." ".$row_rfr['lname'] ?></option>
-                                    <?php } ?>
-                            </select>
-                            <label>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)</label>
-                        </div>
+                    <label>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)<b style="color:red">**</b></label>
+                        <select type="text" name="references_id" class="people_num" required>
+                            <option value="" disabled selected>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)</option>
+                            <?php while ($row_rfr = mysqli_fetch_array($result_references)) { ?>
+                                <option value="<?php echo $row_rfr['fname'] . " " . $row_rfr['lname'] ?>"><?php echo $row_rfr['fname'] . " " . $row_rfr['lname'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                     <div class="row">
                         <div class="input-field col s6">
                             <input name="rank" id="rank" type="text" class="validate" value="<?php echo $name['rank'] ?>" required readonly>
@@ -162,21 +163,21 @@ $result_references = mysqli_query($connect, $references_id);
 
 
                     <!-- ส่วนของสถานที่ -->
-                    <p>มีความประสงค์จะขอใช้รถยนต์ของสำนักวิชาการศึกษาทั่วไปฯ เพื่อไปราชการเกี่ยวกับ</p>
+                    <p>มีความประสงค์จะขอใช้รถยนต์ของสำนักวิชาการศึกษาทั่วไปฯ เพื่อไปราชการเกี่ยวกับ<b style="color:red">**</b></p>
                     <input type="text" name="want" class="want" required>
                     <div class="row">
                         <div class="input-field col s6">
-                            <p>สถานที่ไป<input type="text" name="place" class="P_80 mt-2" required></p>
+                            <p>สถานที่ไป<b style="color:red">**</b><input type="text" name="place" class="P_80 mt-2" required></p>
                         </div>
                         <div class="input-field col s6"><br><br>
+                        <label>เลือกจำนวน<b style="color:red">**</b></label>
                             <select type="text" name="people" class="people_num" required>
-                                <option value="" disabled selected>จำนวนคนที่ไป</option>
+                                <option value="" disabled selected></option>
                                 <option value="0-3">0-3</option>
                                 <option value="4-6">4-6</option>
                                 <option value="7-9">7-9</option>
                                 <option value="10-13">10-13</option>
                             </select>
-                            <label>เลือกจำนวน</label>
                         </div>
                         <!-- <div class="input-field col s6">
                             <p class="text-right mt-3">จำนวนคนที่ไป<input type="number" name="people" class="people_num" required></p>
@@ -187,140 +188,142 @@ $result_references = mysqli_query($connect, $references_id);
 
 
                     <!-- วันที่ในการเดินทางไปกลับ -->
-                    <p>โดยมีวันเวลาในการเดินทางดังนี้</p><h5 id="pp" ></h4>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป" id="date_goo" required readonly>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="time_go" type="text" class="timepicker" placeholder="เวลา" id="time_goo" required readonly>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ" id="dateback" required readonly>
-                        </div>
-                        <div class="input-field col s6">
-                            <input name="time_back" type="text" class="timepicker" placeholder="เวลา" id="timeback" required readonly>
-                        </div>
-                    </div>
-
-
-
-                    <script>
-                        $(document).ready(function() {
-                            // console.log('i ');
-                            $('#pp').text("กรุณากรอกวันเวลาที่จะไป");
-                            $('#dateback').hide();
-                            $('#timeback').hide();
-                        });
-
-                        function checktime() {
-                            var datego = $('#date_goo').val();
-                            var timego = $('#time_goo').val();
-                            var dateback = $('#dateback').val();
-                            var timeback = $('#timeback').val();
-
-                            var datetimego = datego + " " + timego + ":00";
-                            var datetimeback = dateback + " " + timeback + ":00";
-                            var datesum = DateTimeDiff(datetimego, datetimeback);
-                            if (datesum <= 0.0415) {
-                                alert("ต้องใช้รถอย่างน้อย 1 ชั่วโมงค่ะ");
-                                $('#timeback').val("");
-                            } else {
-
-                            }
-                        }
-                        $("#dateback").change(function() {
-                            // console.log('i++ :', i++);
-                            if (i == j || i > 1) {
-                                checktime();
-                            }
-                        });
-                        $("#timeback").change(function() {
-                            // console.log('j++ :', j++);
-                            if (i == j || j > 1) {
-                                checktime();
-                            }
-                        });
-
-                        function DateTimeDiff(strDateTime1, strDateTime2) {
-                            return (Date.parse(strDateTime2) - Date.parse(strDateTime1)) / (1000 * 60 * 60 * 24); // 1 Hour =  60*60
-
-                        }
-
-                        var i = 0;
-                        var j = 0;
-                        $("#date_goo").change(function() {
-                            // console.log('i++ :', i++);
-                            if (i == j || i > 1) {
-                                date();
-                            }
-                        });
-                        $("#time_goo").change(function() {
-                            // console.log('j++ :', j++);
-                            if (i == j || j > 1) {
-                                date();
-                            }
-                        });
-
-                        function date() {
-                            var date = $('#date_goo').val();
-                            var time = $('#time_goo').val();
-                            var datetime = date + " " + time + ":00";
-                            var today = "<?php echo $today ?>";
-                            if (date == "" || time == "") {
-                                alert("ท่านลืมกรอกวันหรือเวลาค่ะ");
-                            } else {
-                                var datesum = DateTimeDiff(today, datetime);
-                                if (datesum < 2) {
-                                    alert("กรุณาทำการจองก่อนล่วงหน้า 2 วันค่ะ");
-                                    $('#dateback').hide();
-                                    $('#timeback').hide();
-                                } else {
-                                    $('#dateback').show();
-                                    $('#timeback').show();
-                                    $('#pp').text("");
-                                }
-                            }
-                        }
-                    </script>
-
-
-
-                    <!-- scriptเลือกวันที่ -->
-                    <script>
-                        $(document).ready(function() {
-                            $('.datepicker').datepicker();
-                        });
-                        $(document).ready(function() {
-                            $('.timepicker').timepicker();
-                        });
-                    </script>
-
-
-
-                    <!-- หมายเหตุ -->
-                    <div>
-                        <p>หมายเหตุ <input type="text" class="reason" name="note"></p>
-                        <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text" class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
-                    </div><br>
-                    <!-- จบหมายเหตุ -->
-
-
-
-                    <!-- ลงชื่อคนขออณุญาติ -->
-                    <div class="row">
-                        <div class="col s6 offset-s6">
-                            <!-- ลงชื่อ : -->
-                            <div class="input-field inline">
-                                <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required readonly>
-                                <label for="name_ask">ลงชื่อ</label>
-                                <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
+                    <p>โดยมีวันเวลาในการเดินทางดังนี้<b style="color:red">**</b></p>
+                    <h5 id="pp">
+                        </h4>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input name="date_go" type="text" class="datepicker" placeholder="วันที่ไป" id="date_goo" required readonly>
+                            </div>
+                            <div class="input-field col s6">
+                                <input name="time_go" type="text" class="timepicker" placeholder="เวลา" id="time_goo" required readonly>
                             </div>
                         </div>
-                    </div><br><br><br>
-                    <!-- จบลงชื่อคนขออณุญาติ -->
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input name="date_back" type="text" class="datepicker" placeholder="วันที่กลับ" id="dateback" required readonly>
+                            </div>
+                            <div class="input-field col s6">
+                                <input name="time_back" type="text" class="timepicker" placeholder="เวลา" id="timeback" required readonly>
+                            </div>
+                        </div>
+
+
+
+                        <script>
+                            $(document).ready(function() {
+                                // console.log('i ');
+                                $('#pp').text("กรุณากรอกวันเวลาที่จะไป");
+                                $('#dateback').hide();
+                                $('#timeback').hide();
+                            });
+
+                            function checktime() {
+                                var datego = $('#date_goo').val();
+                                var timego = $('#time_goo').val();
+                                var dateback = $('#dateback').val();
+                                var timeback = $('#timeback').val();
+
+                                var datetimego = datego + " " + timego + ":00";
+                                var datetimeback = dateback + " " + timeback + ":00";
+                                var datesum = DateTimeDiff(datetimego, datetimeback);
+                                if (datesum <= 0.0415) {
+                                    alert("ต้องใช้รถอย่างน้อย 1 ชั่วโมงค่ะ");
+                                    $('#timeback').val("");
+                                } else {
+
+                                }
+                            }
+                            $("#dateback").change(function() {
+                                // console.log('i++ :', i++);
+                                if (i == j || i > 1) {
+                                    checktime();
+                                }
+                            });
+                            $("#timeback").change(function() {
+                                // console.log('j++ :', j++);
+                                if (i == j || j > 1) {
+                                    checktime();
+                                }
+                            });
+
+                            function DateTimeDiff(strDateTime1, strDateTime2) {
+                                return (Date.parse(strDateTime2) - Date.parse(strDateTime1)) / (1000 * 60 * 60 * 24); // 1 Hour =  60*60
+
+                            }
+
+                            var i = 0;
+                            var j = 0;
+                            $("#date_goo").change(function() {
+                                // console.log('i++ :', i++);
+                                if (i == j || i > 1) {
+                                    date();
+                                }
+                            });
+                            $("#time_goo").change(function() {
+                                // console.log('j++ :', j++);
+                                if (i == j || j > 1) {
+                                    date();
+                                }
+                            });
+
+                            function date() {
+                                var date = $('#date_goo').val();
+                                var time = $('#time_goo').val();
+                                var datetime = date + " " + time + ":00";
+                                var today = "<?php echo $today ?>";
+                                if (date == "" || time == "") {
+                                    alert("ท่านลืมกรอกวันหรือเวลาค่ะ");
+                                } else {
+                                    var datesum = DateTimeDiff(today, datetime);
+                                    if (datesum < 2) {
+                                        alert("กรุณาทำการจองก่อนล่วงหน้า 2 วันค่ะ");
+                                        $('#dateback').hide();
+                                        $('#timeback').hide();
+                                    } else {
+                                        $('#dateback').show();
+                                        $('#timeback').show();
+                                        $('#pp').text("");
+                                    }
+                                }
+                            }
+                        </script>
+
+
+
+                        <!-- scriptเลือกวันที่ -->
+                        <script>
+                            $(document).ready(function() {
+                                $('.datepicker').datepicker();
+                            });
+                            $(document).ready(function() {
+                                $('.timepicker').timepicker();
+                            });
+                        </script>
+
+
+
+                        <!-- หมายเหตุ -->
+                        <div>
+                            <p>หมายเหตุ <input type="text" class="reason" name="note"></p>
+                            <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone_num" type="text" class="phone_num" value="<?php echo $name['phone'] ?>" required></p>
+                        </div><br>
+                        <!-- จบหมายเหตุ -->
+
+
+
+                        <!-- ลงชื่อคนขออณุญาติ -->
+                        <div class="row">
+                            <div class="col s6 offset-s6">
+                                <!-- ลงชื่อ : -->
+                                <div class="input-field inline">
+                                    <input name="license_user" id="name_ask" type="text" class="validate" value="<?php echo $name['fname'] . " " . $name['lname'] ?>" required readonly>
+                                    <label for="name_ask">ลงชื่อ</label>
+                                    <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
+                                </div>
+                            </div>
+                        </div><br><br><br>
+                        <!-- จบลงชื่อคนขออณุญาติ -->
                 </div>
             </div>
         </div>
