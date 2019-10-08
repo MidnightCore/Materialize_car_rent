@@ -56,9 +56,7 @@ if ($result = mysqli_query($connect,$sql)) {
         header("location:index.php?alert=1"); 
         exit(); 
     } 
-}
-
- else {
+}else {
     echo "<script>alert('เกิดข้อผิดพลาดกรุณากรอกแบบฟอร์มใหม่ค่ะ');</script>";
     
 }
