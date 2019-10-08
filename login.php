@@ -7,12 +7,12 @@ if (isset($_GET['alert'])) {
 }
 if ($palm == 1) {
     echo "<script>alert('username หรือ password ผิดค่ะกรุณากรอกใหม่');history.back();</script>";
-}else if($palm == '2'){
+} else if ($palm == '2') {
     echo "<script>alert('คุณไม่มีสิทธิ์เข้าถึงคะ');history.back();</script>";
 }
 
 
- ?>
+?>
 
 
 <!DOCTYPE html>
@@ -39,6 +39,9 @@ if ($palm == 1) {
     <style>
         body {
             background-image: url("img/background1.jpg");
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
         }
     </style>
 </head>
@@ -63,7 +66,7 @@ if ($palm == 1) {
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">keyboard</i>
                                                 <input type="password" id="password-input" name="em_Password" class="validate">
-                                               <label for="password-input">Password</label>
+                                                <label for="password-input">Password</label>
                                             </div>
                                         </div>
                                     </div>
