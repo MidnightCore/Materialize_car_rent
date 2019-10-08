@@ -210,7 +210,7 @@ $result_references = mysqli_query($connect, $references_id);
                     <script>
                         $(document).ready(function() {
                             // console.log('i ');
-                            $('#pp').text("กรุณากรอกวันเวลาที่จะไปค่ะ");
+                            $('#pp').text("กรุณากรอกวันเวลาที่จะไป");
                             $('#dateback').hide();
                             $('#timeback').hide();
                         });

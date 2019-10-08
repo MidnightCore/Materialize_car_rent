@@ -17,7 +17,7 @@ function DateTimeDiff($strDateTime1,$strDateTime2)
 {
     return (strtotime($strDateTime2) - strtotime($strDateTime1))/( 60 * 60 *24); // 1 Hour =  60*60
 }
-$request           = $_POST['want'];
+$request        = $_POST['want'];
 $place          = $_POST['place'];
 $county         = $_POST['county'];
 $people         = $_POST['people'];
