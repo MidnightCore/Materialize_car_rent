@@ -8,8 +8,17 @@ if (isset($_SESSION['id'])) {
     header("location:./../login.php");  
     exit();  
 }
-$sql = "SELECT * FROM user WHERE user.role != 'admin' ORDER BY user.role DESC,user.fname ASC";
+// เลือกแร้งคนตรวจ
+$sql = "SELECT approver.rank,fname,lname FROM user,approver WHERE user.role = 'approver' AND approver.user_id = user.id AND user.id = '$id'";
 $result = mysqli_query($connect, $sql);
+$row_approver = mysqli_fetch_array($result);
+$rank_ap = $row_approver['rank'];
+// เลือกฟอร์มออมาโชว์
+$rent_form = "SELECT user.id, fname, lname, rent_form.phone, date_go, date_back, references_id, rent_form.id AS id_rent
+FROM `rent_form`, `user`,`driver_rent` 
+WHERE rent_form.user_id = user.id AND driver_rent.rent_form_id = rent_form.id AND driver_rent.approver_id IN(SELECT id FROM `approver` WHERE rank = '$rank_ap')
+ORDER BY rent_form.id ASC";
+$result_rent_form = mysqli_query($connect, $rent_form);
 
 $alert = 0;
 if (isset($_GET['alert'])) {
@@ -49,20 +58,20 @@ if ($alert == 1) {
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Approver Page</a>
             <!-- เอาปุ่มเพิ่มไว้มุมบนขวา -->
-            <!-- <ul class="right hide-on-med-and-down">
-                <li><a href="show_user.php">ข้อมูลUser</a></li>
+            <ul class="right hide-on-med-and-down">
+                <!-- <li><a href="show_user.php">ข้อมูลUser</a></li>
                 <li><a href="show_approver.php">ข้อมูลApprover</a></li>
                 <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
-                <li><a href="request_form.php">ตรวจสถานะคำร้อง</a></li>
+                <li><a href="request_form.php">ตรวจสถานะคำร้อง</a></li> -->
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <ul id="nav-mobile" class="sidenav"><br><br>
-                <li><a href="show_user.php">ข้อมูลUser</a></li>
+                <!-- <li><a href="show_user.php">ข้อมูลUser</a></li>
                 <li><a href="show_approver.php">ข้อมูลApprover</a></li>
                 <li><a href="show_driver_car.php">ข้อมูลรถและคนขับรถ</a></li>
-                <li><a href="request_form.php">ตรวจสถานะคำร้อง</a></li>
+                <li><a href="request_form.php">ตรวจสถานะคำร้อง</a></li> -->
                 <li><a href="../login.php">ออกจากระบบ</a></li>
-            </ul> -->
+            </ul>
             <!-- <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
         </div>
     </nav>
@@ -80,53 +89,39 @@ if ($alert == 1) {
                 <h4>ฟอร์มจองรถตู้ที่คุณสามารถตวจได้</h4>
             </div>
             <br>
-            <!-- <div class="col 6">
-                <div style="text-align:right">
-                    <a href="admin_add_user.php" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เพิ่มข้อมูลผู้ใช้</a>
-                </div>
-            </div> -->
         </div>
 
         <table class="responsive-table">
             <thead>
                 <tr>
-
-                    <th>fname</th>
-                    <th>lname</th>
-                    <th>role</th>
+                    <th>ชื่อ</th>
+                    <th>วัน-เวลา ที่ไป</th>
+                    <th>วัน-เวลา ที่กลับ</th>
                     <!-- <th>email</th> -->
-                    <th>phone</th>
-                    <th>rank</th>
-                    <th>department</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>เบอร์ติดต่อ</th>
+                    <th>คนดำเนินเรื่อง</th>
+                    <!-- <th>department</th> -->
+                    <!-- <th>Edit</th> -->
+                    <th>ดูรายละเอียด</th>
                 </tr>
             </thead>
 
             <tbody>
-                <?php while ($row = mysqli_fetch_array($result)) {  ?>
+                <?php while ($row = mysqli_fetch_array($result_rent_form)) {  ?>
 
                     <tr>
-                        <td><?php echo $row['fname'] ?></td>
-                        <td><?php echo $row['lname'] ?></td>
-                        <td><?php echo $row['role'] ?></td>
-                        <!-- <td><?php echo $row['email'] ?></td> -->
+                        <td><?php echo $row['fname']." ".$row['lname'] ?></td>
+                        <td><?php echo $row['date_go'] ?></td>
+                        <td><?php echo $row['date_back'] ?></td>
                         <td><?php echo $row['phone'] ?></td>
-                        <td><?php echo $row['rank'] ?></td>
-                        <td><?php echo $row['department'] ?></td>
+                        <td><?php echo $row['references_id'] ?></td>
                         <td>
-                        <a href="form_edit_user.php?user=<?php echo base64_encode($row['id']) ?>&?!@#^!=<?php echo base64_encode("ASFEBHRWHRYNRaefgqwm98456") ?>">
-                                    <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">แก้ไข
+                            
+                        <a href="form_allowed.php?d=<?php echo base64_encode($row['id_rent'])?>&?@#$^@^$=6DFbdgnwdgWRYen548#$^73422">
+                                    <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">ดูรายละเอียด
                                         <i class="material-icons right">border_color</i>
                                     </button>
                                 </a>
-                        </td>
-                        <td>
-                            <a>
-                                <button id="lob" type="submit" form="ee" class="btn red accent-4-effect red accent-4-light">ลบ
-                                    <i class="material-icons right">close</i>
-                                </button>
-                            </a>
                         </td>
                     </tr>
                 <?php } ?>
