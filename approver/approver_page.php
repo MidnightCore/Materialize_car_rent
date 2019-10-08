@@ -8,6 +8,9 @@ if (isset($_SESSION['id'])) {
     header("location:./../login.php");  
     exit();  
 }
+
+
+
 // เลือกแร้งคนตรวจ
 $sql = "SELECT approver.rank,fname,lname FROM user,approver WHERE user.role = 'approver' AND approver.user_id = user.id AND user.id = '$id'";
 $result = mysqli_query($connect, $sql);
