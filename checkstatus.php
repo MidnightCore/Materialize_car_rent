@@ -1,3 +1,15 @@
+<?php
+session_start();
+require './server.php';
+if(isset($_SESSION['id'])){
+    $id = $_SESSION['id'];
+    $rent_form = "SELECT date_go,brand,car.version,car.license,place 
+    FROM rent_form,driver_rent,approv_form,car,approver
+    WHERE rent_form.id = driver_rent.rent_form_id AND approve_form.rent_form_id = rent_form.id AND ";
+}else{
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,31 +75,8 @@
                     <td>กน1234</td>
                     <td>มหาวิทยาลัยเอแบค</td>
                     <td>
-                        <form action="checkstatus_now.php" method="post">
-                            <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
-                            <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td>03-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>มส5678</td>
-                    <td>โรงเรียนวัดคูบัว จังหวัดราชบุรี</td>
-                    <td>
-                        <form action="checkstatus_now.php" method="post">
-                            <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
-                            <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td>05-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>ดป6389</td>
-                    <td>หมู่บ้านเด็ก จังหวัดกาญจนบุรี</td>
-                    <td>
-                        <form action="checkstatus_now.php" method="post">
+                        <form action="#" method="post">
+                        <!-- <form action="checkstatus_now.php" method="post"> -->
                             <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
                             <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
                         </form>

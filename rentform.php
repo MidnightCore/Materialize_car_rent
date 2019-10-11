@@ -34,8 +34,6 @@ $date_time_back = $date_back." ".$time_back.":00";
 
 $phone          = $_POST['phone_num'];
 $references_id = $_POST['references_id'];
-// echo$date_time_go."<br>";
-// echo "Date Diff = ".DateTimeDiff($today,$date_time_go)."<br>";
 
 $sql = "INSERT INTO `rent_form`(`user_id`, `request`, `place`, `count`, `people`, `date_go`, `date_back`, `phone`,`note`,`references_id`) VALUES ('$user_id', '$request', '$place', '$county', '$people', '$date_time_go', '$date_time_back', '$phone', '$note', '$references_id')";
 
@@ -53,8 +51,14 @@ if ($result = mysqli_query($connect,$sql)) {
 
     $insert_driver_rent = "INSERT INTO `driver_rent`(`rent_form_id`, `approver_id`) VALUES('$id_rentform', '$id_approver')";
     if(mysqli_query($connect, $insert_driver_rent)){
-        header("location:index.php?alert=1"); 
-        exit(); 
+        $status = "กำลังตรวจสอบ";
+        $note = "ขั้นตอนการเลือกรถ";
+        $insert_ap_id = "INSERT INTO `approve_form`(`rent_form_id`, `approver_id`, `status`, `note`) VALUES('$id_rentform', '$id_approver', '$status', '$note')";
+        if(mysqli_query($connect, $insert_ap_id)){
+            header("location:index.php?alert=1"); 
+            exit();
+        }
+         
     } 
 }else {
     echo "<script>alert('เกิดข้อผิดพลาดกรุณากรอกแบบฟอร์มใหม่ค่ะ');</script>";
