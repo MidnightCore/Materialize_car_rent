@@ -73,8 +73,7 @@ $resultcar = mysqli_query($connect, $searchcar);
     <form action="rentform.php" id="nukKaew" method="POST">
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
-
-            <!-- หัวกระดาษ -->
+            
             <div class="content border border-secondary mt-3 pb-1 pt-1">
                 <div class="m-4"><br>
                     <h4 class="text-center">สำนักวิชาการศึกษาทั่วไปและนวัตกรรมการเรียนรู้อิเล็กทรอนิกส์<br>
@@ -82,7 +81,8 @@ $resultcar = mysqli_query($connect, $searchcar);
                     </h4>
                 </div>
             </div><br>
-            <!-- จบหัวกระดาษ -->
+            
+
 
             <div class="row">
                 <div class="input-field col s6">
@@ -97,7 +97,7 @@ $resultcar = mysqli_query($connect, $searchcar);
 
             <div class="row">
                 <div class="col s12">
-                    <!-- ส่วนของกรอกรายละเอียดชื่อ -->
+                    <!-- ส่วนของรายละเอียดชื่อ -->
                     <div class="row">
                         <div class="input-field col s6">
                             <input name="first_name" id="first_name" type="text" class="want" value="<?php echo $row_rent_form['fname'] ?>" required readonly>
@@ -108,14 +108,12 @@ $resultcar = mysqli_query($connect, $searchcar);
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
-                    <!-- <p>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)<input type="text" class="" name="references_id" required></p> -->
                     <div class="input-field"></div>
-
-
                     <p>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)</p>
                     <input type="text" name="want" class="want" value="<?php echo $row_rent_form['references_id'] ?>" required readonly>
-
                 </div>
+
+
                 <div class="row">
                     <div class="input-field col s6">
                         <input name="rank" id="rank" type="text" class="want" value="<?php echo $row_rent_form['rank'] ?>" required readonly>
@@ -126,7 +124,7 @@ $resultcar = mysqli_query($connect, $searchcar);
                         <label for="zone">สังกัด (ของผู้กรอกแบบฟอร์ม)</label>
                     </div>
                 </div>
-                <!-- จบส่วนของกรอกรายละเอียดชื่อ -->
+                <!-- จบส่วนของรายละเอียดชื่อ -->
 
 
 
@@ -194,30 +192,31 @@ $resultcar = mysqli_query($connect, $searchcar);
     </form>
 
 
-    <form action="add_cartodriver.php" id="ee" method="POST">
-        <!-- เริ่มต้นแบบฟอร์ม -->
+
+    <!-- เลือกรถ -->
+    <form action="add_cartodriver.php" method="POST">
         <div class="container">
-            <!-- หัวกระดาษ -->
             <div class="input-field col s12">
                 <select name="cartodriver" required>
                     <option disabled selected>เลือกรถ</option>
                     <?php while ($rowcar = mysqli_fetch_array($resultcar)) { ?>
                         <option> <?php echo $rowcar['license'] ?> </option>
-
                     <?php } ?>
                 </select>
-            </div><!-- จบหัวกระดาษ -->
+            </div>
         </div>
         <input type="hidden" name="id" value="<?php echo base64_encode($id) ?>">
     </form><br><br>
 
 
+
     <div class="center-align">
-        <button type="submit" form="" class="btn orange darken-4-effect light">อนุญาติ
+        <button type="submit" form="" id="but3" class="btn orange darken-4-effect light">อนุญาติ
             <i class="material-icons right">done</i>
         </button>
-        <a href="approver_page.php" class="waves-effect waves-light btn">ย้อนกลับ</a>
+        <a href="approver_page.php" id="but3" class="waves-effect waves-light btn">ย้อนกลับ</a>
     </div><br><br>
+
 
 </body>
 

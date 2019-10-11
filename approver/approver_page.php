@@ -52,16 +52,10 @@ if ($alert == 1) {
     <script src="../js/materialize.js"></script>
     <script src="../js/init.js"></script>
 
-    <style>
-        #lob {
-            background color: red;
-        }
-    </style>
 </head>
 
 
 <body>
-
     <nav class="teal lighten-3" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="admin_page.php" class="brand-logo">Approver Page</a>
@@ -75,13 +69,11 @@ if ($alert == 1) {
         </div>
     </nav>
 
-    <div class="container">
-        <br>
+    <div class="container"><br>
         <div class="row">
             <div class="col 6">
                 <h4>ฟอร์มจองรถตู้ที่คุณสามารถตรวจได้</h4>
-            </div>
-            <br>
+            </div><br>
         </div>
 
         <table class="responsive-table">
@@ -107,7 +99,7 @@ if ($alert == 1) {
                         <td><?php echo $row['references_id'] ?></td>
                         <td>
                             <a href="form_allowed.php?d=<?php echo base64_encode($row['id_rent']) ?>&?@#$^@^$=6DFbdgnwdgWRYen548#$^73422">
-                                <button type="submit" form="ee" class="btn amber darken-4-effect amber darken-4-light">ดูรายละเอียด
+                                <button type="submit" class="btn amber darken-4-effect light">ดูรายละเอียด
                                     <i class="material-icons right">border_color</i>
                                 </button>
                             </a>
@@ -115,9 +107,7 @@ if ($alert == 1) {
                     </tr>
                 <?php } ?>
             </tbody>
-    
-        </table><br><br><br>
-        
+        </table><br><br><br>     
     </div>
 </body>
 
