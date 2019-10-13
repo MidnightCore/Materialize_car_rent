@@ -7,7 +7,7 @@ session_start();
 
   require 'server.php';
 
-  $sql    = "SELECT user.id,user.password,user.role FROM user WHERE user.id ='$em_User' and user.password='$em_Password'";
+  $sql    = "SELECT user.id,user.password,user.role,fname,lname FROM user WHERE user.id ='$em_User' and user.password='$em_Password'";
   $result = mysqli_query($connect,$sql);
 
   $role    = mysqli_fetch_array($result);
@@ -16,7 +16,8 @@ session_start();
   if($num_row == 1) {
     $_SESSION['id']       = $em_User;
     $_SESSION['password'] = $em_Password;
-
+    $_SESSION['name'] = $role['fname']." ".$role['lname'];
+    // echo$_SESSION['name'];
     if($role['role'] == "admin") {
       header("location:admin/admin_page.php");
     }else if($role['role'] == "user") {

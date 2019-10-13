@@ -28,13 +28,14 @@ WHERE rent_form.user_id = user.id
 AND driver_rent.rent_form_id = rent_form.id 
 AND driver_rent.approver_id 
 IN(SELECT id FROM `approver` WHERE rank = '$rank_ap')
+AND driver_rent.rent_form_id = '$id_rentform'
 ORDER BY rent_form.id ASC";
 
 $result_rent_form = mysqli_query($connect, $rent_form);
 $row_rent_form = mysqli_fetch_array($result_rent_form);
 // print_r($row_rent_form);
 
-$searchcar = "SELECT license FROM car WHERE driver_id IS NULL";
+$searchcar = "SELECT license FROM car WHERE driver_id IS NOT NULL";
 $resultcar = mysqli_query($connect, $searchcar);
 ?>
 
@@ -70,7 +71,7 @@ $resultcar = mysqli_query($connect, $searchcar);
 </head>
 
 <body>
-    <form action="rentform.php" id="nukKaew" method="POST">
+    <!-- <form action="rentform.php" id="nukKaew" method="POST"> -->
         <!-- เริ่มต้นแบบฟอร์ม -->
         <div class="container">
             
@@ -190,34 +191,38 @@ $resultcar = mysqli_query($connect, $searchcar);
                 <!-- จบลงชื่อคนขออณุญาติ -->
             </div>
         </div>
-    </form>
+    <!-- </form> -->
 
 
 
     <!-- เลือกรถ -->
-    <form action="add_cartodriver.php" method="POST">
+    <form action="allowed.php" method="POST">
         <div class="container">
             <div class="input-field col s12">
-                <select name="cartodriver" required>
+                <select name="car" required>
                     <option disabled selected>เลือกรถ</option>
                     <?php while ($rowcar = mysqli_fetch_array($resultcar)) { ?>
                         <option> <?php echo $rowcar['license'] ?> </option>
                     <?php } ?>
                 </select>
+                <input type="hidden" name="id" value="<?php echo $id_rentform ?>">
             </div>
         </div>
-        <input type="hidden" name="id" value="<?php echo base64_encode($id) ?>">
-    </form><br><br>
+        
+    <br><br>
 
 
 
     <div class="center-align">
-        <button type="submit" form="" id="but3" class="btn orange darken-4-effect light">อนุญาติ
-            <i class="material-icons right">done</i>
-        </button>
-        <a href="approver_page.php" id="but3" class="waves-effect waves-light btn">ย้อนกลับ</a>
+        <input type="submit" id="but3" class="btn orange darken-4-effect light" value="อนุญาต" name="allowed">
+            <!-- <i class="material-icons right">done</i> -->
+        <!-- </button> -->
+        <input type="submit" id="but4" class="btn red darken-4-effect light" value="ไม่อนุญาต" name="allowed">
+            <!-- <i class="material-icons right">done</i> -->
+        <!-- </button> -->
+        <!-- <a href="approver_page.php" id="but3" class="waves-effect waves-light btn">ย้อนกลับ</a> -->
     </div><br><br>
-
+    </form>
 
 </body>
 
