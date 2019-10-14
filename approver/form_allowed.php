@@ -1,14 +1,20 @@
 <?php
 require './../server.php';
-
 session_start();
+$palm = 0;
+if (isset($_GET['alert'])) {
+    $palm = $_GET['alert'];
+}
+if ($palm == 1) {
+    echo "<script>alert('บันทึกแบบฟอร์มเรียบร้อยค่ะ');history.back();</script>";
+}
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     if (isset($_GET)) {
         $id_rentform = base64_decode($_GET['d']);
-        echo $id_rentform;
+        // echo $id_rentform;
     }
-} else {
+}else{
     header("location:./../login.php");
     exit();
 }
@@ -18,7 +24,34 @@ $sql = "SELECT approver.rank,fname,lname FROM user,approver WHERE user.role = 'a
 $result = mysqli_query($connect, $sql);
 $row_approver = mysqli_fetch_array($result);
 $rank_ap = $row_approver['rank'];
-
+echo$rank_ap;
+if($rank_ap >= 1 && $rank_ap < 5){
+    $search_name_driver = "SELECT fname, lname FROM user,driver_rent,driver
+    WHERE driver_rent.driver_id = driver.id AND driver.user_id = user.id AND driver_rent.rent_form_id = '$id_rentform'";
+    $result_name_driver = mysqli_query($connect, $search_name_driver);
+    $row_name_driver = mysqli_fetch_array($result_name_driver);
+    $name_driver = $row_name_driver['fname']." ".$row_name_driver['lname'];
+    ////////////////////////////////////////////////////////////////////
+    $search_name_ap1 = "SELECT fname, lname FROM user,approver WHERE user.id = approver.user_id AND approver.rank = '1'";
+    $result_name_ap1 = mysqli_query($connect, $search_name_ap1);
+    $row_name_ap1 = mysqli_fetch_array($result_name_ap1);
+    $name_ap1 = $row_name_ap1['fname']." ".$row_name_ap1['lname'];
+    //////////////////////////////////////////////////////////////////
+    if($rank_ap == 3){
+        $search_name_ap = "SELECT fname, lname FROM user,approver WHERE user.id = approver.user_id AND approver.rank = '2'";
+        $result_name_ap = mysqli_query($connect, $search_name_ap);
+        $row_name_ap = mysqli_fetch_array($result_name_ap);
+        $name_ap = $row_name_ap['fname']." ".$row_name_ap['lname'];
+    }else if($rank_ap == 4){
+        $search_name_ap = "SELECT fname, lname FROM user,approver WHERE user.id = approver.user_id AND approver.rank = '3'";
+        $result_name_ap = mysqli_query($connect, $search_name_ap);
+        $row_name_ap = mysqli_fetch_array($result_name_ap);
+        $name_ap = $row_name_ap['fname']." ".$row_name_ap['lname'];
+    }
+}else{
+    // header("location:login.php?alert=2");
+    exit();
+}
 // เลือกฟอร์มออมาโชว์
 $rent_form = "SELECT user.id, fname, lname, rent_form.phone, date_go, date_back, rank, request, 
 department, references_id, rent_form.id, note, people, place, rent_form.phone
@@ -88,10 +121,10 @@ $resultcar = mysqli_query($connect, $searchcar);
 
             <div class="row">
                 <div class="input-field col s6">
-                    <p>ขอบเขตการเดินทาง<input type="text" name="place" class="P_80 mt-2" value="<?php echo $row_rent_form['count'] ?>" required readonly></p>
+                    <p>ขอบเขตการเดินทาง<input type="text" class="mt-2" value="<?php echo $row_rent_form['count'] ?>" required readonly></p>
                 </div>
                 <div class="input-field col s6">
-                    <p>วันที่กรอกแบบฟอร์ม<input type="text" name="place" class="P_80 mt-2" value="<?php echo $row_rent_form['created_at'] ?>" required readonly></p>
+                    <p>วันที่กรอกแบบฟอร์ม<input type="text" class="mt-2" value="<?php echo $row_rent_form['created_at'] ?>" required readonly></p>
                 </div>
             </div>
 
@@ -102,27 +135,27 @@ $resultcar = mysqli_query($connect, $searchcar);
                     <!-- ส่วนของรายละเอียดชื่อ -->
                     <div class="row">
                         <div class="input-field col s6">
-                            <input name="first_name" id="first_name" type="text" class="want" value="<?php echo $row_rent_form['fname'] ?>" required readonly>
+                            <input type="text" class="want" value="<?php echo $row_rent_form['fname'] ?>" required readonly>
                             <label for="first_name">ชื่อจริง</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="last_name" id="last_name" type="text" class="want" value="<?php echo $row_rent_form['lname'] ?>" required readonly>
+                            <input type="text" class="want" value="<?php echo $row_rent_form['lname'] ?>" required readonly>
                             <label for="last_name">นามสกุล</label>
                         </div>
                     </div>
                     <div class="input-field"></div>
                     <p>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)</p>
-                    <input type="text" name="want" class="want" value="<?php echo $row_rent_form['references_id'] ?>" required readonly>
+                    <input type="text" class="want" value="<?php echo $row_rent_form['references_id'] ?>" required readonly>
                 </div>
 
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <input name="rank" id="rank" type="text" class="want" value="<?php echo $row_rent_form['rank'] ?>" required readonly>
+                        <input type="text" class="want" value="<?php echo $row_rent_form['rank'] ?>" required readonly>
                         <label for="rank">ตำแหน่ง (ของผู้กรอกแบบฟอร์ม)</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="zone" id="zone" type="text" class="want" value="<?php echo $row_rent_form['department'] ?>" required readonly>
+                        <input type="text" class="want" value="<?php echo $row_rent_form['department'] ?>" required readonly>
                         <label for="zone">สังกัด (ของผู้กรอกแบบฟอร์ม)</label>
                     </div>
                 </div>
@@ -141,14 +174,14 @@ $resultcar = mysqli_query($connect, $searchcar);
 
                 <!-- ส่วนของสถานที่ -->
                 <p>มีความประสงค์จะขอใช้รถยนต์ของสำนักวิชาการศึกษาทั่วไปฯ เพื่อไปราชการเกี่ยวกับ</p>
-                <input type="text" name="want" class="want" value="<?php echo $row_rent_form['request'] ?>" required readonly>
+                <input type="text" class="want" value="<?php echo $row_rent_form['request'] ?>" required readonly>
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <p>สถานที่ไป<input type="text" name="place" class="want" value="<?php echo $row_rent_form['place'] ?>" required readonly></p>
+                        <p>สถานที่ไป<input type="text" class="want" value="<?php echo $row_rent_form['place'] ?>" required readonly></p>
                     </div>
                     <div class="input-field col s6">
-                        <p>จำนวนคน<input type="text" name="people" class="want" value="<?php echo $row_rent_form['people'] ?>" required readonly></p>
+                        <p>จำนวนคน<input type="text" class="want" value="<?php echo $row_rent_form['people'] ?>" required readonly></p>
                     </div>
                 </div>
                 <!-- จบส่วนของสถานที่ -->
@@ -159,10 +192,10 @@ $resultcar = mysqli_query($connect, $searchcar);
                 <p>วันเวลาในการเดินทาง (ไป และ กลับ)</p>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input name="date_go" id="date_go" type="datetime" class="want" value="<?php echo $row_rent_form['date_go'] ?>" required readonly>
+                        <input  type="datetime" class="want" value="<?php echo $row_rent_form['date_go'] ?>" required readonly>
                     </div>
                     <div class="input-field col s6">
-                        <input name="date_back" id="date_back" type="datetime" class="want" value="<?php echo $row_rent_form['date_back'] ?>" required readonly>
+                        <input  type="datetime" class="want" value="<?php echo $row_rent_form['date_back'] ?>" required readonly>
                     </div>
                 </div>
 
@@ -170,11 +203,11 @@ $resultcar = mysqli_query($connect, $searchcar);
 
                 <!-- หมายเหตุ -->
                 <div>
-                    <p>หมายเหตุ<input name="note" id="note" type="text" class="want" value="<?php echo $row_rent_form['note'] ?>" required readonly></p>
-                    <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input name="phone" id="phone" type="text" class="want" value="<?php echo $row_rent_form['phone'] ?>" required readonly></p>
+                    <p>หมายเหตุ<input type="text" class="want" value="<?php echo $row_rent_form['note'] ?>" required readonly></p>
+                    <p>กรณีมีปัญหาสามารถติดต่อกลับได้ที่เบอร์โทรนี้<input type="text" class="want" value="<?php echo $row_rent_form['phone'] ?>" required readonly></p>
                 </div><br>
                 <!-- จบหมายเหตุ -->
-
+                    
 
 
                 <!-- ลงชื่อคนขออณุญาติ -->
@@ -187,7 +220,7 @@ $resultcar = mysqli_query($connect, $searchcar);
                             <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
                         </div>
                     </div>
-                </div><br>
+                </div>
                 <!-- จบลงชื่อคนขออณุญาติ -->
             </div>
         </div>
@@ -197,33 +230,46 @@ $resultcar = mysqli_query($connect, $searchcar);
 
     <!-- เลือกรถ -->
     <form action="allowed.php" method="POST">
-        <div class="container">
-            <div class="input-field col s12">
-                <select name="car" required>
-                    <option disabled selected>เลือกรถ</option>
-                    <?php while ($rowcar = mysqli_fetch_array($resultcar)) { ?>
-                        <option> <?php echo $rowcar['license'] ?> </option>
-                    <?php } ?>
-                </select>
-                <input type="hidden" name="id" value="<?php echo $id_rentform ?>">
+    <?php if($rank_ap == '1'){?>
+                <div class="container">
+                    <div class="input-field col s12">
+                        <select name="car" required>
+                            <option disabled selected>เลือกรถ</option>
+                            <?php while ($rowcar = mysqli_fetch_array($resultcar)) { ?>
+                                <option> <?php echo $rowcar['license'] ?> </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+    <?php }else if($rank_ap > 1 && $rank_ap < 5){ ?>
+        <!-- <form action="allowed.php" method="post"> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col s6">
+                        <p>คนขับรถ</p>
+                        <input type="text" class="want" value="<?php echo $name_driver ?>" required readonly><br><br><br>
+                    </div>
+                    <div class="col s6">
+                        <p>เจ้าหน้าที่เลือกรถ</p>
+                        <input type="text" class="want" value="<?php echo $name_ap1 ?>" required readonly><br><br><br>
+                    </div>
+                </div>
+                
+                <?php if($rank_ap > 2){?>
+                    <div class="row"><div class="col s6"></div>
+                    <div class="col s6">
+                        <p>เจ้าหน้าที่ ที่อนุญาตให้ไปล่าสุด</p>
+                        <input type="text" class="want" value="<?php echo $name_ap ?>" required readonly><br><br><br>
+                    </div>
+                </div>
+                <?php } ?>
+   <?php } ?>
+                <div class="center-align">
+                    <input type="submit" id="but3" class="btn orange darken-4-effect light" value="อนุญาต" name="allowed">
+                    <input type="submit" id="but4" class="btn red darken-4-effect light" value="ไม่อนุญาต" name="allowed"><br><br>
+                </div>
             </div>
-        </div>
-        
-    <br><br>
-
-
-
-    <div class="center-align">
-        <input type="submit" id="but3" class="btn orange darken-4-effect light" value="อนุญาต" name="allowed">
-            <!-- <i class="material-icons right">done</i> -->
-        <!-- </button> -->
-        <input type="submit" id="but4" class="btn red darken-4-effect light" value="ไม่อนุญาต" name="allowed">
-            <!-- <i class="material-icons right">done</i> -->
-        <!-- </button> -->
-        <!-- <a href="approver_page.php" id="but3" class="waves-effect waves-light btn">ย้อนกลับ</a> -->
-    </div><br><br>
-    </form>
-
+            <input type="hidden" name="id_rent_form" value="<?php echo $id_rentform ?>">
+        </form>
 </body>
-
 </html>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2019 at 10:41 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Oct 14, 2019 at 01:24 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -54,12 +54,21 @@ INSERT INTO `approver` (`id`, `user_id`, `license`, `rank`) VALUES
 CREATE TABLE `approve_form` (
   `id` int(11) NOT NULL,
   `rent_form_id` int(11) NOT NULL,
-  `approver_id` int(11) NOT NULL,
+  `approver_id` int(11) DEFAULT NULL,
   `status` text NOT NULL,
   `note` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `approve_form`
+--
+
+INSERT INTO `approve_form` (`id`, `rent_form_id`, `approver_id`, `status`, `note`, `created_at`, `updated_at`) VALUES
+(1, 28, 16, 'ได้รับอนุญาตจากMaggie Souyers', 'ได้รับอนุญาตให้ไปกิจกรรมที่ท่านขอมาได้', '2019-10-10 06:43:22', '2019-10-14 11:22:18'),
+(2, 29, 16, 'ได้รับอนุญาตจากMaggie Souyers', 'ได้รับอนุญาตให้ไปกิจกรรมที่ท่านขอมาได้', '2019-10-13 08:01:47', '2019-10-14 10:56:18'),
+(3, 30, 13, 'กำลังตรวจสอบ', 'ขั้นตอนการเลือกรถ', '2019-10-13 08:03:28', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -123,9 +132,18 @@ INSERT INTO `driver` (`id`, `user_id`, `image`) VALUES
 CREATE TABLE `driver_rent` (
   `id` int(11) NOT NULL,
   `rent_form_id` int(11) NOT NULL,
-  `driver_id` int(11) NOT NULL,
-  `approver_id` int(11) NOT NULL
+  `driver_id` int(11) DEFAULT NULL,
+  `approver_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `driver_rent`
+--
+
+INSERT INTO `driver_rent` (`id`, `rent_form_id`, `driver_id`, `approver_id`) VALUES
+(6, 28, 1, NULL),
+(7, 29, 1, NULL),
+(8, 30, NULL, 13);
 
 -- --------------------------------------------------------
 
@@ -144,10 +162,19 @@ CREATE TABLE `rent_form` (
   `date_back` datetime NOT NULL,
   `note` text NOT NULL,
   `phone` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   `references_id` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `rent_form`
+--
+
+INSERT INTO `rent_form` (`id`, `user_id`, `request`, `place`, `count`, `people`, `date_go`, `date_back`, `note`, `phone`, `created_at`, `updated_at`, `references_id`) VALUES
+(28, 'user', 'ดูงาน', 'ลาว', 'Other', '7-9', '2019-10-12 18:30:00', '2019-10-16 13:42:00', '', '9999', '2019-10-10 06:42:27', '0000-00-00 00:00:00', 'palm palm'),
+(29, 'user', 'เที่ยว', 'ภูเก็ต', 'Other', '10-13', '2019-10-16 18:30:00', '2019-10-18 18:30:00', '-', '9999', '2019-10-13 08:01:47', '0000-00-00 00:00:00', 'Anagepan Sombookit'),
+(30, 'user', 'ทัศนศึกษา', 'ปักกิ่ง', 'Bangkok', '7-9', '2019-10-23 18:00:00', '2019-10-25 00:00:00', '-', '9999', '2019-10-13 08:03:28', '0000-00-00 00:00:00', 'Vichai Srijintawiriya');
 
 -- --------------------------------------------------------
 
@@ -185,6 +212,7 @@ INSERT INTO `user` (`id`, `password`, `fname`, `lname`, `role`, `email`, `phone`
 ('sa', '47bce5c74f589f4867dbd57e9ca9f808', 'Sunisara', 'Jamkrajang', 'user', 'sunisarajam@ssru.ac.th', '096-124-7489', 'เจ้าหน้าที่ฝึกหัด', 'สำนักงานจีอี'),
 ('saasad', '47bce5c74f589f4867dbd57e9ca9f808', 'Anagepan', 'Sombookit', 'user', 'sombookit@ssru.ac.th', '060-174-9986', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
 ('singq', 'e10adc3949ba59abbe56e057f20f883e', 'Singhakom', 'Meenayon', 'driver', 'sing@gmail.com', '085-957-5958', 'คนขับประจำ', 'สำนักงานจีอี'),
+('user', 'ee11cbb19052e40b07aac0ca060c23ee', 'palm', 'palm', 'user', '9999', '9999', '9999', '9999'),
 ('ฟฟฟฟ', 'cf10fefbd923acd5ad133458fe4c169d', 'Sonic', 'Rider', 'driver', 'sonypicture@gmail.com', '099-155-9595', 'คนขับชั่วคราว', 'สำนักงานจีอี'),
 ('ฟฟฟฟ555', 'cf10fefbd923acd5ad133458fe4c169d', 'Peter', 'Parker', 'driver', 'spiderman@outlook.com', '096-892-6642', 'คนขับชั่วคราว', 'สำนักงานจีอี');
 
@@ -257,7 +285,7 @@ ALTER TABLE `approver`
 -- AUTO_INCREMENT for table `approve_form`
 --
 ALTER TABLE `approve_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `car`
@@ -275,13 +303,13 @@ ALTER TABLE `driver`
 -- AUTO_INCREMENT for table `driver_rent`
 --
 ALTER TABLE `driver_rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `rent_form`
 --
 ALTER TABLE `rent_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables

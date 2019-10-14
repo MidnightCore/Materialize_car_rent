@@ -20,17 +20,23 @@ session_start();
     // echo$_SESSION['name'];
     if($role['role'] == "admin") {
       header("location:admin/admin_page.php");
+      exit();
     }else if($role['role'] == "user") {
       header("location:index.php");
+      exit();
     }else if($role['role'] == "approver"){
       header("location:approver/approver_page.php");
+      exit();
     }else if($role['role'] == "driver"){
       header("location:driver/driver_page.php");
+      exit();
     }else{
       header("location:login.php?alert=2");
+      exit();
     }
   }
   else {
     header("location:login.php?alert=1");
+    exit();
   }
   ?>
