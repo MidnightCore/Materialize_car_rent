@@ -10,8 +10,7 @@ if(isset($_SESSION['id'])){
         // ตัวแปรอัพเดท
         $search_rank_ap = "SELECT approver.rank AS ap_rank FROM approver, approve_form,driver_rent
         WHERE approve_form.rent_form_id = '$rent_form_id' AND driver_rent.rent_form_id = '$rent_form_id'
-        AND approver.rank IN(SELECT rank FROM approve_form,approver WHERE approve_form.approver_id = approver.id AND approve_form.rent_form_id = '$rent_form_id')
-        ";
+        AND approver.rank IN(SELECT rank FROM approve_form,approver WHERE approve_form.approver_id = approver.id AND approve_form.rent_form_id = '$rent_form_id')";
         $result_rank_update = mysqli_query($connect, $search_rank_ap);
         $row_rank_ap = mysqli_fetch_array($result_rank_update);
         // $rank_ap_update = $row_rank_ap['ap_rank']+1;
@@ -114,9 +113,6 @@ if(isset($_SESSION['id'])){
         echo "<script>alert('ไม่ถูกต้องค่ะ');history.back();</script>";
         exit();
     }
-    
-
-
 }else{
     header("location:./../login.php");
     exit();
