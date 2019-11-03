@@ -6,8 +6,8 @@ if (isset($_SESSION['id'])) {
     header("location:login.php");
     exit();
 }
-require './server.php';
-
+require './server.php';echo"555555555555555555555555555555555"." ";
+echo md5("123456");
 $sql = "SELECT user.fname,user.lname,phone,user.rank,department FROM user WHERE user.id='$user_id'";
 $result = mysqli_query($connect, $sql);
 $name = mysqli_fetch_array($result);

@@ -3,8 +3,8 @@ session_start();
 require './server.php';
 if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
-    $rent_form = "SELECT date_go,brand,car.version,car.license,place 
-    FROM rent_form,driver_rent,approv_form,car,approver
+    $rent_form = "SELECT created_at,car.licen,request,place,approve_form.status,approve_form.note
+    FROM rent_form,driver_rent,approv_form,car
     WHERE rent_form.id = driver_rent.rent_form_id AND approve_form.rent_form_id = rent_form.id AND ";
 }else{
     header("location:login.php");
@@ -60,9 +60,9 @@ if(isset($_SESSION['id'])){
         <table class="responsive-table">
             <thead>
                 <tr>
-                    <th>วันที่จอง</th>
-                    <th>รถที่ใช้</th>
+                    <th>วัน/เวลา ที่จอง</th>
                     <th>ทะเบียนรถ</th>
+                    <th>เหตุผลที่ไป</th>
                     <th>ปลายทาง</th>
                     <th>สถานะคำขอ</th>
                 </tr>
@@ -71,16 +71,6 @@ if(isset($_SESSION['id'])){
             <tbody>
                 <tr>
                     <td>01-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>กน1234</td>
-                    <td>มหาวิทยาลัยเอแบค</td>
-                    <td>
-                        <form action="#" method="post">
-                        <!-- <form action="checkstatus_now.php" method="post"> -->
-                            <input type="hidden" name="id_order" value="<?php echo $row2['id_order'] ?>">
-                            <input type="submit" class="btn waves-effect waves-light" value="เช็คสถานะ">
-                        </form>
-                    </td>
                 </tr>
             </tbody>
         </table>
