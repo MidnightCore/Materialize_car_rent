@@ -6,8 +6,7 @@ if (isset($_SESSION['id'])) {
     header("location:login.php");
     exit();
 }
-require './server.php';echo"555555555555555555555555555555555"." ";
-echo md5("123456");
+require './server.php';
 $sql = "SELECT user.fname,user.lname,phone,user.rank,department FROM user WHERE user.id='$user_id'";
 $result = mysqli_query($connect, $sql);
 $name = mysqli_fetch_array($result);
@@ -18,6 +17,75 @@ $references_id = "SELECT fname,lname,id FROM user WHERE role = 'user' ORDER BY f
 $result_references = mysqli_query($connect, $references_id);
 
 ?>
+
+
+
+
+
+<!-- Create PDF -->
+<?php
+function fetch_data()
+{
+    $output = '';
+    require "server.php";
+    $query = "SELECT * FROM user ORDER BY first_name ASC";
+    $result = mysqli_query($connect, $query);
+    while ($row = mysqli_fetch_array($result)) {
+        $output .= '
+            <tr>
+            <td>' . $row["want"] . '</td>
+            <td>' . $row["place"] . '</td>
+            <td>' . $row["county"] . '</td>
+            <td>' . $row["people"] . '</td>
+            <td>' . $row["date_go"] . '</td>
+            <td>' . $row["time_go"] . '</td>
+            <td>' . $row["date_back"] . '</td>
+            <td>' . $row["time_back"] . '</td>
+            </tr>
+        ';
+    }
+    return $output;
+}
+if (isset($_POST["create_pdf"])) {
+    require_once('tcpdf/tcpdf.php');
+    $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    $obj_pdf->SetCreator(PDF_CREATOR);
+    $obj_pdf->SetTitle("สรุปรายละเอียดการจองรถ");
+    $obj_pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);
+    $obj_pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+    $obj_pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    $obj_pdf->SetDefaultMonospacedFont('helvetica');
+    $obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    $obj_pdf->SetMargins(PDF_MARGIN_LEFT, '5', PDF_MARGIN_RIGHT);
+    $obj_pdf->setPrintHeader(false);
+    $obj_pdf->setPrintFooter(false);
+    $obj_pdf->SetAutoPageBreak(TRUE, 10);
+    $obj_pdf->SetFont('helvetica', '', 12);
+    $obj_pdf->AddPage();
+    $content = '';
+    $content .= '  
+    <h3 align="center">Summary of car booking details</h3><br /><br />  
+    <table border="1" cellspacing="0" cellpadding="5">  
+         <tr>  
+            <th width="15%">First Name</th>
+            <th width="15%">Last Name</th>
+            <th width="15%">ID</th>
+            <th width="15%">Password</th>
+           <th width="15%">Phone Num</th>
+            <th width="15%">Email</th>
+            <th width="15%">Role</th>
+         </tr>  
+    ';
+    $content .= fetch_data();
+    $content .= '</table>';
+    $obj_pdf->writeHTML($content);
+    $obj_pdf->Output('ResultRentCarOrder.pdf', 'I');
+}
+?>
+
+
+
+
 
 
 <!DOCTYPE html>
@@ -131,7 +199,7 @@ $result_references = mysqli_query($connect, $references_id);
                     </div>
                     <!-- <p>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)<input type="text" class="" name="references_id" required></p> -->
                     <div class="input-field"><br><br>
-                    <label>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)<b style="color:red">**</b></label>
+                        <label>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)<b style="color:red">**</b></label>
                         <select type="text" name="references_id" class="people_num" required>
                             <option value="" disabled selected>อ้างอิง(หัวหน้าที่ดำเนินเรื่องขอใช้รถตู้ ถ้าเบิกเองใส่ชื่อตัวเอง)</option>
                             <?php while ($row_rfr = mysqli_fetch_array($result_references)) { ?>
@@ -170,7 +238,7 @@ $result_references = mysqli_query($connect, $references_id);
                             <p>สถานที่ไป<b style="color:red">**</b><input type="text" name="place" class="P_80 mt-2" required></p>
                         </div>
                         <div class="input-field col s6"><br><br>
-                        <label>เลือกจำนวน<b style="color:red">**</b></label>
+                            <label>เลือกจำนวน<b style="color:red">**</b></label>
                             <select type="text" name="people" class="people_num" required>
                                 <option value="" disabled selected></option>
                                 <option value="0-3">0-3</option>
@@ -331,6 +399,9 @@ $result_references = mysqli_query($connect, $references_id);
 
 
     <div class="center-align">
+        <form method="POST" target="_blank">
+            <input id="but3" type="submit" name="create_pdf" class="waves-effect  red lighten-1 btn" value="บันทึกเป็น PDF">
+        </form><br>
         <button type="submit" form="nukKaew" class="btn pulse waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
         </button>
