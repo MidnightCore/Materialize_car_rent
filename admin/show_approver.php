@@ -11,6 +11,8 @@ FROM user,approver
 WHERE user.id = approver.user_id AND user.role = 'approver'";
 $result = mysqli_query($connect, $sql);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

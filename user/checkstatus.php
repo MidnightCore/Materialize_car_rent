@@ -1,12 +1,12 @@
 <?php
 session_start();
 require '../server/server.php';
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     $rent_form = "SELECT rent_form.id,created_at,car.licen,request,place,approve_form.status,approve_form.note
     FROM rent_form,driver_rent,approve_form,car
     WHERE rent_form.id = driver_rent.rent_form_id AND approve_form.rent_form_id = rent_form.id AND ";
-}else{
+} else {
     header("location:../login.php");
 }
 ?>
@@ -59,16 +59,31 @@ if(isset($_SESSION['id'])){
             <thead>
                 <tr>
                     <th>วัน/เวลา ที่จอง</th>
-                    <th>ทะเบียนรถ</th>
+                    <th>วัน/เวลา ที่กลับ</th>
                     <th>เหตุผลที่ไป</th>
                     <th>ปลายทาง</th>
                     <th>สถานะคำขอ</th>
+                    <th>บันทึก</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
                     <td>01-Aug-19</td>
+                    <td>01-Aug-19</td>
+                    <td>01-Aug-19</td>
+                    <td>01-Aug-19</td>
+                    <td>
+                        <a href="checkstatus_now.php" target="_blank" class="btn waves-effect waves-light teal lighten-1 z-depth-4">เช็คสถานะ
+                        </a>
+                    </td>
+                    <td>
+                        <a href="../tcpdf/create_pdf.php" target="_blank" class="btn waves-effect waves-light teal lighten-1 z-depth-4">PDF
+                        </a>
+                        <!-- <form method="POST" target="_blank">
+                            <input type="submit" name="create_pdf" class="btn waves-effect waves-light teal lighten-1 z-depth-4" value="PDF">
+                        </form> -->
+                    </td>
                 </tr>
             </tbody>
         </table>
