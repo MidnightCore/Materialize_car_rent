@@ -1,11 +1,11 @@
 <?php  
-require './../server.php';
+require '../server/server.php';
 session_start();
 if($_SESSION['id']){
 $user_id = base64_decode($_GET['user']);
 // echo$user_id;
 }else{
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 $role = "SELECT user.role FROM user WHERE user.id = '$user_id'";

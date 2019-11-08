@@ -1,6 +1,6 @@
  <?php
 session_start();
-require "./../server.php";
+require "../server/server.php";
 if(isset($_SESSION['id'])){
     $user_id = $_POST['user_id'];
     if(isset($_POST['license']) || isset($_POST['rank_approver'])){
@@ -10,7 +10,7 @@ if(isset($_SESSION['id'])){
         $image = $_POST['image'];
     }
 }else{
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 $first_name     = $_POST['first_name'];

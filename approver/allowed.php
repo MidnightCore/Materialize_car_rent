@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require './../server.php';
+require '../server/server.php';
 
 if(isset($_SESSION['id'])){
     $name = $_SESSION['name'];
@@ -101,7 +101,7 @@ if(isset($_SESSION['id'])){
             }
            
         }else{
-            echo "<script>alert('บันทึกแบบฟอร์มไม่ได้ค่ะ กรุณาบันทึกใหม่5555');history.back();</script>";
+            echo "<script>alert('บันทึกแบบฟอร์มไม่ได้ค่ะ กรุณาบันทึกใหม่');history.back();</script>";
             exit();
         }
     }else if($_POST['allowed'] == 'ไม่อนุญาต'){
@@ -114,7 +114,7 @@ if(isset($_SESSION['id'])){
         exit();
     }
 }else{
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 ?>

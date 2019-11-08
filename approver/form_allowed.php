@@ -1,5 +1,5 @@
 <?php
-require './../server.php';
+require '../server/server.php';
 session_start();
 $palm = 0;
 if (isset($_GET['alert'])) {
@@ -15,7 +15,7 @@ if (isset($_SESSION['id'])) {
         // echo $id_rentform;
     }
 }else{
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 

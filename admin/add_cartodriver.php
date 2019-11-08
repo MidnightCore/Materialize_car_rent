@@ -1,5 +1,5 @@
 <?php 
-require './../server.php';
+require '../server/server.php';
 session_start();
 if(isset($_SESSION['id'])){
     if(isset($_POST['cartodriver'])){
@@ -10,7 +10,7 @@ if(isset($_SESSION['id'])){
     }
 }
 else{
-    header("location:./../login.php");
+    header("location:../login.php");
     exit(); 
 }
 $user_id = base64_decode($_POST['id']);

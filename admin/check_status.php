@@ -1,10 +1,10 @@
 <?php
-require './../server.php';
+require '../server/server.php';
 session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 } else {
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 ?>
@@ -137,7 +137,7 @@ if (isset($_SESSION['id'])) {
             <button type="submit" form="nukKaew" class="btn pulse waves-effect waves-light">ยืนยัน
                 <i class="material-icons right">done</i>
             </button>
-            <a href="index.html" id="but3" class="blue darken-3-effect blue darken-3-light btn">กลับหน้าหลัก</a>
+            <a href="../index.php" id="but3" class="blue darken-3-effect blue darken-3-light btn">กลับหน้าหลัก</a>
         </div><br><br>
         <!-- จบส่วนของเจ้าหน้าที่ -->
 

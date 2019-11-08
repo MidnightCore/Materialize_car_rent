@@ -1,10 +1,10 @@
 <?php  
-require './../server.php';
+require '../server/server.php';
 session_start();
 if(isset($_GET['driver'])){
     $id = base64_decode($_GET['driver']);
 }else{
-    header("location:login.php");
+    header("location:../login.php");
     exit();    
 }
 $search ="SELECT fname,lname,id FROM user WHERE user.role = 'driver'AND user.id = '$id'";

@@ -1,11 +1,11 @@
 <?php
-require './../server.php';
+require '../server/server.php';
 
 session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 }else{
-    header("location:./../login.php");  
+    header("location:../login.php");  
     exit();  
 }
 $sql = "SELECT * FROM user WHERE user.role != 'admin' ORDER BY user.role DESC,user.fname ASC";

@@ -1,10 +1,10 @@
 <?php
-require './../server.php';
+require '../server/server.php';
 session_start();
 if (isset($_SESSION['id'])) {
     $role = base64_decode($_GET['cmVzdV9yb2xl']);
 } else {
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 ?>

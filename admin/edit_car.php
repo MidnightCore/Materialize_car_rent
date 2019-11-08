@@ -1,10 +1,10 @@
 <?php 
 session_start();
-require './../server.php';
+require '../server/server.php';
 if(isset($_SESSION['id'])){
     $id = $_POST['id'];
 }else{
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 $color = $_POST['car_color'];

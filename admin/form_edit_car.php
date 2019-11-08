@@ -1,10 +1,10 @@
 <?php
-require './../server.php';
+require '../server/server.php';
 session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 } else {
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 $sql = "SELECT color,brand,image,version,license,id FROM car";

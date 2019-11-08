@@ -1,10 +1,10 @@
 <?php
-require './../server.php';
+require '../server/server.php';
 session_start();
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 } else {
-    header("location:./../login.php");
+    header("location:../login.php");
     exit();
 }
 ?>
@@ -63,7 +63,7 @@ if (isset($_SESSION['id'])) {
 <body>
     <nav class="teal lighten-3" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="admin_page.php" class="brand-logo">Driver Page</a>
+            <a id="logo-container" href="#" class="brand-logo">Driver Page</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
