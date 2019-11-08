@@ -3,10 +3,10 @@ session_start();
 if (isset($_SESSION['id'])) {
     $user_id = $_SESSION['id'];
 } else {
-    header("location:login.php");
+    header("location:../login.php");
     exit();
 }
-require './server.php';
+require '../server/server.php';
 $sql = "SELECT user.fname,user.lname,phone,user.rank,department FROM user WHERE user.id='$user_id'";
 $result = mysqli_query($connect, $sql);
 $name = mysqli_fetch_array($result);
@@ -15,19 +15,14 @@ $today = date("Y-m-j H:i:s");
 
 $references_id = "SELECT fname,lname,id FROM user WHERE role = 'user' ORDER BY fname ASC";
 $result_references = mysqli_query($connect, $references_id);
-
 ?>
-
-
-
-
 
 <!-- Create PDF -->
 <?php
 function fetch_data()
 {
     $output = '';
-    require "server.php";
+    require "server/server.php";
     $query = "SELECT * FROM user ORDER BY first_name ASC";
     $result = mysqli_query($connect, $query);
     while ($row = mysqli_fetch_array($result)) {
@@ -47,7 +42,7 @@ function fetch_data()
     return $output;
 }
 if (isset($_POST["create_pdf"])) {
-    require_once('tcpdf/tcpdf.php');
+    require_once('../tcpdf/tcpdf.php');
     $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
     $obj_pdf->SetCreator(PDF_CREATOR);
     $obj_pdf->SetTitle("สรุปรายละเอียดการจองรถ");
@@ -71,7 +66,7 @@ if (isset($_POST["create_pdf"])) {
             <th width="15%">Last Name</th>
             <th width="15%">ID</th>
             <th width="15%">Password</th>
-           <th width="15%">Phone Num</th>
+            <th width="15%">Phone Num</th>
             <th width="15%">Email</th>
             <th width="15%">Role</th>
          </tr>  
@@ -98,13 +93,13 @@ if (isset($_POST["create_pdf"])) {
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
+    <script src="../js/materialize.js"></script>
+    <script src="../js/init.js"></script>
 
     <style>
         #but3 {
@@ -121,13 +116,13 @@ if (isset($_POST["create_pdf"])) {
 <body>
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="index.php" class="brand-logo">Home</a>
+            <a id="logo-container" href="../index.php" class="brand-logo">Home</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
                 <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <li><a href="login.php">ออกจากระบบ</a></li>
+                <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
@@ -136,7 +131,7 @@ if (isset($_POST["create_pdf"])) {
                 <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <li><a href="login.php">ออกจากระบบ</a></li>
+                <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
@@ -390,7 +385,7 @@ if (isset($_POST["create_pdf"])) {
                                     <span class="helper-text" data-error="wrong" data-success="right">ผู้ขออนุญาติ</span>
                                 </div>
                             </div>
-                        </div><br><br><br>
+                        </div>
                         <!-- จบลงชื่อคนขออณุญาติ -->
                 </div>
             </div>
@@ -399,13 +394,13 @@ if (isset($_POST["create_pdf"])) {
 
 
     <div class="center-align">
-        <form method="POST" target="_blank">
+        <!-- <form method="POST" target="_blank">
             <input id="but3" type="submit" name="create_pdf" class="waves-effect  red lighten-1 btn" value="บันทึกเป็น PDF">
-        </form><br>
+        </form><br> -->
         <button type="submit" form="nukKaew" class="btn pulse waves-effect waves-light">ยืนยัน
             <i class="material-icons right">done</i>
         </button>
-        <a href="index.html" id="but3" class="waves-effect waves-light btn">กลับหน้าหลัก</a>
+        <a href="../index.php" id="but3" class="waves-effect waves-light btn">กลับหน้าหลัก</a>
     </div><br><br>
 
 </body>

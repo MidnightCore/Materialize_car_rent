@@ -8,17 +8,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
 
-    <link href='./fullcalendar/packages/core/main.css' rel='stylesheet' />
-    <link href='./fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
-    <link href='./fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
-    <script src='./fullcalendar/packages/core/main.js'></script>
-    <script src='./fullcalendar/packages/interaction/main.js'></script>
-    <script src='./fullcalendar/packages/daygrid/main.js'></script>
-    <script src='./fullcalendar/packages/timegrid/main.js'></script>
+    <link href='../fullcalendar/packages/core/main.css' rel='stylesheet' />
+    <link href='../fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+    <link href='../fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
+    <script src='../fullcalendar/packages/core/main.js'></script>
+    <script src='../fullcalendar/packages/interaction/main.js'></script>
+    <script src='../fullcalendar/packages/daygrid/main.js'></script>
+    <script src='../fullcalendar/packages/timegrid/main.js'></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -66,13 +66,13 @@
 <body>
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="index.php" class="brand-logo">Home</a>
+            <a id="logo-container" href="../index.php" class="brand-logo">Home</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
                 <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <li><a href="login.php">ออกจากระบบ</a></li>
+                <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
@@ -81,7 +81,7 @@
                 <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
                 <li><a href="history.php">ประวัติการใช้งาน</a></li>
                 <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <li><a href="login.php">ออกจากระบบ</a></li>
+                <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
@@ -90,14 +90,14 @@
 
     <div id='calendar'></div>
     <div class="center-align">
-        <a href="index.html" id="but3" class="waves-effect waves-light btn">กลับหน้าหลัก</a>
+        <a href="../index.php" id="but3" class="waves-effect waves-light btn">กลับหน้าหลัก</a>
     </div>
 
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
+    <script src="../js/materialize.js"></script>
+    <script src="../js/init.js"></script>
 </body>
 
 </html>

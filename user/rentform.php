@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "server.php";
+require "../server/server.php";
 // $today = date("Y-m-j H:i:s");
 // echo$today."<br>";
 if(isset($_SESSION['id'])){
@@ -55,7 +55,7 @@ if ($result = mysqli_query($connect,$sql)) {
         $note = "ขั้นตอนการเลือกรถ";
         $insert_ap_id = "INSERT INTO `approve_form`(`rent_form_id`, `approver_id`, `status`, `note`) VALUES('$id_rentform', '$id_approver', '$status', '$note')";
         if(mysqli_query($connect, $insert_ap_id)){
-            header("location:index.php?alert=1"); 
+            header("location:../index.php?alert=1"); 
             exit();
         }
          

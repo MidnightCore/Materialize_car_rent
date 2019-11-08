@@ -1,5 +1,5 @@
 <?php  
-    require './server.php';
+    require 'server/server.php';
     session_start();
     if(isset($_SESSION['id'])){
         $user_id = $_SESSION['id'];
@@ -41,10 +41,10 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="index.php" class="brand-logo">Home</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
-                <li><a href="history.php">ประวัติการใช้งาน</a></li>
-                <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
+                <li><a href="user/calender.php">ตรวจเช็คตารางรถ</a></li>
+                <li><a href="user/form_rentform.php">แบบฟอร์มจองรถ</a></li>
+                <li><a href="user/history.php">ประวัติการใช้งาน</a></li>
+                <li><a href="user/checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
                 <?php if($name = mysqli_fetch_array($result)){
                    echo"<li><a href=#>".$name['fname']." ".$name['lname']."</a></li>";
                 }else{ 
@@ -54,10 +54,10 @@
 
             <ul id="nav-mobile" class="sidenav">
                 <br><br>
-                <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
-                <li><a href="history.php">ประวัติการใช้งาน</a></li>
-                <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
+                <li><a href="user/calender.php">ตรวจเช็คตารางรถ</a></li>
+                <li><a href="user/form_rentform.php">แบบฟอร์มจองรถ</a></li>
+                <li><a href="user/history.php">ประวัติการใช้งาน</a></li>
+                <li><a href="user/checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
                 <li><a href="login.php">ออกจากระบบ</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -75,7 +75,7 @@
                     </h6>
                 </div>
                 <div class="row center">
-                    <a href="form_rentform.php" id="download-button"
+                    <a href="user/form_rentform.php" id="download-button"
                         class="btn-large waves-effect waves-light teal lighten-1 z-depth-4">Get
                         Started</a>
                 </div>

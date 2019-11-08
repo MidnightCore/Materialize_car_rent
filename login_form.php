@@ -5,7 +5,7 @@ session_start();
   $em_Password   = md5($_POST['em_Password']);
   // $em_Password   = $_POST['em_Password'];
 
-  require 'server.php';
+  require 'server/server.php';
 
   $sql    = "SELECT user.id,user.password,user.role,fname,lname FROM user WHERE user.id ='$em_User' and user.password='$em_Password'";
   $result = mysqli_query($connect,$sql);
