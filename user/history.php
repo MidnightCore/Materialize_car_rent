@@ -1,3 +1,23 @@
+<?php 
+require './../server/server.php';
+session_start();
+
+if(isset($_SESSION['id'])){
+    $user_id = $_SESSION['id'];
+    // echo$user_id;
+}else{
+    header("location:../login.php");
+    exit();
+}
+$sql = "SELECT rent_form.created_at, car.license, rent_form.place,car.brand
+        FROM car, user, rent_form, driver_rent 
+        WHERE rent_form.user_id = user.id AND driver_rent.rent_form_id = rent_form.id 
+        AND driver_rent.driver_id = car.driver_id AND user.id = '$user_id'
+        AND driver_rent.approver_id IS NULL 
+        ORDER BY created_at DESC";
+$result = mysqli_query($connect, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,24 +77,15 @@
             </thead>
 
             <tbody>
-                <tr>
-                    <td>01-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>กน1234</td>
-                    <td>มหาวิทยาลัยเอแบค</td>
-                </tr>
-                <tr>
-                    <td>03-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>มส5678</td>
-                    <td>โรงเรียนวัดคูบัว จังหวัดราชบุรี</td>
-                </tr>
-                <tr>
-                    <td>05-Aug-19</td>
-                    <td>รถตู้</td>
-                    <td>ดป6389</td>
-                    <td>หมู่บ้านเด็ก จังหวัดกาญจนบุรี</td>
-                </tr>
+                <?php while ($row = mysqli_fetch_array($result)) {  ?>
+
+                    <tr>
+                        <td><?php echo $row['created_at'] ?></td>
+                        <td><?php echo $row['brand'] ?></td>
+                        <td><?php echo $row['license'] ?></td>
+                        <td><?php echo $row['place'] ?></td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>

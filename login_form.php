@@ -28,7 +28,7 @@ session_start();
       header("location:approver/approver_page.php");
       exit();
     }else if($role['role'] == "driver"){
-      header("location:driver/driver_main.php");
+      header("location:driver/driver_page.php");
       exit();
     }else{
       header("location:login.php?alert=2");

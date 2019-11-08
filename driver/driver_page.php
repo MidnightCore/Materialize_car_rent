@@ -34,41 +34,24 @@ if (isset($_SESSION['id'])) {
 
 <body>
     <nav class="white" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="../index.php" class="brand-logo">Home</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
-                <li><a href="history.php">ประวัติการใช้งาน</a></li>
-                <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
+        <div class="nav-wrapper container">   
+            <ul class="right hide-on-med-and-down">            
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
-
-            <ul id="nav-mobile" class="sidenav">
-                <br><br>
-                <li><a href="calender.php">ตรวจเช็คตารางรถ</a></li>
-                <li><a href="form_rentform.php">แบบฟอร์มจองรถ</a></li>
-                <li><a href="history.php">ประวัติการใช้งาน</a></li>
-                <li><a href="checkstatus.php">ตรวจสอบสถานะคำขอ</a></li>
-                <li><a href="../login.php">ออกจากระบบ</a></li>
-            </ul>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
 
 
     <div class="container">
         <br>
-        <h4>สถานะคำขอ</h4><br>
+        <h4>ตารางงาน</h4><br>
         <table class="responsive-table">
             <thead>
                 <tr>
-                    <th>วัน/เวลา ที่จอง</th>
+                    <th>วัน/เวลา ที่ไป</th>
                     <th>วัน/เวลา ที่กลับ</th>
-                    <th>เหตุผลที่ไป</th>
                     <th>ปลายทาง</th>
-                    <th>สถานะคำขอ</th>
-                    <th>บันทึก</th>
+                    <th>สถานะงาน</th>
                 </tr>
             </thead>
 
