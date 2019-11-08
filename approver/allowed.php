@@ -107,8 +107,14 @@ if(isset($_SESSION['id'])){
     }else if($_POST['allowed'] == 'ไม่อนุญาต'){
         $status = "ไม่อนุญาตโดย ".$name;
         $note = "ยกเลิกคำขอจองรถตู้เพราะไม่ได้รับอนุญาต";
+        echo$status;
+        echo$rent_form_id;
         // ตัวแปรอัพเดท
-        $update = "UPDATE approve_form SET `status` = '$status', `note` = '$note' WHERE approve_form.rentform_id = '$rent_form_id'";
+        $update = "UPDATE `approve_form` SET `status` = '$status', `note` = '$note' WHERE approve_form.rent_form_id = '$rent_form_id'";
+        if(mysqli_query($connect, $update)){
+            header("location:approver_page.php?alert=2");
+            exit();
+        }
     }else{
         echo "<script>alert('ไม่ถูกต้องค่ะ');history.back();</script>";
         exit();

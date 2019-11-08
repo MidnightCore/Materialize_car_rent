@@ -17,8 +17,10 @@ $row_approver = mysqli_fetch_array($result);
 $rank_ap = $row_approver['rank'];
 // เลือกฟอร์มออมาโชว์
 $rent_form = "SELECT user.id, fname, lname, rent_form.phone, date_go, date_back, references_id, rent_form.id AS id_rent
-FROM `rent_form`, `user`,`driver_rent` 
-WHERE rent_form.user_id = user.id AND driver_rent.rent_form_id = rent_form.id AND driver_rent.approver_id IN(SELECT id FROM `approver` WHERE rank = '$rank_ap')
+FROM `rent_form`, `user`,`driver_rent`, `approve_form`
+WHERE rent_form.user_id = user.id AND driver_rent.rent_form_id = rent_form.id AND approve_form.rent_form_id = rent_form.id
+AND approve_form.note != 'ยกเลิกคำขอจองรถตู้เพราะไม่ได้รับอนุญาต'
+AND driver_rent.approver_id IN(SELECT id FROM `approver` WHERE rank = '$rank_ap')
 ORDER BY rent_form.id ASC";
 $result_rent_form = mysqli_query($connect, $rent_form);
 
@@ -27,9 +29,9 @@ if (isset($_GET['alert'])) {
     $alert = $_GET['alert'];
 }
 if ($alert == 1) {
-    echo "<script>alert('เพิ่มข้อมูลเรียบร้อยแล้วค่ะ');</script>";
+    echo "<script>alert('แบบฟอร์มได้รับอนุญาตเรียบร้อยแล้วค่ะ');</script>";
 } else if ($alert == 2) {
-    echo "<script>alert('แก้ไขข้อมูลเรียบร้อยแล้วค่ะ');</script>";
+    echo "<script>alert('แบบฟอร์มไม่ได้รับอนุญาต บันทึกเรียบร้อยคะ');</script>";
 }
 ?>
 

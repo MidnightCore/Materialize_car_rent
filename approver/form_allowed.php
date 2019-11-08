@@ -12,7 +12,6 @@ if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     if (isset($_GET)) {
         $id_rentform = base64_decode($_GET['d']);
-        // echo $id_rentform;
     }
 }else{
     header("location:../login.php");
@@ -24,7 +23,6 @@ $sql = "SELECT approver.rank,fname,lname FROM user,approver WHERE user.role = 'a
 $result = mysqli_query($connect, $sql);
 $row_approver = mysqli_fetch_array($result);
 $rank_ap = $row_approver['rank'];
-echo$rank_ap;
 if($rank_ap >= 1 && $rank_ap < 5){
     $search_name_driver = "SELECT fname, lname FROM user,driver_rent,driver
     WHERE driver_rent.driver_id = driver.id AND driver.user_id = user.id AND driver_rent.rent_form_id = '$id_rentform'";
@@ -266,7 +264,7 @@ $resultcar = mysqli_query($connect, $searchcar);
    <?php } ?>
                 <div class="center-align">
                     <input type="submit" id="but3" class="btn orange darken-4-effect light" value="อนุญาต" name="allowed">
-                    <input type="submit" id="but4" class="btn red darken-4-effect light" value="ไม่อนุญาต" name="allowed"><br><br>
+                    <input type="submit" id="but4" class="btn red darken-4-effect light" value="ไม่อนุญาต" name="allowed" onclick="return confirm('คุณไม่อนุญาตแบบฟอร์มนี้?')"><br><br>
                 </div>
             </div>
             <input type="hidden" name="id_rent_form" value="<?php echo $id_rentform ?>">
