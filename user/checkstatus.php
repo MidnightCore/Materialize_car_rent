@@ -80,7 +80,7 @@ if (isset($_SESSION['id'])) {
                         <td><?php echo $row['date_back'] ?></td>
                         <td><?php echo $row['request'] ?></td>
                         <td><?php echo $row['place'] ?></td>
-                        <td><?php echo $row['note']." ".$row['status'] ?></td>
+                        <td style="color:red"><?php echo $row['note']." ".$row['status'] ?></td>
                         <!-- <td>
                         <a href="../tcpdf/create_pdf.php" target="_blank" class="btn waves-effect waves-light teal lighten-1 z-depth-4">PDF
                         </a>

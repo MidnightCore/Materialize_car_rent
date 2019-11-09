@@ -21,7 +21,7 @@ if (isset($_SESSION['id'])) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ตรวจสถานะคำขอ</title>
+    <title>หน้าคนขับรถ</title>
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -33,13 +33,20 @@ if (isset($_SESSION['id'])) {
 </head>
 
 <body>
-    <nav class="white" role="navigation">
-        <div class="nav-wrapper container">   
-            <ul class="right hide-on-med-and-down">            
+    <nav class="teal lighten-3" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Driver Page</a>
+            <ul class="right hide-on-med-and-down">
                 <li><a href="../login.php">ออกจากระบบ</a></li>
             </ul>
+            <ul id="nav-mobile" class="sidenav">
+                <br><br>
+                <li><a href="../login.php">ออกจากระบบ</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         </div>
     </nav>
+
 
 
     <div class="container">
@@ -63,7 +70,7 @@ if (isset($_SESSION['id'])) {
                         <td><?php echo $row['date_back'] ?></td>
                         <td><?php echo $row['request'] ?></td>
                         <td><?php echo $row['place'] ?></td>
-                        <td><?php echo $row['note']." ".$row['status'] ?></td>
+                        <td><?php echo $row['note'] . " " . $row['status'] ?></td>
                         <!-- <td>
                         <a href="../tcpdf/create_pdf.php" target="_blank" class="btn waves-effect waves-light teal lighten-1 z-depth-4">PDF
                         </a>
