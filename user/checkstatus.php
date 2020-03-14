@@ -80,14 +80,14 @@ if (isset($_SESSION['id'])) {
                         <td><?php echo $row['date_back'] ?></td>
                         <td><?php echo $row['request'] ?></td>
                         <td><?php echo $row['place'] ?></td>
-                        <td style="color:red"><?php echo $row['note']." ".$row['status'] ?></td>
-                        <!-- <td>
-                        <a href="../tcpdf/create_pdf.php" target="_blank" class="btn waves-effect waves-light teal lighten-1 z-depth-4">PDF
-                        </a>
-                        <form method="POST" target="_blank">
+                        <td style="color:red"><?php echo $row['note'] . " " . $row['status'] ?></td>
+                        <td>
+                            <a href="../tcpdf/create_pdf.php" target="_blank" class="btn waves-effect waves-light teal lighten-1 z-depth-4">PDF
+                            </a>
+                            <!-- <form method="POST" target="_blank">
                             <input type="submit" name="create_pdf" class="btn waves-effect waves-light teal lighten-1 z-depth-4" value="PDF">
-                        </form> 
-                    </td> -->
+                            </form>  -->
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
