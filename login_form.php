@@ -2,8 +2,7 @@
 session_start();
 
   $em_User       = $_POST['em_User'];
-  $em_Password   = md5($_POST['em_Password']);
-  // $em_Password   = $_POST['em_Password'];
+  $em_Password   = $_POST['em_Password'];
 
   require 'server/server.php';
 
@@ -16,21 +15,15 @@ session_start();
   if($num_row == 1) {
     $_SESSION['id']       = $em_User;
     $_SESSION['password'] = $em_Password;
-    $_SESSION['name'] = $role['fname']." ".$role['lname'];
-    // echo$_SESSION['name'];
     if($role['role'] == "admin") {
       header("location:admin/admin_page.php");
       exit();
-    }else if($role['role'] == "user") {
-      header("location:index.php");
+    }
+    if($role['role'] == "user") {
+      header("location:user/rentform.php");
       exit();
-    }else if($role['role'] == "approver"){
-      header("location:approver/approver_page.php");
-      exit();
-    }else if($role['role'] == "driver"){
-      header("location:driver/driver_page.php");
-      exit();
-    }else{
+    }
+    else{
       header("location:login.php?alert=2");
       exit();
     }

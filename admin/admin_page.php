@@ -39,7 +39,7 @@ if ($alert == 1) {
 
     <style>
         #lob {
-            background color: red;
+            background-color: red;
         }
     </style>
 </head>

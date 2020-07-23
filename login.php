@@ -70,10 +70,6 @@ if ($palm == 1) {
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <a href="index.html" class="btn pulse waves-effect waves-light" name="action">Login
-                                    <i class="material-icons right">done</i>
-                                </a> -->
-
                                 <button type="submit" class="btn pulse waves-effect waves-light" name="action">Login
                                     <i class="material-icons right">done</i>
                                 </button>
