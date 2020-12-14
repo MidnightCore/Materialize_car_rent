@@ -12,16 +12,19 @@ $role = "SELECT user.role FROM user WHERE user.id = '$user_id'";
 $resultrole = mysqli_query($connect, $role);
 $rowr = mysqli_fetch_array($resultrole);
 ///////////////////////////////////////////////////
+
 if($rowr['role'] == 'user'){
     $sql = "SELECT fname,lname,phone,user.rank,department,email FROM user WHERE user.role = 'user' AND user.id = '$user_id'";
     $result = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($result);
-    ////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
 }else if($rowr['role'] == 'approver'){
     $sql = "SELECT fname,lname,phone,user.rank,department,email,approver.rank AS APrank FROM user,approver WHERE user.role = 'approver' AND user.id = approver.user_id AND user.id = '$user_id'";
     $result = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($result);
-    ////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
 }else if($rowr['role'] == 'driver'){
     $sql = "SELECT fname,lname,phone,department,email,rank FROM user,driver WHERE user.role = 'driver' AND user.id = driver.user_id AND user.id = '$user_id'";
     $result = mysqli_query($connect, $sql);

@@ -16,7 +16,7 @@ if(isset($_SESSION['id'])){
 $first_name     = $_POST['first_name'];
 $last_name      = $_POST['last_name'];
 $user_id        = $_POST['user_id'];
-$user_password  = md5($_POST['user_password']);
+$user_password  = $_POST['user_password'];
 $Phone_num      = $_POST['Phone_num'];
 $user_email     = $_POST['user_email'];
 $Role           = $_POST['role'];

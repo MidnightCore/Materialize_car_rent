@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2019 at 12:12 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Dec 14, 2020 at 03:01 PM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -57,8 +56,8 @@ CREATE TABLE `approve_form` (
   `approver_id` int(11) DEFAULT NULL,
   `status` text NOT NULL,
   `note` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -74,7 +73,9 @@ INSERT INTO `approve_form` (`id`, `rent_form_id`, `approver_id`, `status`, `note
 (6, 33, 13, 'กำลังตรวจสอบ', 'ขั้นตอนการเลือกรถ', '2019-10-16 02:46:58', '0000-00-00 00:00:00'),
 (7, 34, 16, 'ได้รับอนุญาตจากMaggie Souyers', 'ได้รับอนุญาตให้ไปกิจกรรมที่ท่านขอมาได้', '2019-11-08 21:12:55', '2019-11-08 21:15:27'),
 (8, 35, 16, 'ได้รับอนุญาตจากMaggie Souyers', 'ได้รับอนุญาตให้ไปกิจกรรมที่ท่านขอมาได้', '2019-11-08 21:13:30', '2019-11-08 21:15:46'),
-(9, 36, 14, 'ได้รับอนุญาตและเลือกรถจาก Mary Jane', 'ดำเนินการส่งเรื่องขออุญาติต่อ', '2019-11-08 21:14:04', '2019-11-08 21:14:47');
+(9, 36, 14, 'ได้รับอนุญาตและเลือกรถจาก Mary Jane', 'ดำเนินการส่งเรื่องขออุญาติต่อ', '2019-11-08 21:14:04', '2019-11-08 21:14:47'),
+(10, 37, 13, 'กำลังตรวจสอบ', 'ขั้นตอนการเลือกรถ', '2020-12-12 07:06:54', '0000-00-00 00:00:00'),
+(11, 38, 13, 'กำลังตรวจสอบ', 'ขั้นตอนการเลือกรถ', '2020-12-12 07:11:35', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -123,11 +124,11 @@ CREATE TABLE `driver` (
 --
 
 INSERT INTO `driver` (`id`, `user_id`, `image`) VALUES
-(1, 'singq', ''),
-(2, 'qqqfff', ''),
-(4, 'ฟฟฟฟ', 'หฟแดฟห'),
-(5, 'ฟฟฟฟ555', 'ฟหดฟห'),
-(6, 'aaaoopp', 'palm.txt');
+(1, 'driver1', ''),
+(2, 'driver2', ''),
+(4, 'driver4', 'หฟแดฟห'),
+(5, 'driver5', 'ฟหดฟห'),
+(6, 'driver3', 'palm.txt');
 
 -- --------------------------------------------------------
 
@@ -155,7 +156,9 @@ INSERT INTO `driver_rent` (`id`, `rent_form_id`, `driver_id`, `approver_id`) VAL
 (11, 33, NULL, 13),
 (12, 34, 1, NULL),
 (13, 35, 2, NULL),
-(14, 36, 1, 14);
+(14, 36, 1, 14),
+(15, 37, NULL, 13),
+(16, 38, NULL, 13);
 
 -- --------------------------------------------------------
 
@@ -174,8 +177,8 @@ CREATE TABLE `rent_form` (
   `date_back` datetime NOT NULL,
   `note` text NOT NULL,
   `phone` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `references_id` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -184,15 +187,17 @@ CREATE TABLE `rent_form` (
 --
 
 INSERT INTO `rent_form` (`id`, `user_id`, `request`, `place`, `count`, `people`, `date_go`, `date_back`, `note`, `phone`, `created_at`, `updated_at`, `references_id`) VALUES
-(28, 'user', 'ดูงาน', 'ลาว', 'Other', '7-9', '2019-10-12 18:30:00', '2019-10-16 13:42:00', '', '9999', '2019-10-10 06:42:27', '0000-00-00 00:00:00', 'palm palm'),
-(29, 'user', 'เที่ยว', 'ภูเก็ต', 'Other', '10-13', '2019-10-16 18:30:00', '2019-10-18 18:30:00', '-', '9999', '2019-10-13 08:01:47', '0000-00-00 00:00:00', 'Anagepan Sombookit'),
-(30, 'user', 'ทัศนศึกษา', 'ปักกิ่ง', 'Bangkok', '7-9', '2019-10-23 18:00:00', '2019-10-25 00:00:00', '-', '9999', '2019-10-13 08:03:28', '0000-00-00 00:00:00', 'Vichai Srijintawiriya'),
-(31, 'user', 'ประชุม', 'เดอะมอล์บางแค', 'Bangkok', '7-9', '2019-10-16 00:00:00', '2019-10-17 00:00:00', '', '000000000000', '2019-10-16 02:44:01', '0000-00-00 00:00:00', 'Vichai Srijintawiriya'),
-(32, 'user', 'นรก', 'ขุม9', 'Other', '0-3', '2019-10-16 09:44:00', '2019-10-17 00:44:00', '', '9999', '2019-10-16 02:45:29', '0000-00-00 00:00:00', 'Sunisara Jamkrajang'),
-(33, 'user', 'เที่ยว', 'น้ำตก', 'Other', '10-13', '2019-10-16 09:46:00', '2019-10-21 17:46:00', '', '9999', '2019-10-16 02:46:58', '0000-00-00 00:00:00', 'Vichai Srijintawiriya'),
-(34, '123', 'asf', 'ลาว', 'Other', '0-3', '2019-11-13 18:30:00', '2019-11-15 04:12:00', '', '093-732-8847', '2019-11-08 21:12:55', '0000-00-00 00:00:00', 'palm palm'),
-(35, '123', 'aaaa', 'ลาว', 'Other', '4-6', '2019-11-12 04:13:00', '2019-11-14 04:13:00', '', '093-732-8847', '2019-11-08 21:13:30', '0000-00-00 00:00:00', 'Sunisara Jamkrajang'),
-(36, '123', 'aaaaasdasd', 'ปแแกหอ', 'Bangkok', '7-9', '2019-11-15 04:13:00', '2019-11-28 04:14:00', '', '093-732-8847', '2019-11-08 21:14:04', '0000-00-00 00:00:00', 'Vichai Srijintawiriya');
+(28, 'user4', 'ดูงาน', 'ลาว', 'Other', '7-9', '2019-10-12 18:30:00', '2019-10-16 13:42:00', '', '9999', '2019-10-10 06:42:27', '0000-00-00 00:00:00', 'palm palm'),
+(29, 'user4', 'เที่ยว', 'ภูเก็ต', 'Other', '10-13', '2019-10-16 18:30:00', '2019-10-18 18:30:00', '-', '9999', '2019-10-13 08:01:47', '0000-00-00 00:00:00', 'Anagepan Sombookit'),
+(30, 'user4', 'ทัศนศึกษา', 'ปักกิ่ง', 'Bangkok', '7-9', '2019-10-23 18:00:00', '2019-10-25 00:00:00', '-', '9999', '2019-10-13 08:03:28', '0000-00-00 00:00:00', 'Vichai Srijintawiriya'),
+(31, 'user4', 'ประชุม', 'เดอะมอล์บางแค', 'Bangkok', '7-9', '2019-10-16 00:00:00', '2019-10-17 00:00:00', '', '000000000000', '2019-10-16 02:44:01', '0000-00-00 00:00:00', 'Vichai Srijintawiriya'),
+(32, 'user4', 'นรก', 'ขุม9', 'Other', '0-3', '2019-10-16 09:44:00', '2019-10-17 00:44:00', '', '9999', '2019-10-16 02:45:29', '0000-00-00 00:00:00', 'Sunisara Jamkrajang'),
+(33, 'user4', 'เที่ยว', 'น้ำตก', 'Other', '10-13', '2019-10-16 09:46:00', '2019-10-21 17:46:00', '', '9999', '2019-10-16 02:46:58', '0000-00-00 00:00:00', 'Vichai Srijintawiriya'),
+(34, 'user2', 'asf', 'ลาว', 'Other', '0-3', '2019-11-13 18:30:00', '2019-11-15 04:12:00', '', '093-732-8847', '2019-11-08 21:12:55', '0000-00-00 00:00:00', 'palm palm'),
+(35, 'user2', 'aaaa', 'ลาว', 'Other', '4-6', '2019-11-12 04:13:00', '2019-11-14 04:13:00', '', '093-732-8847', '2019-11-08 21:13:30', '0000-00-00 00:00:00', 'Sunisara Jamkrajang'),
+(36, 'user2', 'aaaaasdasd', 'ปแแกหอ', 'Bangkok', '7-9', '2019-11-15 04:13:00', '2019-11-28 04:14:00', '', '093-732-8847', '2019-11-08 21:14:04', '0000-00-00 00:00:00', 'Vichai Srijintawiriya'),
+(37, 'car_reservation_user', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', ' ', '', '2020-12-12 07:06:54', '0000-00-00 00:00:00', ''),
+(38, 'car_reservation_user', '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', ' ', '', '2020-12-12 07:11:35', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -217,22 +222,22 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `password`, `fname`, `lname`, `role`, `email`, `phone`, `rank`, `department`) VALUES
-('111', '698d51a19d8a121ce581499d7b701668', 'Mary', 'Jane', 'approver', 'maryjane@ssru.ac.th', '065-567-1524', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
-('123', '202cb962ac59075b964b07152d234b70', 'Vichai', 'Srijintawiriya', 'user', 'srijintawiriya@ssru.ac.th', '093-732-8847', 'เจ้าหน้าที่ฝึกหัด', 'สำนักงานจีอี'),
-('12355', '7694f4a66316e53c8cdd9d9954bd611d', 'Noel', 'Escanorr', 'admin', 'escanorr@yahoo.com', '099-135-2424', 'เจ้าหน้าที่ชั่วคราว', 'สำนักงานจีอี'),
-('222', 'bcbe3365e6ac95ea2c0343a2395834dd', 'Kara', 'Denvers', 'approver', 'karadenvers@ssru.ac.th', '089-568-8955', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
-('333', '310dcbbf4cce62f762a2aaa148d556bd', 'Alex', 'Denvers', 'approver', 'alexdenvers@gmail.com', '084-541-5422', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
-('444', '550a141f12de6341fba65b0ad0433500', 'Maggie', 'Souyers', 'approver', 'maggie@ssru.ac.th', '061-232-6638', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
-('aaaoopp', '47bce5c74f589f4867dbd57e9ca9f808', 'Yanakorn', 'Limtongkun', 'driver', 'limtongkun@hotmail.com', '062-663-7684', 'คนขับประจำ', 'สำนักงานจีอี'),
-('admin', '21232f297a57a5a743894a0e4a801fc3', 'Adminkung', 'Cessruzaa', 'admin', 'admin@ssru.ac.th', '099-555-9595', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
-('palm', '82051c7417e1a7921e72d101a64f96bf', 'Wisarut', 'Witthaya', 'user', 's60122519000@ssru.ac.th', '066-268-2882', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
-('qqqfff', '343d9040a671c45832ee5381860e2996', 'Titikorn', 'Jarounpoozhorb', 'driver', 'jarounpoozhorb@yahoo.com', '099-142-7689', 'คนขับชั่วคราว', 'สำนักงานจีอี'),
-('sa', '47bce5c74f589f4867dbd57e9ca9f808', 'Sunisara', 'Jamkrajang', 'user', 'sunisarajam@ssru.ac.th', '096-124-7489', 'เจ้าหน้าที่ฝึกหัด', 'สำนักงานจีอี'),
-('saasad', '47bce5c74f589f4867dbd57e9ca9f808', 'Anagepan', 'Sombookit', 'user', 'sombookit@ssru.ac.th', '060-174-9986', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
-('singq', 'e10adc3949ba59abbe56e057f20f883e', 'Singhakom', 'Meenayon', 'driver', 'sing@gmail.com', '085-957-5958', 'คนขับประจำ', 'สำนักงานจีอี'),
-('user', 'ee11cbb19052e40b07aac0ca060c23ee', 'palm', 'palm', 'user', '9999', '9999', '9999', '9999'),
-('ฟฟฟฟ', 'cf10fefbd923acd5ad133458fe4c169d', 'Sonic', 'Rider', 'driver', 'sonypicture@gmail.com', '099-155-9595', 'คนขับชั่วคราว', 'สำนักงานจีอี'),
-('ฟฟฟฟ555', 'cf10fefbd923acd5ad133458fe4c169d', 'Peter', 'Parker', 'driver', 'spiderman@outlook.com', '096-892-6642', 'คนขับชั่วคราว', 'สำนักงานจีอี');
+('111', '111', 'Mary', 'Jane', 'approver', 'maryjane@ssru.ac.th', '065-567-1524', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('222', '222', 'Kara', 'Denvers', 'approver', 'karadenvers@ssru.ac.th', '089-568-8955', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('333', '333', 'Alex', 'Denvers', 'approver', 'alexdenvers@gmail.com', '084-541-5422', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('444', '444', 'Maggie', 'Souyers', 'approver', 'maggie@ssru.ac.th', '061-232-6638', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('car_reservation_admin', 'car_reservation_admin', ' Mhanmai', 'Titiyakrun', 'admin', 'admin@ssru.ac.th', '099-999-9999', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
+('car_reservation_approver', 'car_reservation_approver', 'Jane', 'Doe', 'approver', 'approver@ssru.ac.th', '055-555-5555', 'เจ้าหน้าที่เอกสาร', 'สำนักงานจีอี'),
+('car_reservation_user', 'car_reservation_user', 'Anagepan', 'Sombookit', 'user', 'sombookit@ssru.ac.th', '060-174-9986', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
+('driver1', 'driver1', 'Singhakom', 'Meenayon', 'driver', 'sing@gmail.com', '085-957-5958', 'คนขับประจำ', 'สำนักงานจีอี'),
+('driver2', 'driver2', 'Titikorn', 'Jarounpoozhorb', 'driver', 'jarounpoozhorb@yahoo.com', '099-142-7689', 'คนขับชั่วคราว', 'สำนักงานจีอี'),
+('driver3', 'driver3', 'Yanakorn', 'Limtongkun', 'driver', 'limtongkun@hotmail.com', '062-663-7684', 'คนขับประจำ', 'สำนักงานจีอี'),
+('driver4', 'driver4', 'Sonic', 'Rider', 'driver', 'sonypicture@gmail.com', '099-155-9595', 'คนขับชั่วคราว', 'สำนักงานจีอี'),
+('driver5', 'driver5', 'Peter', 'Parker', 'driver', 'spiderman@outlook.com', '096-892-6642', 'คนขับชั่วคราว', 'สำนักงานจีอี'),
+('user1', 'user1', 'Sunisara', 'Jamkrajang', 'user', 'sunisarajam@ssru.ac.th', '096-124-7489', 'เจ้าหน้าที่ฝึกหัด', 'สำนักงานจีอี'),
+('user2', 'user2', 'Vichai', 'Srijintawiriya', 'user', 'srijintawiriya@ssru.ac.th', '093-732-8847', 'เจ้าหน้าที่ฝึกหัด', 'สำนักงานจีอี'),
+('user3', 'user3', 'Wisarut', 'Witthaya', 'user', 's60122519000@ssru.ac.th', '066-268-2882', 'เจ้าหน้าที่', 'สำนักงานจีอี'),
+('user4', 'user4', 'Sighasenee', 'Sutalra', 'user', 'Sutalra@hotmail.com', '092-789-9542', 'เจ้าหน้าที่', 'สำนักงานจีอี');
 
 --
 -- Indexes for dumped tables
@@ -303,7 +308,7 @@ ALTER TABLE `approver`
 -- AUTO_INCREMENT for table `approve_form`
 --
 ALTER TABLE `approve_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `car`
@@ -321,13 +326,13 @@ ALTER TABLE `driver`
 -- AUTO_INCREMENT for table `driver_rent`
 --
 ALTER TABLE `driver_rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `rent_form`
 --
 ALTER TABLE `rent_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Constraints for dumped tables

@@ -1,6 +1,7 @@
  <?php
 session_start();
 require "../server/server.php";
+
 if(isset($_SESSION['id'])){
     $user_id = $_POST['user_id'];
     if(isset($_POST['license']) || isset($_POST['rank_approver'])){
@@ -18,8 +19,8 @@ $last_name      = $_POST['last_name'];
 $Phone_num      = $_POST['Phone_num'];
 $user_email     = $_POST['user_email'];
 $Role           = $_POST['role'];
-$rank = $_POST['rank'];
-$department = $_POST['department'];
+$rank           = $_POST['rank'];
+$department     = $_POST['department'];
 
 // $search = "SELECT id FROM user WHERE user.id='$user_id'";
 // echo"aaaaaaa";
